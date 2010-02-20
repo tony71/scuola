@@ -13,11 +13,7 @@ else {
 
 if (isset($_POST['submitted'])) {
 	require_once('include/db_connection.php');
-	$sql = "select * from vista_studenti";
-	if (isset($nominativo)) {
-		$sql .= " where cognome like UPPER('%$nominativo%')";
-		$sql .= " or UPPER(nome) like UPPER('%$nominativo%')";
-	}
+	$sql = "select * from cerca_studenti('$nominativo')";
 	$sql .= " order by cognome, nome";
 	try {
 		$stm = $db->query($sql);
