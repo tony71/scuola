@@ -84,7 +84,7 @@ catch(PDOException $e) {
 		</select>
 
 		<label for="matricola">Matricola:</label>
-		<input type="text" name="matricola" id="matricola" size="9" maxlength="9" value="<?php echo $matricola; ?>" />
+		<input type="text" name="matricola" id="matricola" size="9" maxlength="9" value="<?php echo $matricola; ?>" readonly="readonly" />
 
 		<label for="id_tipo_addebito">Tipo Addebito:</label>
 		<!--
