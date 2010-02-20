@@ -2,11 +2,11 @@
 $page_title = 'Modifica Studente';
 include('include/header.html');
 
-if ((isset($_GET[id])) && (is_numeric($_GET[id]))) {
-	$id = $_GET[id];
+if (isset($_GET[matricola])) {
+	$matricola = $_GET[matricola];
 }
-elseif ((isset($_POST[id])) && (is_numeric($_POST[id]))) {
-	$id = $_POST[id];
+elseif (isset($_POST[matricola])) {
+	$matricola = $_POST[matricola];
 }
 else {
 	echo '<p class="error">This page has been accessed in error.</p>';
@@ -22,7 +22,7 @@ if (isset($_POST['submitted'])) {
 	include('include/update_studente.php');
 }
 
-$sql = "select * from vista_studenti where id=$id";
+$sql = "select * from vista_studenti where matricola='$matricola'";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();

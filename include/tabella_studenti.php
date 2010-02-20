@@ -21,9 +21,9 @@ function result_as_table($result, $tableFeatures="")
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
 		$table .= '<tr bgcolor="' . $bg . '">';
-		$table .= '<td align="left"><a href="dettagli_studente.php?id=' . $r['id'] . '">Dettagli</a></td>';
-		$table .= '<td align="left"><a href="modifica_studente.php?id=' . $r['id'] . '">Modifica</a></td>';
-		$table .= '<td align="left"><a href="elimina_studente.php?id=' . $r['id'] . '">Elimina</a></td>';
+		$table .= '<td align="left"><a href="dettagli_studente.php?matricola=' . $r['matricola'] . '">Dettagli</a></td>';
+		$table .= '<td align="left"><a href="modifica_studente.php?matricola=' . $r['matricola'] . '">Modifica</a></td>';
+		$table .= '<td align="left"><a href="elimina_studente.php?matricola=' . $r['matricola'] . '">Elimina</a></td>';
 		/****
 		// foreach ($r as $column) {
 		for ($i = 1; $i < $noFields; ++$i) {
