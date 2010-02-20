@@ -38,7 +38,7 @@ elseif (isset($_GET['classe'])) {
 	$classe = $_GET['classe'];
 }
 if ($classe == 'Tutte') {
-	unset($classe);
+	$classe = 'null';
 }
 
 if (isset($_POST['sezione'])) {
