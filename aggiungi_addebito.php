@@ -1,24 +1,5 @@
 <?php
-$page_title = 'Registra Addebito';
-include('include/header.html');
-
-require_once('include/db_connection.php');
-
-try {
-	$matricola = $_POST['matricola'];
-	$sql = "select nome, cognome from vista_studenti where matricola=:matricola";
-	$stm = $db->prepare($sql);
-	$stm->bindParam(":matricola", $matricola, PDO::PARAM_STR, 10);
-	$stm->execute();
-	$m = $stm->fetch(PDO::FETCH_BOTH);
-
-	echo '<h1>Nuovo Addebito per ' . $m['cognome'] . ', ' . $m['nome'] . '</h1>';
-}
-catch(PDOException $e) {
-       	echo $e->getMessage();
-}
-
-if (isset($_POST['submitted'])) {
+if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
 	$trimmed = array_map('trim', $_POST);
 	$sql = 'INSERT INTO addebiti (';
 	$sql .= 'importo, ';
@@ -52,7 +33,32 @@ if (isset($_POST['submitted'])) {
         catch(PDOException $e) {
                 echo '<p class="error">' . $e->getMessage(). '</p>';
         }
+
+	$host  = $_SERVER['HTTP_HOST'];
+	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+	$extra = 'dettagli_studente.php?matricola=' . $trimmed['matricola'];
+	header("Location: http://$host$uri/$extra");
 }
+
+$page_title = 'Registra Addebito';
+include('include/header.html');
+
+require_once('include/db_connection.php');
+
+try {
+	$matricola = $_POST[matricola];
+	$sql = "select nome, cognome from vista_studenti where matricola=:matricola";
+	$stm = $db->prepare($sql);
+	$stm->bindParam(":matricola", $matricola, PDO::PARAM_STR, 10);
+	$stm->execute();
+	$m = $stm->fetch(PDO::FETCH_BOTH);
+
+	echo '<h1>Nuovo Addebito per ' . $m['cognome'] . ', ' . $m['nome'] . '</h1>';
+}
+catch(PDOException $e) {
+       	echo $e->getMessage();
+}
+
 ?>
 
 <form action="aggiungi_addebito.php" method="post">
@@ -78,7 +84,7 @@ if (isset($_POST['submitted'])) {
 		</select>
 
 		<label for="matricola">Matricola:</label>
-		<input type="text" name="matricola" id="matricola" size="9" maxlength="9" value="<?php if (isset($trimmed['matricola'])) echo $trimmed['matricola']; ?>" />
+		<input type="text" name="matricola" id="matricola" size="9" maxlength="9" value="<?php echo $matricola; ?>" />
 
 		<label for="id_tipo_addebito">Tipo Addebito:</label>
 		<!--
@@ -93,7 +99,7 @@ if (isset($_POST['submitted'])) {
 	</fieldset>
 	<div align="center">
 		<input type="submit" name="submit" value="Registra" />
-		<a href="addebiti.php?matricola=<?php if (isset($trimmed['matricola'])) echo $trimmed['matricola']; ?>">Back</a>
+		<a href="addebiti.php?matricola=<?php echo $matricola; ?>">Back</a>
 	</div>
 	<input type="hidden" name="submitted" value="TRUE" />
 </form>
