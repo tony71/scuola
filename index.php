@@ -11,9 +11,69 @@ elseif (isset($_GET['nominativo'])) {
 else {
 }
 
+if (isset($_POST['scuola'])) {
+	$scuola = $_POST['scuola'];
+}
+elseif (isset($_GET['scuola'])) {
+	$scuola = $_GET['scuola'];
+}
+if ($scuola == 'Tutte') {
+	unset($scuola);
+}
+
+if (isset($_POST['anno'])) {
+	$anno = $_POST['anno'];
+}
+elseif (isset($_GET['anno'])) {
+	$anno = $_GET['anno'];
+}
+if ($anno == 'Tutti') {
+	unset($anno);
+}
+
+if (isset($_POST['classe'])) {
+	$classe = $_POST['classe'];
+}
+elseif (isset($_GET['classe'])) {
+	$classe = $_GET['classe'];
+}
+if ($classe == 'Tutte') {
+	unset($classe);
+}
+
+if (isset($_POST['sezione'])) {
+	$sezione = $_POST['sezione'];
+}
+elseif (isset($_GET['sezione'])) {
+	$sezione = $_GET['sezione'];
+}
+if ($sezione == 'Tutte') {
+	unset($sezione);
+}
+
+if (isset($_POST['indirizzo'])) {
+	$indirizzo = $_POST['indirizzo'];
+}
+elseif (isset($_GET['indirizzo'])) {
+	$indirizzo = $_GET['indirizzo'];
+}
+if ($indirizzo == 'Tutti') {
+	unset($indirizzo);
+}
+
+if (isset($_POST['stato'])) {
+	$stato = $_POST['stato'];
+}
+elseif (isset($_GET['stato'])) {
+	$stato = $_GET['stato'];
+}
+if ($stato == 'Tutti') {
+	unset($stato);
+}
+
 if (isset($_POST['submitted'])) {
 	require_once('include/db_connection.php');
-	$sql = "select * from cerca_studenti('$nominativo')";
+	$sql = "select * from cerca_studenti('$nominativo','$scuola','$anno',$classe,'$sezione','$indirizzo','$stato')";
 	$sql .= " order by cognome, nome";
 	try {
 		$stm = $db->query($sql);
