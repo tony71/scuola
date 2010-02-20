@@ -71,6 +71,8 @@ if ($stato == 'Tutti') {
 	unset($stato);
 }
 
+$num = 0;
+
 if (isset($_POST['submitted'])) {
 	require_once('include/db_connection.php');
 	$sql = "select * from cerca_studenti('$nominativo','$scuola','$anno',$classe,'$sezione','$indirizzo','$stato')";
@@ -92,7 +94,7 @@ if (isset($_POST['submitted'])) {
 }
 ?>
 
-<h1>Content Header</h1>
+<h1>Studenti trovati <?php echo $num; ?></h1>
 	<p>Primo paragrafo</p>
 	<p>Secondo paragrafo</p>
 <form action="index.php" method="post">
