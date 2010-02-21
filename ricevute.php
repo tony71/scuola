@@ -54,7 +54,7 @@ else {
 	$start = 0;
 }
 
-$sql = "select * from vista_ricevute order by data desc,id_ricevuta desc limit $display offset $start";
+$sql = "select * from vista_ricevute where matricola='$matricola' order by data desc,id_ricevuta desc limit $display offset $start";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();
