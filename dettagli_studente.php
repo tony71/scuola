@@ -13,7 +13,7 @@ else {
 	include('include/footer.html');
 	exit();
 }
-echo "<h1>Dettagli Studente $id</h1>";
+echo "<h1>Dettagli Studente $matricola</h1>";
 
 require_once('include/db_connection.php');
 $sql = "select distinct id,matricola";
@@ -38,6 +38,7 @@ try {
 	$r = $stm->fetch(PDO::FETCH_BOTH);
 	echo singolo_studente($r, true);
 	$matricola = $r['matricola'];
+	$id = $r['id'];
 	include('include/tab_studente.html');
 }
 catch(PDOException $e) {
