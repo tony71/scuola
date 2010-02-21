@@ -16,7 +16,15 @@ else {
 echo "<h1>Dettagli Studente $id</h1>";
 
 require_once('include/db_connection.php');
-$sql = "select * from vista_studenti where matricola='$matricola'";
+$sql = "select distinct id,matricola";
+$sql .= ",nome,cognome,nome_breve,cognome_breve";
+$sql .= ",sesso,id_famiglia,tipo_parentela";
+$sql .= ",data_nascita,luogo_nascita,cittadinanza";
+$sql .= ",codice_fiscale,vaccinazioni,note";
+$sql .= ",controindicazioni_mensa,giudizio1,giudizio2";
+$sql .= ",consegnato_modulo,certificato_medico,anni_scuola_materna";
+$sql .= ",caso_speciale,motivazione_cs,hc";
+$sql .=" from vista_studenti_cv where matricola='$matricola'";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();
