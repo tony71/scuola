@@ -92,9 +92,12 @@ else {
 	$start = 0;
 }
 
-$sql = "select id_addebito, importo, importo_residuo, causale, data_scadenza, anno_scolastico, matricola, saldo, descrizione_tipo from $table order by anno_scolastico,id_addebito limit $display offset $start";
+$sql = "select id_addebito, importo, importo_residuo, causale, data_scadenza, anno_scolastico, matricola, saldo, descrizione_tipo from $table where matricola=:matricola order by anno_scolastico,id_addebito limit $display offset $start";
 try {
-	$stm = $db->query($sql);
+	// $stm = $db->query($sql);
+	$stm = $db->prepare($sql);
+	$stm->bindParam(":matricola", $matricola, PDO::PARAM_STR, 10);
+	$stm->execute();
 	$num = $stm->rowCount();
 	if ($num > 0) {
 		require('include/tabella_addebiti.php');
