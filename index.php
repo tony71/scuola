@@ -81,6 +81,7 @@ if (isset($_POST['submitted'])) {
 		$stm = $db->query($sql);
 		$num = $stm->rowCount();
 		if ($num > 0) {
+			echo '<h1>Studenti trovati: '. $num . '</h1>';
 			require('include/tabella_studenti.php');
 			echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"');
 		}
@@ -94,9 +95,6 @@ if (isset($_POST['submitted'])) {
 }
 ?>
 
-<h1>Studenti trovati <?php echo $num; ?></h1>
-	<p>Primo paragrafo</p>
-	<p>Secondo paragrafo</p>
 <form action="index.php" method="post">
 	<fieldset>
 		<legend>Nome o Cognome</legend>
