@@ -1,12 +1,12 @@
 <?php
 if (function_exists('PDF_new')) {
-	echo "PDFlib is available.<br />\n";
+	// echo "PDFlib is available.<br />\n";
 } else {
 	echo "PDFlib is not available.<br />\n";
 }
 
 if (extension_loaded('pdf')) {
-	echo "PDFlib is available.<br />\n";
+	// echo "PDFlib is available.<br />\n";
 } else {
 	echo "PDFlib is not available.<br />\n";
 }
