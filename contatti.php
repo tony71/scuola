@@ -27,7 +27,7 @@ try {
 	$r = $stm->fetch(PDO::FETCH_BOTH);
 	echo '<h1>Contatti di ' . $r['cognome'] . ', ' . $r['nome'] . '</h1>';
 	
-	$sql = "select * from contatti_famiglia($id_persona) order by cognome, nome";
+	$sql = "select * from contatti_famiglia($id_persona) where id_persona=$id_persona order by cognome, nome";
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();
 	if ($num == 0) {
