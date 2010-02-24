@@ -1,6 +1,4 @@
 <?php
-$page_title = 'Modifica Ricevuta';
-include('include/header.html');
 
 require_once('include/db_connection.php');
 
@@ -29,12 +27,18 @@ else {
 	include('include/footer.html');
 	exit();
 }
-echo "<h1>Modifica Ricevuta $id_ricevuta</h1>";
+
 
 if (isset($_POST['submitted'])) {
 	include('include/update_ricevuta_testata.php');
 	include('include/update_ricevuta_riga.php');
 }
+
+$page_title = 'Modifica Ricevuta';
+include('include/header.html');
+
+
+echo "<h1>Modifica Ricevuta $id_ricevuta</h1>";
 
 $sql = "select * from ricevute where id_ricevuta=$id_ricevuta";
 try {
