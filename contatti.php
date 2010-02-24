@@ -42,5 +42,14 @@ try {
 catch(PDOException $e) {
         echo $e->getMessage();
 }
+
+echo '<br /><div align="center">';
+$form = '<form action="aggiungi_contatto.php" method="post">';
+$form .= '<input type="submit" name="nuovo_contatto" value="Nuovo Contatto" />';
+$form .= '<input type="hidden" name="submitted" value="TRUE" />';
+$form .= '<input type="hidden" name="id_persona" value="'.$id_persona.'" />';
+$form .= '</form>';
+echo $form;
+
 include('include/footer.html');
 ?>
