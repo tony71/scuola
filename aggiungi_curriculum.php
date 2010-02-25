@@ -28,6 +28,7 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
         }
         catch(PDOException $e) {
                 echo '<p class="error">' . $e->getMessage(). '</p>';
+		exit;
         }
 
 	$host  = $_SERVER['HTTP_HOST'];
@@ -58,6 +59,10 @@ catch(PDOException $e) {
 ?>
 
 <form action="aggiungi_curriculum.php" method="post">
+	<fieldset>
+		<legend>Matricola</legend>
+		<input type="text" name="matricola" value="<?php echo $_POST[matricola]; ?>" readonly="readonly" />
+	</fieldset>
 	<fieldset>
 		<legend>Data Evento</legend>
 		<input type="text" name="data" />
