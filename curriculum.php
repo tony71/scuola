@@ -45,7 +45,7 @@ catch(PDOException $e) {
 
 echo '<br /><div align="center">';
 $form = '<form action="aggiungi_curriculum.php" method="post">';
-$form .= '<input type="submit" name="nuovo_curriculum" value="Nuovo Curriculum" />';
+$form .= '<input type="submit" name="nuovo_curriculum" value="Aggiorna Curriculum" />';
 $form .= '<input type="hidden" name="submitted" value="TRUE" />';
 $form .= '<input type="hidden" name="matricola" value="'.$matricola.'" />';
 $form .= '</form>';
