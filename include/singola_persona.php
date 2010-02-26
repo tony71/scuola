@@ -68,6 +68,7 @@ function singola_persona($r, $readonly=true, $prov)
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
 	$result .= '>';
 	include('select_provincia.php');
+	$result .= isset($r['id_provincia']) ? '' : '<option></option>';
 	$result .= select_provincia($prov, $r['id_provincia']);
 	$result .= '</select>';
 
