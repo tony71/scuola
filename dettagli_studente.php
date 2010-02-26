@@ -24,6 +24,8 @@ $sql .= ",codice_fiscale,vaccinazioni,note";
 $sql .= ",controindicazioni_mensa,giudizio1,giudizio2";
 $sql .= ",consegnato_modulo,certificato_medico,anni_scuola_materna";
 $sql .= ",caso_speciale,motivazione_cs,hc";
+$sql .= ",via,numero_civico,citta";
+$sql .= ",id_provincia,provincia,cap,quartiere";
 $sql .=" from vista_studenti_cv where matricola='$matricola'";
 try {
 	$stm = $db->query($sql);
