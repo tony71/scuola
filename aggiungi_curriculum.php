@@ -5,6 +5,7 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
 	$sql .= ':matricola, ';
 	$sql .= ':data, ';
 	$sql .= ':scuola, ';
+	$sql .= ':anno, ';
 	$sql .= ':classe, ';
 	$sql .= ':sezione, ';
 	$sql .= ':indirizzo, ';
@@ -15,14 +16,14 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
         try {
                 $stm = $db->prepare($sql);
 
-                $stm->bindParam(":matricola", $trimmed['matricola']);
-                $stm->bindParam(":data", $trimmed['data']);
-                $stm->bindParam(":scuola", $trimmed['scuola']);
-                $stm->bindParam(":anno", $trimmed['anno']);
-                $stm->bindParam(":classe", $trimmed['classe']);
-                $stm->bindParam(":sezione", $trimmed['sezione']);
-                $stm->bindParam(":indirizzo", $trimmed['indirizzo']);
-                $stm->bindParam(":stato", $trimmed['stato']);
+                $stm->bindParam(':matricola', $trimmed['matricola'], PDO::PARAM_STR, 10);
+                $stm->bindParam(':data', $trimmed['data']);
+                $stm->bindParam(':scuola', $trimmed['scuola']);
+                $stm->bindParam(':anno', $trimmed['anno']);
+                $stm->bindParam(':classe', $trimmed['classe']);
+                $stm->bindParam(':sezione', $trimmed['sezione']);
+                $stm->bindParam(':indirizzo', $trimmed['indirizzo']);
+                $stm->bindParam(':stato', $trimmed['stato']);
 
                 $stm->execute();
         }
@@ -51,6 +52,11 @@ try {
 	$m = $stm->fetch(PDO::FETCH_BOTH);
 
 	echo '<h1>Aggiorna Curriculum per ' . $m['cognome'] . ', ' . $m['nome'] . '</h1>';
+
+	$sql = 'select now()';
+	$stm = $db->query($sql);
+	$m = $stm->fetch(PDO::FETCH_BOTH);
+	$data_attuale = $m['now'];
 }
 catch(PDOException $e) {
        	echo $e->getMessage();
@@ -65,7 +71,7 @@ catch(PDOException $e) {
 	</fieldset>
 	<fieldset>
 		<legend>Data Evento</legend>
-		<input type="text" name="data" />
+		<input type="text" name="data" value="<?php echo $data_attuale; ?>" />
 	</fieldset>
 	<fieldset>
 		<legend>Scuola</legend>
