@@ -9,6 +9,7 @@ try {
 		$conn_string = 'pgsql:host=' . $host . ';';
 		$conn_string .= 'dbname=' . $dbname;
 		$db = new PDO($conn_string, $user, $pass);
+		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 	else {
 		header('WWW-Authenticate: Basic Realm="Secret Stash"');

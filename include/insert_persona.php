@@ -82,5 +82,6 @@
         }
         catch(PDOException $e) {
                 echo '<p class="error">' . $e->getMessage(). '</p>';
+		exit;
         }
 ?>
