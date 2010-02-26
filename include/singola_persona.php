@@ -65,6 +65,8 @@ function singola_persona($r, $readonly=true)
 	$result .= '<label for="id_provincia">Provincia</label>';
 	$result .= '<input type="text" name="id_provincia" id="id_provincia" size="5" maxlength="10" value="' . (isset($r) ? $r['id_provincia'] : '') . '" ' . $s . ' />';
 
+	$result .= '<br />';
+
 	$result .= '<label for="cap">CAP</label>';
 	$result .= '<input type="text" name="cap" id="cap" size="5" maxlength="5" value="' . (isset($r) ? $r['cap'] : '') . '" ' . $s . ' />';
 
