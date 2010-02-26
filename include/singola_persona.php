@@ -1,5 +1,5 @@
 <?php
-function singola_persona($r, $readonly=true)
+function singola_persona($r, $readonly=true, $prov)
 {
 	if ($readonly == true) {
 		$s = 'readonly="readonly" ';
@@ -64,6 +64,10 @@ function singola_persona($r, $readonly=true)
 
 	$result .= '<label for="id_provincia">Provincia</label>';
 	$result .= '<input type="text" name="id_provincia" id="id_provincia" size="5" maxlength="10" value="' . (isset($r) ? $r['id_provincia'] : '') . '" ' . $s . ' />';
+	$result .= '<select name="provincia" disabled="disabled">';
+	include('select_provincia.php');
+	$result .= select_provincia($prov, $r['id_provincia']);
+	$result .= '</select>';
 
 	$result .= '<br />';
 

@@ -1,5 +1,5 @@
 <?php
-function singolo_studente($r, $readonly=true)
+function singolo_studente($r, $readonly=true, $prov)
 {
 	if ($readonly == true) {
 		$s = 'readonly="readonly" ';
@@ -9,7 +9,7 @@ function singolo_studente($r, $readonly=true)
 	}
 		
 	include('singola_persona.php');
-	$result = singola_persona($r, $readonly);
+	$result = singola_persona($r, $readonly, $prov);
 
 	$result .= '<label for="matricola">Matricola:</label>';
 	$result .= '<input type="text" name="matricola" id="matricola" size="10" maxlength="10" value="' . (isset($r) ? $r['matricola'] : '') . '" ' . $s . ' />';

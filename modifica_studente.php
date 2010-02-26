@@ -2,27 +2,32 @@
 $page_title = 'Modifica Studente';
 include('include/header.html');
 
-if (isset($_GET[matricola])) {
-	$matricola = $_GET[matricola];
+if (isset($_GET['matricola'])) {
+	$matricola = $_GET['matricola'];
 }
-elseif (isset($_POST[matricola])) {
-	$matricola = $_POST[matricola];
+elseif (isset($_POST['matricola'])) {
+	$matricola = $_POST['matricola'];
 }
 else {
 	echo '<p class="error">This page has been accessed in error.</p>';
 	include('include/footer.html');
 	exit();
 }
-echo "<h1>Modifica Studente $id</h1>";
+echo "<h1>Modifica Studente $matricola</h1>";
 
 require_once('include/db_connection.php');
 
 if (isset($_POST['submitted'])) {
+	$sql = "select id_persona from studenti where matricola='$matricola'";
+	$stm = $db->query($sql);
+	$r = $stm->fetch(PDO::FETCH_BOTH);
+	$id = $r['id_persona'];
 	include('include/update_persona.php');
+
 	include('include/update_studente.php');
 }
 
-$sql = "select * from vista_studenti where matricola='$matricola'";
+$sql = "select * from vista_studenti_cv where matricola='$matricola' limit 1";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();
@@ -35,10 +40,12 @@ try {
 	include('include/singolo_studente.php');
 	echo '<form action="modifica_studente.php" method="post">';
 	$r = $stm->fetch(PDO::FETCH_BOTH);
-	echo singolo_studente($r, false);
+	$sql = 'select * from province order by provincia';
+	$stm = $db->query($sql);
+	echo singolo_studente($r, false, $stm);
 	echo '<p><input type="submit" name="submit" value="Submit" /></p>';
 	echo '<input type="hidden" name="submitted" value="TRUE" />';
-	echo '<input type="hidden" name="id" value="' . $id .'" />';
+	echo '<input type="hidden" name="id" value="' . $matricola .'" />';
 	echo '</form>';
 }
 catch(PDOException $e) {

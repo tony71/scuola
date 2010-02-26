@@ -17,7 +17,9 @@ if (isset($_POST['submitted'])) {
 try {
 	include('include/singola_persona.php');
 	echo '<form action="aggiungi_persona.php" method="post">';
-	echo singola_persona($p, false);
+	$sql = "select * from province order by provincia";
+	$stm = $db->query($sql);
+	echo singola_persona($p, false, $stm);
 	echo '<p><input type="submit" name="submit" value="Submit" /></p>';
 	echo '<input type="hidden" name="submitted" value="TRUE" />';
 	echo '</form>';

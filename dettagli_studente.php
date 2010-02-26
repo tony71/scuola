@@ -2,11 +2,11 @@
 $page_title = 'Dettagli Studente';
 include('include/header.html');
 
-if (isset($_GET[matricola])) {
-	$matricola = $_GET[matricola];
+if (isset($_GET['matricola'])) {
+	$matricola = $_GET['matricola'];
 }
-elseif (isset($_POST[matricola])) {
-	$matricola = $_POST[matricola];
+elseif (isset($_POST['matricola'])) {
+	$matricola = $_POST['matricola'];
 }
 else {
 	echo '<p class="error">This page has been accessed in error.</p>';
@@ -26,6 +26,7 @@ $sql .= ",consegnato_modulo,certificato_medico,anni_scuola_materna";
 $sql .= ",caso_speciale,motivazione_cs,hc";
 $sql .= ",via,numero_civico,citta";
 $sql .= ",id_provincia,provincia,cap,quartiere";
+$sql .= ",professione,stato";
 $sql .=" from vista_studenti_cv where matricola='$matricola'";
 try {
 	$stm = $db->query($sql);
@@ -38,7 +39,9 @@ try {
 	
 	include('include/singolo_studente.php');
 	$r = $stm->fetch(PDO::FETCH_BOTH);
-	echo singolo_studente($r, true);
+	$sql = 'select * from province order by provincia';
+	$stm = $db->query($sql);
+	echo singolo_studente($r, true, $stm);
 	$matricola = $r['matricola'];
 	$id = $r['id'];
 	include('include/tab_studente.html');
