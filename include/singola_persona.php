@@ -13,19 +13,19 @@ function singola_persona($r, $readonly=true)
 
 	$result .= '<legend>Dati Personali:</legend>';
 
-	$result .= '<label for="nome">Nome:</label>';
+	$result .= '<label for="nome" class="required">Nome:</label>';
 	$result .= '<input type="text" name="nome" id="nome" size="15" maxlength="50" value="' . (isset($r) ? $r['nome'] : '') . '" ' . $s . ' />';
 
-	$result .= '<label for="cognome">Cognome:</label>';
+	$result .= '<label for="cognome" class="required">Cognome:</label>';
 	$result .= '<input type="text" name="cognome" id="cognome" size="15" maxlength="50" value="' . (isset($r) ? $r['cognome'] : '') . '" ' . $s . ' />';
 
-	$result .= '<label for="sesso">Sesso:</label>';
+	$result .= '<label for="sesso" class="required">Sesso:</label>';
 	$result .= '<input type="text" name="sesso" id="sesso" size="1" maxlength="1" value="' . (isset($r) ? $r['sesso'] : '') . '" ' . $s . ' />';
 
-	$result .= '<label for="id_famiglia">Famiglia:</label>';
+	$result .= '<label for="id_famiglia" class="required">Famiglia:</label>';
 	$result .= '<input type="text" name="id_famiglia" id="id_famiglia" size="5" maxlength="50" value="' . (isset($r) ? $r['id_famiglia'] : '') . '" ' . $s . ' />';
 
-	$result .= '<label for="tipo_parentela">Tipo Parentela:</label>';
+	$result .= '<label for="tipo_parentela" class="required">Tipo Parentela:</label>';
 	$result .= '<input type="text" name="tipo_parentela" id="tipo_parentela" size="1" maxlength="1" value="' . (isset($r) ? $r['tipo_parentela'] : '') . '" ' . $s . ' />';
 
 	$result .= '<br />';
