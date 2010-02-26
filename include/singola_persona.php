@@ -62,9 +62,9 @@ function singola_persona($r, $readonly=true, $prov)
 	$result .= '<label for="citta">Citta</label>';
 	$result .= '<input type="text" name="citta" id="citta" size="15" maxlength="40" value="' . (isset($r) ? $r['citta'] : '') . '" ' . $s . ' />';
 
-	$result .= '<label for="provincia">Provincia</label>';
+	$result .= '<label for="id_provincia">Provincia</label>';
 	// $result .= '<input type="text" name="id_provincia" id="id_provincia" size="5" maxlength="10" value="' . (isset($r) ? $r['id_provincia'] : '') . '" ' . $s . ' />';
-	$result .= '<select name="provincia" id="provincia"';
+	$result .= '<select name="id_provincia" id="id_provincia"';
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
 	$result .= '>';
 	include('select_provincia.php');
