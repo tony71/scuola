@@ -77,8 +77,8 @@
                 $stm->bindParam(":quartiere", $quartiere);
 
                 $stm->execute();
-		$r = $stm->fetchAll();
-		print_r($r);
+		$r = $stm->fetch(PDO::FETCH_BOTH);
+		$_POST['id'] = $r['id'];
         }
         catch(PDOException $e) {
                 echo '<p class="error">' . $e->getMessage(). '</p>';

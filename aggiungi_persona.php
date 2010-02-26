@@ -8,12 +8,16 @@ require_once('include/db_connection.php');
 
 if (isset($_POST['submitted'])) {
 	include('include/insert_persona.php');
+	$id = $_POST['id'];
+	$sql = "select * from persone where id=$id";
+	$stm = $db->query($sql);
+	$p = $stm->fetch(PDO::FETCH_BOTH);
 }
 
 try {
 	include('include/singola_persona.php');
 	echo '<form action="aggiungi_persona.php" method="post">';
-	echo singola_persona(null, false);
+	echo singola_persona($p, false);
 	echo '<p><input type="submit" name="submit" value="Submit" /></p>';
 	echo '<input type="hidden" name="submitted" value="TRUE" />';
 	echo '</form>';
