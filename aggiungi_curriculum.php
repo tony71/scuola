@@ -100,6 +100,15 @@ catch(PDOException $e) {
 		</select>
 	</fieldset>
 	<fieldset>
+		<legend>Classe Scuola</legend>
+		<select name="classe">
+			<?php
+			require_once('include/db_connection.php');
+			include('include/select_classe_scuola.php');
+			?>
+		</select>
+	</fieldset>
+	<fieldset>
 		<legend>Classe</legend>
 		<select name="classe">
 			<?php
