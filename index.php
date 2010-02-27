@@ -93,6 +93,7 @@ if (isset($_POST['submitted'])) {
 		echo $e->getMessage();
 	}
 }
+else {
 ?>
 
 <form action="index.php" method="post">
@@ -164,5 +165,6 @@ if (isset($_POST['submitted'])) {
 	<input type="hidden" name="submitted" value="TRUE" />
 </form>
 <?php
+}
 include('include/footer.html');
 ?>

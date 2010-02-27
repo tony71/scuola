@@ -13,9 +13,23 @@ else {
 	include('include/footer.html');
 	exit();
 }
+
 echo "<h1>Dettagli Studente $matricola</h1>";
 
+
 require_once('include/db_connection.php');
+$sql = "select * from vista_studenti_senza_curriculum where matricola='$matricola'";
+try {
+	$stm = $db->query($sql);
+	$num = $stm->rowCount();
+	if ($num == 1) {
+		echo '<p class="error"><a href="aggiungi_curriculum.php?matricola='.$matricola.'">Attenzione: Aggiungi Curriculum</a></p>';
+	}
+}
+catch(PDOException $e) {
+        echo $e->getMessage();
+}
+
 $sql = "select distinct id,matricola";
 $sql .= ",nome,cognome,nome_breve,cognome_breve";
 $sql .= ",sesso,id_famiglia,tipo_parentela";

@@ -43,7 +43,7 @@ try {
 	$sql = 'select * from province order by provincia';
 	$stm = $db->query($sql);
 	echo singolo_studente($r, false, $stm);
-	echo '<p><input type="submit" name="submit" value="Submit" /></p>';
+	echo '<p><input type="submit" name="submit" value="Salva" /></p>';
 	echo '<input type="hidden" name="submitted" value="TRUE" />';
 	echo '<input type="hidden" name="id" value="' . $matricola .'" />';
 	echo '</form>';

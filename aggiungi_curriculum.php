@@ -43,8 +43,16 @@ include('include/header.html');
 
 require_once('include/db_connection.php');
 
+if (isset($_POST['matricola'])) {
+	$matricola = $_POST['matricola'];
+}
+else if (isset($_GET['matricola'])) {
+	$matricola = $_GET['matricola'];
+}
+else {
+}
+
 try {
-	$matricola = $_POST[matricola];
 	$sql = "select nome, cognome from vista_studenti where matricola=:matricola";
 	$stm = $db->prepare($sql);
 	$stm->bindParam(":matricola", $matricola, PDO::PARAM_STR, 10);
@@ -67,7 +75,7 @@ catch(PDOException $e) {
 <form action="aggiungi_curriculum.php" method="post">
 	<fieldset>
 		<legend>Matricola</legend>
-		<input type="text" name="matricola" value="<?php echo $_POST[matricola]; ?>" readonly="readonly" />
+		<input type="text" name="matricola" value="<?php echo $matricola; ?>" readonly="readonly" />
 	</fieldset>
 	<fieldset>
 		<legend>Data Evento</legend>

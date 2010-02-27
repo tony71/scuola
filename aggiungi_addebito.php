@@ -98,7 +98,7 @@ catch(PDOException $e) {
 
 	</fieldset>
 	<div align="center">
-		<input type="submit" name="submit" value="Registra" />
+		<input type="submit" name="submit" value="Salva" />
 		<a href="addebiti.php?matricola=<?php echo $matricola; ?>">Back</a>
 	</div>
 	<input type="hidden" name="submitted" value="TRUE" />
