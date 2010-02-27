@@ -55,21 +55,6 @@ function singolo_studente($r, $readonly=true, $prov)
 	$result .= (isset($r) ? $r['note'] : '') . '</textarea>';
 	$result .= '</div>';
 
-	$result .= '<div class="giudizio">';
-	$result .= '<label for="giudizio1">Giudizio 1:</label>';
-	$result .= '<br />';
-	$result .= '<textarea name="giudizio1" id="giudizio1" rows="3" cols="30" ' . $s . '>';
-	$result .= (isset($r) ? $r['giudizio1'] : '') . '</textarea>';
-	$result .= '</div>';
-
-	$result .= '<div class="giudizio">';
-	$result .= '<label for="giudizio2">Giudizio 2:</label>';
-	$result .= '<br />';
-	$result .= '<textarea name="giudizio2" id="giudizio2" rows="3" cols="30" ' . $s . '>';
-	$result .= (isset($r) ? $r['giudizio2'] : '') . '</textarea>';
-	$result .= '</div>';
-	// $result .= '<div class="clear"></div>';
-
 	$result .= '<br />';
 
 	$result .= '<label for="caso_speciale"> Caso Speciale:</label>';
