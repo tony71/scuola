@@ -71,7 +71,7 @@
         	$hc = "true";
 	}
 
-        $stato = $_POST['stato'];
+        $stato = (empty($_POST['stato']) ? NULL : $_POST['stato']);
 
         $sql = "UPDATE studenti SET ";
 	$sql .= "matricola=:matricola, ";
