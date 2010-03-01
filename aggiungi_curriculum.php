@@ -4,11 +4,8 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
 	$sql = 'SELECT aggiorna_curriculum (';
 	$sql .= ':matricola, ';
 	$sql .= ':data, ';
-	$sql .= ':scuola, ';
 	$sql .= ':anno, ';
 	$sql .= ':classe, ';
-	$sql .= ':sezione, ';
-	$sql .= ':indirizzo, ';
 	$sql .= ':stato)';
 	
 	require_once('include/db_connection.php');
@@ -18,11 +15,8 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
 
                 $stm->bindParam(':matricola', $trimmed['matricola'], PDO::PARAM_STR, 10);
                 $stm->bindParam(':data', $trimmed['data']);
-                $stm->bindParam(':scuola', $trimmed['scuola']);
                 $stm->bindParam(':anno', $trimmed['anno']);
                 $stm->bindParam(':classe', $trimmed['classe']);
-                $stm->bindParam(':sezione', $trimmed['sezione']);
-                $stm->bindParam(':indirizzo', $trimmed['indirizzo']);
                 $stm->bindParam(':stato', $trimmed['stato']);
 
                 $stm->execute();
@@ -81,6 +75,7 @@ catch(PDOException $e) {
 		<legend>Data Evento</legend>
 		<input type="text" name="data" value="<?php echo $data_attuale; ?>" />
 	</fieldset>
+	<!--
 	<fieldset>
 		<legend>Scuola</legend>
 		<select name="scuola">
@@ -90,6 +85,7 @@ catch(PDOException $e) {
 			?>
 		</select>
 	</fieldset>
+	--!>
 	<fieldset>
 		<legend>Anno scolastico</legend>
 		<select name="anno">
@@ -100,7 +96,7 @@ catch(PDOException $e) {
 		</select>
 	</fieldset>
 	<fieldset>
-		<legend>Classe Scuola</legend>
+		<legend>Classe</legend>
 		<select name="classe">
 			<?php
 			require_once('include/db_connection.php');
@@ -108,6 +104,7 @@ catch(PDOException $e) {
 			?>
 		</select>
 	</fieldset>
+	<!--
 	<fieldset>
 		<legend>Classe</legend>
 		<select name="classe">
@@ -135,6 +132,7 @@ catch(PDOException $e) {
 			?>
 		</select>
 	</fieldset>
+	--!>
 	<fieldset>
 		<legend>Stato Studente</legend>
 		<select name="stato">
