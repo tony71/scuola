@@ -17,9 +17,9 @@ try {
 		$conn_string .= 'dbname=' . $dbname;
 		$db = new PDO($conn_string, $user, $pass);
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		autenticate();
 	}
 	else {
+		autenticate();
 		exit;
 	}
 }
