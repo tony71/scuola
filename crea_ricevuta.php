@@ -34,6 +34,7 @@ if (isset($_POST['submitted'])) {
 
 	// echo '<a href="modifica_ricevuta.php?id_ricevuta='.$id_ricevuta.'&id_addebiti='.urlencode(serialize($_POST['id_addebito'])).'&importi_riga='.urlencode(serialize($importi_riga)).'">Modifica Ricevuta</a>';
 	echo '<a href="modifica_ricevuta.php?id_ricevuta='.$id_ricevuta.'">Modifica Ricevuta</a>';
+	echo '<br />';
 	echo '<a href="stampa_ricevuta.php?id_ricevuta='.$id_ricevuta.'" target="_blank">Stampa Ricevuta</a>';
 }
 
