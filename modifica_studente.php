@@ -51,5 +51,8 @@ try {
 catch(PDOException $e) {
 	echo $e->getMessage();
 }
+
+echo '<a href="dettagli_studente.php?matricola=' . $matricola . '">Torna a Dettagli Studente</a>';
+
 include('include/footer.html');
 ?>
