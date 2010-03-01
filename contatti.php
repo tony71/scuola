@@ -21,6 +21,7 @@ try {
 	$num = $stm->rowCount();
 	if ($num != 1) {
 		echo '<p class="error">Non sono presenti persone nel DB.</p>';
+		echo '<a href="dettagli_studente.php?matricola=' . $matricola . '">Torna a Dettagli Studente</a>';
 		include('include/footer.html');
 		exit();
 	}
@@ -32,6 +33,7 @@ try {
 	$num = $stm->rowCount();
 	if ($num == 0) {
 		echo '<p class="error">Non sono presenti contatti nel DB.</p>';
+		echo '<a href="dettagli_studente.php?matricola=' . $matricola . '">Torna a Dettagli Studente</a>';
 		include('include/footer.html');
 		exit();
 	}
