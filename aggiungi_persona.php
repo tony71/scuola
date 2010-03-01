@@ -11,11 +11,11 @@ if (isset($_POST['submitted'])) {
 	$p = $stm->fetch(PDO::FETCH_BOTH);
 	if ($_POST['submit'] == "Crea Studente") {
 		include('include/insert_studente.php');
+		$host  = $_SERVER['HTTP_HOST'];
+		$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+		$extra = 'modifica_studente.php?matricola=' . $_POST['matricola'];
+		header("Location: http://$host$uri/$extra");
 	}
-	$host  = $_SERVER['HTTP_HOST'];
-	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-	$extra = 'modifica_studente.php?matricola=' . $_POST['matricola'];
-	header("Location: http://$host$uri/$extra");
 }
 
 include('include/header.html');
@@ -28,6 +28,7 @@ try {
 	$sql = "select * from province order by provincia";
 	$stm = $db->query($sql);
 	echo singola_persona($p, false, $stm);
+	echo '<p><input type="submit" name="submit" value="Crea Persona" /></p>';
 	echo '<p><input type="submit" name="submit" value="Crea Studente" /></p>';
 	echo '<input type="hidden" name="submitted" value="TRUE" />';
 	echo '</form>';
