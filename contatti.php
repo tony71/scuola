@@ -51,5 +51,7 @@ $form .= '<input type="hidden" name="id_persona" value="'.$id_persona.'" />';
 $form .= '</form>';
 echo $form;
 
+echo '<a href="dettagli_studente.php?matricola=' . $matricola . '">Torna a Dettagli Studente</a>';
+
 include('include/footer.html');
 ?>
