@@ -174,5 +174,8 @@ if ($pages > 1) {
 	}
 	echo '</p>';
 }
+
+echo '<a href="dettagli_studente.php?matricola=' . $matricola . '">Torna a Dettagli Studente</a>';
+
 include('include/footer.html');
 ?>
