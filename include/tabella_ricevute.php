@@ -32,7 +32,7 @@ function result_as_table($result, $tableFeatures="")
 		****/
 		$table .= '<td align="left">'.$r['numero_ricevuta'].'</td>';
 		$table .= '<td align="left">'.$r['importo_totale'].'</td>';
-		$table .= '<td align="left">'.$r['data'].'</td>';
+		$table .= '<td align="left">'.$r['data_ricevuta'].'</td>';
 		$table .= '<td align="left">'.$r['tipo_pagamento'].'</td>';
 		$table .= '<td align="left">'.$r['codice_scuola'].'</td>';
 		$table .= "</tr>\n";

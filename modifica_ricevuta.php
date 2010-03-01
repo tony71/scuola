@@ -40,7 +40,7 @@ include('include/header.html');
 
 echo "<h1>Modifica Ricevuta $id_ricevuta</h1>";
 
-$sql = "select * from ricevute where id_ricevuta=$id_ricevuta";
+$sql = "select * from vista_ricevute where id_ricevuta=$id_ricevuta";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();
@@ -64,10 +64,14 @@ try {
 	echo '<input type="hidden" name="submitted" value="TRUE" />';
 	echo '<input type="hidden" name="id_ricevuta" value="' . $id_ricevuta .'" />';
 	echo '</form>';
+	
+	$matricola = $r['matricola'];
 }
 catch(PDOException $e) {
 	echo $e->getMessage();
 }
+
+echo '<a href="dettagli_studente.php?matricola=' . $matricola . '">Torna a Dettagli Studente</a>';
 
 include('include/footer.html');
 ?>
