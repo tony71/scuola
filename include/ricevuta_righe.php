@@ -10,7 +10,7 @@ function tabella_ricevuta_righe($s, $tableFeatures="")
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
 		$table .= '<tr bgcolor="' . $bg . '">';
 		$table .= '<td align="left"><input type="text" name="importo_riga[]" value="'.$r['importo_riga'].'" /></td>';
-		$table .= '<td align="left"><input type="text" name="id_addebito[]" value="'.$r['id_addebito'].'" /></td>';
+		$table .= '<td align="left"><input type="text" name="id_addebito[]" value="'.$r['id_addebito'].'" readonly="readonly" /></td>';
 		// $table .= '<td align="left">'.$r['id_addebito'].'</td>';
 		$table .= "</tr>\n";
 
