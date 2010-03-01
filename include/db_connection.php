@@ -18,15 +18,14 @@ try {
 		exit;
 	}
 }
-catch(PDOException $e)
-{
-        echo $e->getMessage();
-	echo '<br />Exception code is: ' . $e->getCode();
+catch(PDOException $e) {
 	unset($_SERVER['PHP_AUTH_USER']);
 	unset($_SERVER['PHP_AUTH_PW']);
 	header('WWW-Authenticate: Basic Realm="Secret Stash"');
 	header('HTTP/1.0 401 Unauthorized');
 	print('You must provide the proper credentials!');
+        echo $e->getMessage();
+	echo '<br />Exception code is: ' . $e->getCode();
 	exit;
 }
 ?>
