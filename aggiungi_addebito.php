@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
+if (isset($_POST['submitted']) && ($_POST['submit'] == 'Salva')) {
 	$trimmed = array_map('trim', $_POST);
 	$sql = 'INSERT INTO addebiti (';
 	$sql .= 'importo, ';
