@@ -1,4 +1,6 @@
 <?php
+require_once('include/db_connection.php');
+
 $page_title = 'Benvenuti a Scuola';
 include('include/header.html');
 
@@ -74,7 +76,6 @@ if ($stato == 'Tutti') {
 $num = 0;
 
 if (isset($_POST['submitted'])) {
-	require_once('include/db_connection.php');
 	$sql = "select * from cerca_studenti('$nominativo','$scuola','$anno',$classe,'$sezione','$indirizzo','$stato')";
 	$sql .= " order by cognome, nome";
 	try {
@@ -106,7 +107,6 @@ else {
 		<select name="scuola">
 			<option name="tutte">Tutte </option>
 			<?php
-			require_once('include/db_connection.php');
 			include('include/select_scuole.php');
 			?>
 		</select>
@@ -116,7 +116,6 @@ else {
 		<select name="anno">
 			<option name="tutti">Tutti </option>
 			<?php
-			require_once('include/db_connection.php');
 			include('include/select_anno.php');
 			?>
 		</select>
@@ -126,7 +125,6 @@ else {
 		<select name="classe">
 			<option name="tutte">Tutte </option>
 			<?php
-			require_once('include/db_connection.php');
 			include('include/select_classe.php');
 			?>
 		</select>
@@ -136,7 +134,6 @@ else {
 		<select name="sezione">
 			<option name="tutte">Tutte </option>
 			<?php
-			require_once('include/db_connection.php');
 			include('include/select_sezione.php');
 			?>
 		</select>
@@ -146,7 +143,6 @@ else {
 		<select name="indirizzo">
 			<option name="tutti">Tutti </option>
 			<?php
-			require_once('include/db_connection.php');
 			include('include/select_indirizzo.php');
 			?>
 		</select>
@@ -156,7 +152,6 @@ else {
 		<select name="stato">
 			<option name="tutti">Tutti </option>
 			<?php
-			require_once('include/db_connection.php');
 			include('include/select_stato_studente.php');
 			?>
 		</select>
