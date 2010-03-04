@@ -89,6 +89,9 @@ if (isset($_POST['submitted'])) {
 		else {
 			echo '<p class="error">Non trovo studenti nel DB.</p>';
 		}
+		$titolo ='Prova';
+		$filename = 'studenti.xls';
+		echo '<a href="genera_excel.php?sql='.$sql.'&titolo='.$titolo.'&filename='.$filename.'" target="_blank">Excel</a>';
 	}
 	catch(PDOException $e) {
 		echo $e->getMessage();
