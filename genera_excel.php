@@ -9,7 +9,7 @@
 <body>
 <?php
 require_once('include/tabella_generica.php');
-$sql = str_replace("\\", "", $_POST['sql'];
+$sql = str_replace("\\", "", $_POST['sql']);
 require_once('include/db_connection.php');
 try {
 	$stm = $db->query($sql);
