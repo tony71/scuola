@@ -47,7 +47,7 @@ else {
 }
 
 try {
-	$sql = "select nome, cognome from vista_studenti where matricola=:matricola";
+	$sql = "select nome, cognome from vista_studenti where matricola_studente=:matricola";
 	$stm = $db->prepare($sql);
 	$stm->bindParam(":matricola", $matricola, PDO::PARAM_STR, 10);
 	$stm->execute();

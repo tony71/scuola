@@ -15,7 +15,7 @@ else {
 }
 
 require_once('include/db_connection.php');
-$sql = "select distinct nome,cognome from vista_studenti_cv where matricola='$matricola'";
+$sql = "select distinct nome,cognome from vista_studenti_cv where matricola_studente='$matricola'";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();
@@ -27,7 +27,7 @@ try {
 	$r = $stm->fetch(PDO::FETCH_BOTH);
 	echo '<h1>Curriculum di ' . $r['cognome'] . ', ' . $r['nome'] . '</h1>';
 	
-	$sql = "select anno_scolastico, stato_studente, data_evento, classe, sezione, indirizzo, denominazione  from vista_studenti_cv where matricola='$matricola'";
+	$sql = "select anno_scolastico, classe, sezione, indirizzo, denominazione  from vista_studenti_cv where matricola_studente='$matricola'";
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();
 	if ($num == 0) {

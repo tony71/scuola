@@ -14,13 +14,13 @@ else {
 }
 
 try {
-	$sql = "select count(distinct id_ricevuta) from vista_ricevute_riga where matricola=:matricola";
+	$sql = "select count(distinct id_ricevuta) from vista_ricevute_riga where matricola_studente=:matricola";
 	$stm = $db->prepare($sql);
 	$stm->bindParam(":matricola", $matricola, PDO::PARAM_STR, 10);
 	$stm->execute();
 	$r = $stm->fetch(PDO::FETCH_BOTH);
 	
-	$sql = "select nome, cognome from vista_studenti where matricola=:matricola";
+	$sql = "select nome, cognome from vista_studenti where matricola_studente=:matricola";
 	$stm = $db->prepare($sql);
 	$stm->bindParam(":matricola", $matricola, PDO::PARAM_STR, 10);
 	$stm->execute();
@@ -54,7 +54,7 @@ else {
 	$start = 0;
 }
 
-$sql = "select * from vista_ricevute where matricola='$matricola' order by data_ricevuta desc,id_ricevuta desc limit $display offset $start";
+$sql = "select * from vista_ricevute where matricola_studente='$matricola' order by data_ricevuta desc,id_ricevuta desc limit $display offset $start";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();

@@ -15,10 +15,10 @@ function result_as_table($result, $tableFeatures="")
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
 		$table .= '<tr bgcolor="' . $bg . '">';
-		$table .= '<td align="left"><a href="dettagli_studente.php?matricola='.$r['matricola'].'">' . $i . '</a></td>';
-		// $table .= '<td align="left"><a href="dettagli_studente.php?matricola='.$r['matricola'].'">' . $r['matricola'] . '</a></td>';
-		$table .= '<td align="left"><a href="dettagli_studente.php?matricola='.$r['matricola'].'">' . $r['nome'] . '</a></td>';
-		$table .= '<td align="left"><a href="dettagli_studente.php?matricola='.$r['matricola'].'">' . $r['cognome'] . '</a></td>';
+		$table .= '<td align="left"><a href="dettagli_studente.php?matricola='.$r['matricola_studente'].'">' . $i . '</a></td>';
+		// $table .= '<td align="left"><a href="dettagli_studente.php?matricola='.$r['matricola_studente'].'">' . $r['matricola'] . '</a></td>';
+		$table .= '<td align="left"><a href="dettagli_studente.php?matricola='.$r['matricola_studente'].'">' . $r['nome'] . '</a></td>';
+		$table .= '<td align="left"><a href="dettagli_studente.php?matricola='.$r['matricola_studente'].'">' . $r['cognome'] . '</a></td>';
 		$table .= '<td align="left">'.$r['data_nascita'].'</td>';
 		$table .= '<td align="left">'.$r['luogo_nascita'].'</td>';
 		$table .= "</tr>\n";

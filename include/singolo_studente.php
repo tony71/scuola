@@ -12,7 +12,7 @@ function singolo_studente($r, $readonly=true, $prov)
 	$result = singola_persona($r, $readonly, $prov);
 
 	$result .= '<label for="matricola">Matricola:</label>';
-	$result .= '<input type="text" name="matricola" id="matricola" size="10" maxlength="10" value="' . (isset($r) ? $r['matricola'] : '') . '" ' . $s . ' />';
+	$result .= '<input type="text" name="matricola" id="matricola" size="10" maxlength="10" value="' . (isset($r) ? $r['matricola_studente'] : '') . '" ' . $s . ' />';
 
 	$result .= '<label for="nome_breve">Nome Breve:</label>';
 	$result .= '<input type="text" name="nome_breve" id="nome_breve" size="15" maxlength="30" value="' . (isset($r) ? $r['nome_breve'] : '') . '" ' . $s . ' />';

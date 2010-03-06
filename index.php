@@ -73,10 +73,20 @@ if ($stato == 'Tutti') {
 	unset($stato);
 }
 
+if (isset($_POST['data'])) {
+	$data = $_POST['data'];
+}
+elseif (isset($_GET['data'])) {
+	$data = $_GET['data'];
+}
+else {
+	$data = NULL;
+}
+
 $num = 0;
 
 if (isset($_POST['submitted'])) {
-	$sql = "select * from cerca_studenti('$nominativo','$scuola','$anno',$classe,'$sezione','$indirizzo','$stato')";
+	$sql = "select * from cerca_studenti('$nominativo','$scuola','$anno',$classe,'$sezione','$indirizzo','$stato',null)";
 	$sql .= " order by cognome, nome";
 	try {
 		$stm = $db->query($sql);
@@ -165,6 +175,10 @@ else {
 			include('include/select_stato_studente.php');
 			?>
 		</select>
+	</fieldset>
+	<fieldset>
+		<legend>Data</legend>
+		<input type="text" name="data" />
 	</fieldset>
 	<input type="submit" name="submit" value="Cerca" />
 	<input type="hidden" name="submitted" value="TRUE" />

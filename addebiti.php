@@ -52,13 +52,13 @@ $form .= '</form>';
 echo $form;
 
 try {
-	$sql = "select count(id_addebito) from $table where matricola=:matricola";
+	$sql = "select count(id_addebito) from $table where matricola_studente=:matricola";
 	$stm = $db->prepare($sql);
 	$stm->bindParam(":matricola", $matricola, PDO::PARAM_STR, 10);
 	$stm->execute();
 	$r = $stm->fetch(PDO::FETCH_BOTH);
 	
-	$sql = "select nome, cognome from vista_studenti where matricola=:matricola";
+	$sql = "select nome, cognome from vista_studenti where matricola_studente=:matricola";
 	$stm = $db->prepare($sql);
 	$stm->bindParam(":matricola", $matricola, PDO::PARAM_STR, 10);
 	$stm->execute();
@@ -92,7 +92,7 @@ else {
 	$start = 0;
 }
 
-$sql = "select id_addebito, importo, importo_residuo, causale, data_scadenza, anno_scolastico, matricola, saldo, descrizione_tipo from $table where matricola=:matricola order by anno_scolastico,id_addebito limit $display offset $start";
+$sql = "select id_addebito, importo, importo_residuo, causale, data_scadenza, anno_scolastico, matricola_studente, saldo, descrizione_tipo from $table where matricola_studente=:matricola order by anno_scolastico,id_addebito limit $display offset $start";
 try {
 	// $stm = $db->query($sql);
 	$stm = $db->prepare($sql);

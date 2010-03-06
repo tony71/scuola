@@ -14,7 +14,7 @@ function result_as_table($result, $tableFeatures="")
 		$table .= '<tr>';
 		// foreach ($r as $column) {
 		for ($i = 1; $i < $noFields; ++$i) {
-			$table .= '<td>'.$r[$i].'</td>';
+			$table .= '<td>'.htmlentities($r[$i]).'</td>';
 		}
 		$table .= "</tr>\n";
 	}
