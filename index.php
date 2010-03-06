@@ -79,14 +79,18 @@ if (isset($_POST['data'])) {
 elseif (isset($_GET['data'])) {
 	$data = $_GET['data'];
 }
-else {
-	$data = NULL;
+if (empty($data)) {
+	$data = 'NULL';
 }
+else {
+	$data = "'".$data."'";
+}
+
 
 $num = 0;
 
 if (isset($_POST['submitted'])) {
-	$sql = "select * from cerca_studenti('$nominativo','$scuola','$anno',$classe,'$sezione','$indirizzo','$stato',null)";
+	$sql = "select * from cerca_studenti('$nominativo','$scuola','$anno',$classe,'$sezione','$indirizzo','$stato',$data)";
 	$sql .= " order by cognome, nome";
 	try {
 		$stm = $db->query($sql);
