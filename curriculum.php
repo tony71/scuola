@@ -53,5 +53,7 @@ echo $form;
 
 echo '<a href="dettagli_studente.php?matricola=' . $matricola . '">Torna a Dettagli Studente</a>';
 
+include('include/tab_stato.html');
+
 include('include/footer.html');
 ?>
