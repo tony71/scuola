@@ -7,21 +7,32 @@ function autenticate()
 }
 
 try {
+	session_start();
 	if (isset($_SERVER['PHP_AUTH_USER'])
 		and isset($_SERVER['PHP_AUTH_PW'])) {
+		syslog(LOG_INFO, 'Using _Server');
 		$user = $_SERVER['PHP_AUTH_USER'];
 		$pass = $_SERVER['PHP_AUTH_PW'];
-		$host = 'bi-proc';
-		$dbname = 'scuola';
-		$conn_string = 'pgsql:host=' . $host . ';';
-		$conn_string .= 'dbname=' . $dbname;
-		$db = new PDO($conn_string, $user, $pass);
-		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	}
+	else if (isset($_SESSION['username'])
+		and isset($_SESSION['password'])) {
+		syslog(LOG_INFO, 'Using _Session');
+		$user = $_SESSION['username'];
+		$pass = $_SESSION['password'];
 	}
 	else {
+		syslog(LOG_INFO, 'Autenticate');
 		autenticate();
 		exit;
 	}
+	syslog(LOG_INFO, 'Username: '.$user);
+	// syslog(LOG_INFO, 'Password: '.$pass);
+	$host = 'bi-proc';
+	$dbname = 'scuola';
+	$conn_string = 'pgsql:host=' . $host . ';';
+	$conn_string .= 'dbname=' . $dbname;
+	$db = new PDO($conn_string, $user, $pass);
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch(PDOException $e) {
 	unset($_SERVER['PHP_AUTH_USER']);
