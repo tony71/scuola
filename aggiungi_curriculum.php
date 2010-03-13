@@ -3,10 +3,8 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
 	$trimmed = array_map('trim', $_POST);
 	$sql = 'SELECT aggiorna_curriculum (';
 	$sql .= ':matricola, ';
-	$sql .= ':data, ';
 	$sql .= ':anno, ';
-	$sql .= ':classe, ';
-	$sql .= ':stato)';
+	$sql .= ':classe)';
 	
 	require_once('include/db_connection.php');
 
@@ -14,10 +12,8 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
                 $stm = $db->prepare($sql);
 
                 $stm->bindParam(':matricola', $trimmed['matricola'], PDO::PARAM_STR, 10);
-                $stm->bindParam(':data', $trimmed['data']);
                 $stm->bindParam(':anno', $trimmed['anno']);
                 $stm->bindParam(':classe', $trimmed['classe']);
-                $stm->bindParam(':stato', $trimmed['stato']);
 
                 $stm->execute();
         }
@@ -54,11 +50,6 @@ try {
 	$m = $stm->fetch(PDO::FETCH_BOTH);
 
 	echo '<h1>Aggiorna Curriculum per ' . $m['cognome'] . ', ' . $m['nome'] . '</h1>';
-
-	$sql = 'select now()';
-	$stm = $db->query($sql);
-	$m = $stm->fetch(PDO::FETCH_BOTH);
-	$data_attuale = $m['now'];
 }
 catch(PDOException $e) {
        	echo $e->getMessage();
@@ -71,21 +62,6 @@ catch(PDOException $e) {
 		<legend>Matricola</legend>
 		<input type="text" name="matricola" value="<?php echo $matricola; ?>" readonly="readonly" />
 	</fieldset>
-	<fieldset>
-		<legend>Data Evento</legend>
-		<input type="text" name="data" value="<?php echo $data_attuale; ?>" />
-	</fieldset>
-	<!--
-	<fieldset>
-		<legend>Scuola</legend>
-		<select name="scuola">
-			<?php
-			require_once('include/db_connection.php');
-			include('include/select_scuole_tutte.php');
-			?>
-		</select>
-	</fieldset>
-	--!>
 	<fieldset>
 		<legend>Anno scolastico</legend>
 		<select name="anno">
@@ -101,44 +77,6 @@ catch(PDOException $e) {
 			<?php
 			require_once('include/db_connection.php');
 			include('include/select_classe_scuola.php');
-			?>
-		</select>
-	</fieldset>
-	<!--
-	<fieldset>
-		<legend>Classe</legend>
-		<select name="classe">
-			<?php
-			require_once('include/db_connection.php');
-			include('include/select_classe.php');
-			?>
-		</select>
-	</fieldset>
-	<fieldset>
-		<legend>Sezione</legend>
-		<select name="sezione">
-			<?php
-			require_once('include/db_connection.php');
-			include('include/select_sezione.php');
-			?>
-		</select>
-	</fieldset>
-	<fieldset>
-		<legend>Indirizzo</legend>
-		<select name="indirizzo">
-			<?php
-			require_once('include/db_connection.php');
-			include('include/select_indirizzo.php');
-			?>
-		</select>
-	</fieldset>
-	--!>
-	<fieldset>
-		<legend>Stato Studente</legend>
-		<select name="stato">
-			<?php
-			require_once('include/db_connection.php');
-			include('include/select_stato_studente.php');
 			?>
 		</select>
 	</fieldset>
