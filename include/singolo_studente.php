@@ -76,9 +76,6 @@ function singolo_studente($r, $readonly=true, $prov)
 	$result .= ($readonly == true ? 'disabled="disabled" ' : '');
 	$result .= ' />';
 
-	$result .= '<label for="stato">Stato:</label>';
-	$result .= '<input type="text" name="stato" id="stato" size="1" maxlength="" value="' . (isset($r) ? $r['stato'] : '') . '" ' . $s . ' />';
-
 	return $result;
 }
 
