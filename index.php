@@ -6,7 +6,7 @@ if (isset($_POST['submitted'])) {
 	require_once('include/db_connection.php');
 	$host  = $_SERVER['HTTP_HOST'];
 	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-	$extra = 'index.php';
+	$extra = 'main_index.php';
 	header("Location: http://$host$uri/$extra");
 }
 else {
@@ -21,7 +21,7 @@ else {
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	</head>
 	<body>
-		<form method="post" action="login.php">
+		<form method="post" action="index.php">
 			<label>Nome Utente:</label>
 			<input type="text" name="username" />
 			<br />

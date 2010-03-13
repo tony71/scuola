@@ -121,7 +121,7 @@ if (isset($_POST['submitted'])) {
 else {
 ?>
 
-<form action="index.php" method="post">
+<form action="main_index.php" method="post">
 	<fieldset>
 		<legend>Nome o Cognome</legend>
 		<input type="text" name="nominativo" />
