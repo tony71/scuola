@@ -2,11 +2,11 @@
 $page_title = 'Storia Stati Studente';
 include('include/header.html');
 
-if (isset($_GET[matricola])) {
-	$matricola = $_GET[matricola];
+if (isset($_GET['matricola'])) {
+	$matricola = $_GET['matricola'];
 }
-elseif (isset($_POST[matricola])) {
-	$matricola = $_POST[matricola];
+elseif (isset($_POST['matricola'])) {
+	$matricola = $_POST['matricola'];
 }
 else {
 	echo '<p class="error">This page has been accessed in error.</p>';
