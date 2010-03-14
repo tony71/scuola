@@ -4,6 +4,7 @@ require_once('include/db_connection.php');
 if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
 	$trimmed = array_map('trim', $_POST);
 	$sql = 'SELECT * from stato_studente_iscritto (';
+	$sql .= ':codice_meccanografico, ';
 	$sql .= ':matricola, ';
 	$sql .= ':anno, ';
 	$sql .= ':data)';
@@ -12,6 +13,7 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
         try {
                 $stm = $db->prepare($sql);
 
+                $stm->bindParam(':codice_meccanografico', $trimmed['scuola']);
                 $stm->bindParam(':matricola', $trimmed['matricola'], PDO::PARAM_STR, 10);
                 $stm->bindParam(':anno', $trimmed['anno']);
                 $stm->bindParam(':data', $trimmed['data']);
@@ -75,6 +77,14 @@ catch(PDOException $e) {
 		<select name="anno">
 			<?php
 			include('include/select_anno.php');
+			?>
+		</select>
+	</fieldset>
+	<fieldset>
+		<legend>Scuola</legend>
+		<select name="scuola">
+			<?php
+			include('include/select_scuole.php');
 			?>
 		</select>
 	</fieldset>
