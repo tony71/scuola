@@ -66,7 +66,7 @@ catch(PDOException $e) {
 	</fieldset>
 	<fieldset>
 		<legend>Data Evento</legend>
-		<input type="text" name="data" value="<?php echo date("d-m-Y"); ?>" />
+		<input type="text" name="data" value="<?php require('include/oggi.php'); echo oggi($db); ?>" />
 	</fieldset>
 	<div align="center">
 		<input type="submit" name="submit" value="Registra" />
