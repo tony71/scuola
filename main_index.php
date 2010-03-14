@@ -182,7 +182,7 @@ else {
 	</fieldset>
 	<fieldset>
 		<legend>Data</legend>
-		<input type="text" name="data" value="<?php echo date("d-m-Y"); ?>" />
+		<input type="text" name="data" value="<?php require('include/oggi.php'); echo oggi($db); ?>" />
 	</fieldset>
 	<input type="submit" name="submit" value="Cerca" />
 	<input type="hidden" name="submitted" value="TRUE" />
