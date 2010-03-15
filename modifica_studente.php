@@ -1,4 +1,7 @@
 <?php
+
+require_once('include/db_connection.php');
+
 $page_title = 'Modifica Studente';
 include('include/header.html');
 
@@ -15,7 +18,6 @@ else {
 }
 echo "<h1>Modifica Studente $matricola</h1>";
 
-require_once('include/db_connection.php');
 
 if (isset($_POST['submitted'])) {
 	$sql = "select id_persona from studenti where matricola='$matricola'";
