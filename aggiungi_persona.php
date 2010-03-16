@@ -16,6 +16,12 @@ if (isset($_POST['submitted'])) {
 		$extra = 'modifica_studente.php?matricola=' . $_POST['matricola'];
 		header("Location: http://$host$uri/$extra");
 	}
+	else {
+		$host  = $_SERVER['HTTP_HOST'];
+		$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+		$extra = 'persona_aggiunta.php?id_persona=' . $id_persona;
+		header("Location: http://$host$uri/$extra");
+	}
 }
 
 include('include/header.html');
