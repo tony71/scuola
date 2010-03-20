@@ -20,7 +20,7 @@ echo "<h1>Modifica Studente $matricola</h1>";
 
 
 if (isset($_POST['submitted'])) {
-	$sql = "select id_persona from studenti where matricola='$matricola'";
+	$sql = "select id_persona from studenti where matricola_studenti='$matricola'";
 	$stm = $db->query($sql);
 	$r = $stm->fetch(PDO::FETCH_BOTH);
 	$id = $r['id_persona'];

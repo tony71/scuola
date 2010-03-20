@@ -1,8 +1,8 @@
 <?php
+require_once('include/db_connection.php');
+
 $page_title = 'Visualizza Studenti';
 include('include/header.html');
-
-require_once('include/db_connection.php');
 
 if (isset($_POST['submitted'])) {
 	$table = $_POST['table'];
@@ -93,7 +93,7 @@ else {
 // order by cognome la query con limit e offset salta alcune persone
 // E se avessimo due persone con stesso nome e cognome: ORRORE, MORTE e
 // DISTRUZIONE :-)
-$sql = "select id, matricola, nome, cognome from $table order by cognome,nome limit $display offset $start";
+$sql = "select id_persona, matricola_studente, nome, cognome from $table order by cognome,nome limit $display offset $start";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();

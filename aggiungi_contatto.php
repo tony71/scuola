@@ -1,4 +1,6 @@
 <?php
+require_once('include/db_connection.php');
+
 if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
 	$trimmed = array_map('trim', $_POST);
 	$sql = 'INSERT INTO contatti_persona (';
@@ -10,7 +12,6 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
 	$sql .= ':contatto, ';
 	$sql .= ':commento)';
 	
-	require_once('include/db_connection.php');
 
         try {
                 $stm = $db->prepare($sql);
@@ -34,11 +35,10 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
 $page_title = 'Registra Contatto';
 include('include/header.html');
 
-require_once('include/db_connection.php');
 
 try {
 	$id_persona = $_POST[id_persona];
-	$sql = "select nome, cognome from persone where id=:id_persona";
+	$sql = "select nome, cognome from persone where id_persona=:id_persona";
 	$stm = $db->prepare($sql);
 	$stm->bindParam(":id_persona", $id_persona, PDO::PARAM_STR, 10);
 	$stm->execute();

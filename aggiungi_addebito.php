@@ -1,4 +1,6 @@
 <?php
+require_once('include/db_connection.php');
+
 if (isset($_POST['submitted']) && ($_POST['submit'] == 'Salva')) {
 	$trimmed = array_map('trim', $_POST);
 	$sql = 'INSERT INTO addebiti (';
@@ -16,8 +18,6 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Salva')) {
 	$sql .= ':matricola, ';
 	$sql .= ':id_tipo_addebito)';
 	
-	require_once('include/db_connection.php');
-
         try {
                 $stm = $db->prepare($sql);
 
@@ -43,11 +43,10 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Salva')) {
 $page_title = 'Registra Addebito';
 include('include/header.html');
 
-require_once('include/db_connection.php');
 
 try {
 	$matricola = $_POST[matricola];
-	$sql = "select nome, cognome from vista_studenti where matricola=:matricola";
+	$sql = "select nome, cognome from vista_studenti where matricola_studente=:matricola";
 	$stm = $db->prepare($sql);
 	$stm->bindParam(":matricola", $matricola, PDO::PARAM_STR, 10);
 	$stm->execute();
