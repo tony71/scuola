@@ -74,7 +74,7 @@
         $stato = (empty($_POST['stato']) ? NULL : $_POST['stato']);
 
         $sql = "UPDATE studenti SET ";
-	$sql .= "matricola=:matricola, ";
+	$sql .= "matricola_studente=:matricola, ";
 	$sql .= "nome_breve=:nome_breve, ";
 	$sql .= "cognome_breve=:cognome_breve, ";
 	$sql .= "vaccinazioni=:vaccinazioni, ";
