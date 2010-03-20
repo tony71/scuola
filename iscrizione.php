@@ -6,8 +6,9 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
 	$sql = 'SELECT * from stato_studente_iscritto (';
 	$sql .= ':codice_meccanografico, ';
 	$sql .= ':matricola, ';
-	$sql .= ':anno, ';
-	$sql .= ':data)';
+	$sql .= ':anno_scolastico, ';
+	$sql .= ':data, ';
+	$sql .= ':anno)';
 	
 
         try {
@@ -15,8 +16,10 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
 
                 $stm->bindParam(':codice_meccanografico', $trimmed['scuola']);
                 $stm->bindParam(':matricola', $trimmed['matricola'], PDO::PARAM_STR, 10);
-                $stm->bindParam(':anno', $trimmed['anno']);
+                $stm->bindParam(':anno_scolastico', $trimmed['anno_scolastico']);
                 $stm->bindParam(':data', $trimmed['data']);
+		$anno = 1;
+                $stm->bindParam(':anno', $anno);
 
                 $stm->execute();
 		$r = $stm->fetch(PDO::FETCH_BOTH);
@@ -74,7 +77,7 @@ catch(PDOException $e) {
 	</fieldset>
 	<fieldset>
 		<legend>Anno scolastico</legend>
-		<select name="anno">
+		<select name="anno_scolastico">
 			<?php
 			include('include/select_anno.php');
 			?>

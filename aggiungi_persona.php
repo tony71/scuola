@@ -6,7 +6,7 @@ require_once('include/db_connection.php');
 if (isset($_POST['submitted'])) {
 	include('include/insert_persona.php');
 	$id_persona = $_POST['id'];
-	$sql = "select * from persone where id=$id_persona";
+	$sql = "select * from persone where id_persona=$id_persona";
 	$stm = $db->query($sql);
 	$p = $stm->fetch(PDO::FETCH_BOTH);
 	if ($_POST['submit'] == "Crea Studente") {

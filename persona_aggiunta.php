@@ -13,7 +13,7 @@ else {
 }
 
 try {
-	$sql = "select * from persone where id=$id_persona";
+	$sql = "select * from persone where id_persona=$id_persona";
 	$stm = $db->query($sql);
 	$p = $stm->fetch(PDO::FETCH_BOTH);
 }

@@ -1,4 +1,7 @@
 <?php
+
+require_once('include/db_connection.php');
+
 $page_title = 'Contatti Studente';
 include('include/header.html');
 
@@ -14,7 +17,18 @@ else {
 	exit();
 }
 
-require_once('include/db_connection.php');
+if (isset($_GET['matricola']) && is_numeric($_GET['matricola'])) {
+	$matricola = $_GET['matricola'];
+}
+elseif (isset($_POST['matricola']) && is_numeric($_GET['matricola'])) {
+	$matricola = $_POST['matricola'];
+}
+else {
+	echo '<p class="error">This page has been accessed in error.</p>';
+	include('include/footer.html');
+	exit();
+}
+
 $sql = "select nome,cognome from persone where id_persona=$id_persona";
 try {
 	$stm = $db->query($sql);

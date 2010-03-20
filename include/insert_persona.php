@@ -28,7 +28,7 @@
         $sql .= ", luogo_nascita";
         $sql .= ", cittadinanza";
         $sql .= ", codice_fiscale";
-        $sql .= ", id";
+        $sql .= ", id_persona";
         $sql .= ", via";
         $sql .= ", numero_civico";
         $sql .= ", citta";
@@ -53,7 +53,7 @@
         $sql .= ", :id_provincia";
         $sql .= ", :cap";
         $sql .= ", :quartiere";
-        $sql .= ") RETURNING id";
+        $sql .= ") RETURNING id_persona";
 
         try {
                 $stm = $db->prepare($sql);
@@ -78,7 +78,7 @@
 
                 $stm->execute();
 		$r = $stm->fetch(PDO::FETCH_BOTH);
-		$_POST['id'] = $r['id'];
+		$_POST['id'] = $r['id_persona'];
         }
         catch(PDOException $e) {
                 echo '<p class="error">' . $e->getMessage(). '</p>';
