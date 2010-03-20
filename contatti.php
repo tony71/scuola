@@ -2,11 +2,11 @@
 $page_title = 'Contatti Studente';
 include('include/header.html');
 
-if (isset($_GET[id_persona]) && is_numeric($_GET[id_persona])) {
-	$id_persona = $_GET[id_persona];
+if (isset($_GET['id_persona']) && is_numeric($_GET['id_persona'])) {
+	$id_persona = $_GET['id_persona'];
 }
-elseif (isset($_POST[id_persona]) && is_numeric($_GET[id_persona])) {
-	$id_persona = $_POST[id_persona];
+elseif (isset($_POST['id_persona']) && is_numeric($_GET['id_persona'])) {
+	$id_persona = $_POST['id_persona'];
 }
 else {
 	echo '<p class="error">This page has been accessed in error.</p>';
@@ -15,7 +15,7 @@ else {
 }
 
 require_once('include/db_connection.php');
-$sql = "select nome,cognome from persone where id=$id_persona";
+$sql = "select nome,cognome from persone where id_persona=$id_persona";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();
