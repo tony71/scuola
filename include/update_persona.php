@@ -34,7 +34,7 @@
         $sql .= ", id_provincia=:id_provincia";
         $sql .= ", cap=:cap";
         $sql .= ", quartiere=:quartiere";
-        $sql .= " WHERE id=:id";
+        $sql .= " WHERE id_persona=:id";
 
         try {
                 $stm = $db->prepare($sql);
