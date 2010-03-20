@@ -50,7 +50,7 @@ echo "</script>";
 **************/
 
 try {
-	$sql = "select count(id) from $table";
+	$sql = "select count(id_persona) from $table";
 	$stm = $db->query($sql);
 	$r = $stm->fetch(PDO::FETCH_BOTH);
 	echo '<h1>Studenti Registrati (' . $r[0] . ')</h1>';
@@ -65,7 +65,7 @@ if (isset($_GET['p']) && is_numeric($_GET['p'])) {
 	$pages = $_GET['p'];
 }
 else {
-	$sql = "select count(id) from $table";
+	$sql = "select count(id_persona) from $table";
 	try {
 		$stm = $db->query($sql);
 		$r = $stm->fetch(PDO::FETCH_BOTH);
