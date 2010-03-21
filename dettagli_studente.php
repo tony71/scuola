@@ -34,13 +34,15 @@ catch(PDOException $e) {
 $sql = "select distinct id_persona,matricola_studente";
 $sql .= ",nome,cognome,nome_breve,cognome_breve";
 $sql .= ",sesso,id_famiglia,tipo_parentela";
-$sql .= ",data_nascita,luogo_nascita,cittadinanza";
+$sql .= ",data_nascita,sigla_provincia_nascita,sigla_comune_nascita";
+$sql .= ",sigla_stato_nascita";
 $sql .= ",codice_fiscale,vaccinazioni,note";
 $sql .= ",controindicazioni_mensa";
 $sql .= ",consegnato_modulo,certificato_medico,anni_scuola_materna";
 $sql .= ",caso_speciale,motivazione_cs,hc";
 $sql .= ",via,numero_civico,citta";
-$sql .= ",id_provincia,provincia,cap,quartiere";
+$sql .= ",sigla_provincia_residenza,provincia_residenza,cap,quartiere";
+$sql .= ",sigla_comune_residenza,sigle_stati_cittadinanza";
 $sql .= ",professione";
 $sql .=" from vista_studenti_cv where matricola_studente='$matricola'";
 try {

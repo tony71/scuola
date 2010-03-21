@@ -29,7 +29,7 @@ if (isset($_POST['submitted'])) {
 	include('include/update_studente.php');
 }
 
-$sql = "select * from vista_studenti_cv where matricola_studente='$matricola' limit 1";
+$sql = "select * from vista_studenti where matricola_studente='$matricola' limit 1";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();

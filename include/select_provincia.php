@@ -9,9 +9,9 @@ try {
 	$stm = $db->query($sql);
 	while ($r = $stm->fetch(PDO::FETCH_BOTH)) {
 		$option = '<option value="';
-		$option .= $r['id'];
+		$option .= $r['sigla'];
 		$option .= '"';
-		$option .= (isset($id_provincia) && ($id_provincia == $r['id']) ? ' selected="yes"' : '');
+		$option .= (isset($id_provincia) && ($id_provincia == $r['sigla']) ? ' selected="yes"' : '');
 		$option .= '>';
 		$option .= $r['provincia'];
 		$option .= ' </option>';

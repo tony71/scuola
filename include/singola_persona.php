@@ -46,8 +46,8 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
 	$result .= '>';
 	require_once('select_provincia.php');
-	$result .= isset($r['provincia_nascita']) ? '' : '<option></option>';
-	$result .= select_provincia($db, $r['provincia_nascita']);
+	$result .= isset($r['sigla_provincia_nascita']) ? '' : '<option></option>';
+	$result .= select_provincia($db, $r['sigla_provincia_nascita']);
 	$result .= '</select>';
 
 	$result .= '<br />';
@@ -57,8 +57,8 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
 	$result .= '>';
 	require_once('select_comune.php');
-	$result .= isset($r['comune_nascita']) ? '' : '<option></option>';
-	$result .= select_comune($db, $r['comune_nascita']);
+	$result .= isset($r['sigla_comune_nascita']) ? '' : '<option></option>';
+	$result .= select_comune($db, $r['sigla_comune_nascita']);
 	$result .= '</select>';
 
 	$result .= '<br />';
@@ -69,19 +69,23 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
 	$result .= '>';
 	require_once('select_nazione.php');
-	$result .= isset($r['stato_nascita']) ? '' : '<option></option>';
-	$result .= select_nazione($db, $r['stato_nascita']);
+	$result .= isset($r['sigla_stato_nascita']) ? '' : '<option></option>';
+	$result .= select_nazione($db, $r['sigla_stato_nascita']);
 	$result .= '</select>';
 
 	$result .= '<br />';
 
+	if (isset($r['sigle_stati_cittadinanza'])) {
+		$str = trim($r['sigle_stati_cittadinanza'], '{}');
+		$ssc = explode(',', $str);
+	}
 	$result .= '<label for="prima_cittadinanza">Prima Cittadinanza:</label>';
 	$result .= '<select name="prima_cittadinanza" id="prima_cittadinanza"';
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
 	$result .= '>';
 	require_once('select_nazione.php');
-	$result .= isset($r['stato_nascita']) ? '' : '<option></option>';
-	$result .= select_nazione($db, $r['stato_nascita']);
+	$result .= isset($ssc[0]) ? '' : '<option></option>';
+	$result .= select_nazione($db, $ssc[0]);
 	$result .= '</select>';
 
 	$result .= '<br />';
@@ -91,8 +95,8 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
 	$result .= '>';
 	require_once('select_nazione.php');
-	$result .= isset($r['stato_nascita']) ? '' : '<option></option>';
-	$result .= select_nazione($db, $r['stato_nascita']);
+	$result .= isset($ssc[1]) ? '' : '<option></option>';
+	$result .= select_nazione($db, $ssc[1]);
 	$result .= '</select>';
 
 	$result .= '<br />';
@@ -113,8 +117,8 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
 	$result .= '>';
 	require_once('select_provincia.php');
-	$result .= isset($r['provincia_residenza']) ? '' : '<option></option>';
-	$result .= select_provincia($db, $r['provincia_residenza']);
+	$result .= isset($r['sigla_provincia_residenza']) ? '' : '<option></option>';
+	$result .= select_provincia($db, $r['sigla_provincia_residenza']);
 	$result .= '</select>';
 
 	$result .= '<br />';
@@ -124,8 +128,8 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
 	$result .= '>';
 	require_once('select_comune.php');
-	$result .= isset($r['comune_residenza']) ? '' : '<option></option>';
-	$result .= select_comune($db, $r['comune_residenza']);
+	$result .= isset($r['sigla_comune_residenza']) ? '' : '<option></option>';
+	$result .= select_comune($db, $r['sigla_comune_residenza']);
 	$result .= '</select>';
 
 	$result .= '<br />';

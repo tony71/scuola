@@ -11,7 +11,7 @@ try {
 		$option = '<option value="';
 		$option .= $r['codice_sidi'];
 		$option .= '"';
-		$option .= (isset($id_nazione) && ($id_nazione == $r['id']) ? ' selected="yes"' : '');
+		$option .= (isset($id_nazione) && ($id_nazione == $r['codice_sidi']) ? ' selected="yes"' : '');
 		$option .= '>';
 		$option .= $r['denominazione_stato_sidi'];
 		$option .= ' </option>';

@@ -9,7 +9,7 @@ function result_as_table($result, $tableFeatures="")
 	$table .= '<th align="left">Nome</th>';
 	$table .= '<th align="left">Cognome</th>';
 	$table .= '<th align="left">Data di Nascita</th>';
-	$table .= '<th align="left">Luogo di Nascita</th>';
+	$table .= '<th align="left">Comune di Nascita</th>';
 	$bg = '#eeeeee';
 	$i = 1;
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
@@ -20,7 +20,7 @@ function result_as_table($result, $tableFeatures="")
 		$table .= '<td align="left"><a href="dettagli_studente.php?matricola='.$r['matricola_studente'].'">' . $r['nome'] . '</a></td>';
 		$table .= '<td align="left"><a href="dettagli_studente.php?matricola='.$r['matricola_studente'].'">' . $r['cognome'] . '</a></td>';
 		$table .= '<td align="left">'.$r['data_nascita'].'</td>';
-		$table .= '<td align="left">'.$r['luogo_nascita'].'</td>';
+		$table .= '<td align="left">'.$r['comune_nascita'].'</td>';
 		$table .= "</tr>\n";
 		$i++;
 	}
