@@ -42,9 +42,7 @@ try {
 	include('include/singolo_studente.php');
 	echo '<form action="modifica_studente.php" method="post">';
 	$r = $stm->fetch(PDO::FETCH_BOTH);
-	$sql = 'select * from province order by provincia';
-	$stm = $db->query($sql);
-	echo singolo_studente($r, false, $stm);
+	echo singolo_studente($r, false, $db);
 	echo '<p><input type="submit" name="submit" value="Salva" /></p>';
 	echo '<input type="hidden" name="submitted" value="TRUE" />';
 	echo '<input type="hidden" name="id" value="' . $matricola .'" />';
