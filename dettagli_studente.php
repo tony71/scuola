@@ -1,4 +1,6 @@
 <?php
+require_once('include/db_connection.php');
+
 $page_title = 'Dettagli Studente';
 include('include/header.html');
 
@@ -17,7 +19,6 @@ else {
 echo "<h1>Dettagli Studente $matricola</h1>";
 
 
-require_once('include/db_connection.php');
 $sql = "select * from vista_studenti_senza_curriculum where matricola_studente='$matricola'";
 try {
 	$stm = $db->query($sql);
@@ -53,9 +54,7 @@ try {
 	
 	include('include/singolo_studente.php');
 	$r = $stm->fetch(PDO::FETCH_BOTH);
-	$sql = 'select * from province order by provincia';
-	$stm = $db->query($sql);
-	echo singolo_studente($r, true, $stm);
+	echo singolo_studente($r, true, $db);
 	$matricola = $r['matricola_studente'];
 	$id = $r['id_persona'];
 	include('include/tab_studente.html');

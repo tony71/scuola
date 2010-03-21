@@ -1,5 +1,5 @@
 <?php
-function singola_persona($r, $readonly=true, $prov)
+function singola_persona($r, $readonly=true, $db)
 {
 	if ($readonly == true) {
 		$s = 'readonly="readonly" ';
@@ -11,7 +11,7 @@ function singola_persona($r, $readonly=true, $prov)
 
 	$result = '<fieldset>';
 
-	$result .= '<legend>Dati Personali:</legend>';
+	$result .= '<legend>Dati Anagrafici:</legend>';
 
 	$result .= '<label for="nome" class="required">Nome:</label>';
 	$result .= '<input type="text" name="nome" id="nome" size="15" maxlength="50" value="' . (isset($r) ? $r['nome'] : '') . '" ' . $s . ' />';
@@ -41,17 +41,94 @@ function singola_persona($r, $readonly=true, $prov)
 	$result .= '<label for="data_nascita">Data di Nascita:</label>';
 	$result .= '<input type="text" name="data_nascita" id="data_nascita" size="10" maxlength="10" value="' . (isset($r) ? $r['data_nascita'] : '') . '" ' . $s . ' />';
 
-	$result .= '<label for="luogo_nascita">Luogo di Nascita:</label>';
-	$result .= '<input type="text" name="luogo_nascita" id="luogo_nascita" size="15" maxlength="30" value="' . (isset($r) ? $r['luogo_nascita'] : '') . '" ' . $s . ' />';
+	$result .= '<label for="provincia_nascita">Provincia di Nascita:</label>';
+	$result .= '<select name="provincia_nascita" id="provincia_nascita"';
+	$result .= ($readonly == true ? ' disabled="disabled"' : '');
+	$result .= '>';
+	require_once('select_provincia.php');
+	$result .= isset($r['provincia_nascita']) ? '' : '<option></option>';
+	$result .= select_provincia($db, $r['provincia_nascita']);
+	$result .= '</select>';
 
-	$result .= '<label for="cittadinanza">Cittadinanza:</label>';
-	$result .= '<input type="text" name="cittadinanza" id="cittadinanza" size="15" maxlength="30" value="' . (isset($r) ? $r['cittadinanza'] : '') . '" ' . $s . ' />';
+	$result .= '<br />';
+
+	$result .= '<label for="comune_nascita">Comune di Nascita:</label>';
+	$result .= '<select name="comune_nascita" id="comune_nascita"';
+	$result .= ($readonly == true ? ' disabled="disabled"' : '');
+	$result .= '>';
+	require_once('select_comune.php');
+	$result .= isset($r['comune_nascita']) ? '' : '<option></option>';
+	$result .= select_comune($db, $r['comune_nascita']);
+	$result .= '</select>';
+
+	$result .= '<br />';
+
+
+	$result .= '<label for="stato_nascita">Stato Estero di Nascita:</label>';
+	$result .= '<select name="stato_nascita" id="stato_nascita"';
+	$result .= ($readonly == true ? ' disabled="disabled"' : '');
+	$result .= '>';
+	require_once('select_nazione.php');
+	$result .= isset($r['stato_nascita']) ? '' : '<option></option>';
+	$result .= select_nazione($db, $r['stato_nascita']);
+	$result .= '</select>';
+
+	$result .= '<br />';
+
+	$result .= '<label for="prima_cittadinanza">Prima Cittadinanza:</label>';
+	$result .= '<select name="prima_cittadinanza" id="prima_cittadinanza"';
+	$result .= ($readonly == true ? ' disabled="disabled"' : '');
+	$result .= '>';
+	require_once('select_nazione.php');
+	$result .= isset($r['stato_nascita']) ? '' : '<option></option>';
+	$result .= select_nazione($db, $r['stato_nascita']);
+	$result .= '</select>';
+
+	$result .= '<br />';
+
+	$result .= '<label for="seconda_cittadinanza">Seconda Cittadinanza:</label>';
+	$result .= '<select name="seconda_cittadinanza" id="seconda_cittadinanza"';
+	$result .= ($readonly == true ? ' disabled="disabled"' : '');
+	$result .= '>';
+	require_once('select_nazione.php');
+	$result .= isset($r['stato_nascita']) ? '' : '<option></option>';
+	$result .= select_nazione($db, $r['stato_nascita']);
+	$result .= '</select>';
+
+	$result .= '<br />';
+	// $result .= '<label for="luogo_nascita">Luogo di Nascita:</label>';
+	// $result .= '<input type="text" name="luogo_nascita" id="luogo_nascita" size="15" maxlength="30" value="' . (isset($r) ? $r['luogo_nascita'] : '') . '" ' . $s . ' />';
+
+	// $result .= '<label for="cittadinanza">Cittadinanza:</label>';
+	// $result .= '<input type="text" name="cittadinanza" id="cittadinanza" size="15" maxlength="30" value="' . (isset($r) ? $r['cittadinanza'] : '') . '" ' . $s . ' />';
 
 	$result .= '</fieldset>';
 
 	$result .= '<fieldset>';
 
-	$result .= '<legend>Domicilio:</legend>';
+	$result .= '<legend>Dati Residenza:</legend>';
+
+	$result .= '<label for="provincia_residenza">Provincia di Residenza:</label>';
+	$result .= '<select name="provincia_residenza" id="provincia_residenza"';
+	$result .= ($readonly == true ? ' disabled="disabled"' : '');
+	$result .= '>';
+	require_once('select_provincia.php');
+	$result .= isset($r['provincia_residenza']) ? '' : '<option></option>';
+	$result .= select_provincia($db, $r['provincia_residenza']);
+	$result .= '</select>';
+
+	$result .= '<br />';
+
+	$result .= '<label for="comune_nascita">Comune di Residenza:</label>';
+	$result .= '<select name="comune_residenza" id="comune_residenza"';
+	$result .= ($readonly == true ? ' disabled="disabled"' : '');
+	$result .= '>';
+	require_once('select_comune.php');
+	$result .= isset($r['comune_residenza']) ? '' : '<option></option>';
+	$result .= select_comune($db, $r['comune_residenza']);
+	$result .= '</select>';
+
+	$result .= '<br />';
 
 	$result .= '<label for="via">Via:</label>';
 	$result .= '<input type="text" name="via" id="via" size="15" maxlength="50" value="' . (isset($r) ? $r['via'] : '') . '" ' . $s . ' />';
@@ -61,16 +138,6 @@ function singola_persona($r, $readonly=true, $prov)
 
 	$result .= '<label for="citta">Citta</label>';
 	$result .= '<input type="text" name="citta" id="citta" size="15" maxlength="40" value="' . (isset($r) ? $r['citta'] : '') . '" ' . $s . ' />';
-
-	$result .= '<label for="id_provincia">Provincia</label>';
-	// $result .= '<input type="text" name="id_provincia" id="id_provincia" size="5" maxlength="10" value="' . (isset($r) ? $r['id_provincia'] : '') . '" ' . $s . ' />';
-	$result .= '<select name="id_provincia" id="id_provincia"';
-	$result .= ($readonly == true ? ' disabled="disabled"' : '');
-	$result .= '>';
-	include('select_provincia.php');
-	$result .= isset($r['id_provincia']) ? '' : '<option></option>';
-	$result .= select_provincia($prov, $r['id_provincia']);
-	$result .= '</select>';
 
 	$result .= '<br />';
 

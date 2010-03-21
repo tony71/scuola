@@ -31,9 +31,7 @@ echo "<h1>Aggiungi Persona</h1>";
 try {
 	include('include/singola_persona.php');
 	echo '<form action="aggiungi_persona.php" method="post">';
-	$sql = "select * from province order by provincia";
-	$stm = $db->query($sql);
-	echo singola_persona($p, false, $stm);
+	echo singola_persona($p, false, $db);
 	echo '<p><input type="submit" name="submit" value="Crea Persona" /></p>';
 	echo '<p><input type="submit" name="submit" value="Crea Studente" /></p>';
 	echo '<input type="hidden" name="submitted" value="TRUE" />';
