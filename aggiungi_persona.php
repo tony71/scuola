@@ -1,5 +1,6 @@
 <?php
 $page_title = 'Aggiungi Persona';
+$javascript = 'javascript/comuni.js';
 
 require_once('include/db_connection.php');
 

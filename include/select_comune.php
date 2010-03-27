@@ -5,7 +5,12 @@ function select_comune($db, $id_comune, $id_provincia='')
 {
 $result = '';
 try {
-	$sql = "select * from codici_catastali order by comune";
+	if (isset($id_provincia) && !empty($id_provincia)) {
+		$sql = "select * from codici_catastali where provincia='$id_provincia' order by comune";
+	}
+	else {
+		$sql = "select * from codici_catastali order by comune";
+	}
 	$stm = $db->query($sql);
 	while ($r = $stm->fetch(PDO::FETCH_BOTH)) {
 		$option = '<option value="';

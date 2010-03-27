@@ -44,7 +44,7 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= '<label for="provincia_nascita">Provincia di Nascita:</label>';
 	$result .= '<select name="provincia_nascita" id="provincia_nascita"';
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
-	$result .= '>';
+	$result .= ' onChange="showComuni(this)">';
 	require_once('select_provincia.php');
 	$result .= isset($r['sigla_provincia_nascita']) ? '' : '<option></option>';
 	$result .= select_provincia($db, $r['sigla_provincia_nascita']);
@@ -58,7 +58,7 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= '>';
 	require_once('select_comune.php');
 	$result .= isset($r['sigla_comune_nascita']) ? '' : '<option></option>';
-	$result .= select_comune($db, $r['sigla_comune_nascita']);
+	// $result .= select_comune($db, $r['sigla_comune_nascita']);
 	$result .= '</select>';
 
 	$result .= '<br />';
@@ -115,7 +115,7 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= '<label for="provincia_residenza">Provincia di Residenza:</label>';
 	$result .= '<select name="provincia_residenza" id="provincia_residenza"';
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
-	$result .= '>';
+	$result .= ' onChange="showComuni(this)">';
 	require_once('select_provincia.php');
 	$result .= isset($r['sigla_provincia_residenza']) ? '' : '<option></option>';
 	$result .= select_provincia($db, $r['sigla_provincia_residenza']);
@@ -123,13 +123,13 @@ function singola_persona($r, $readonly=true, $db)
 
 	$result .= '<br />';
 
-	$result .= '<label for="comune_nascita">Comune di Residenza:</label>';
+	$result .= '<label for="comune_residenza">Comune di Residenza:</label>';
 	$result .= '<select name="comune_residenza" id="comune_residenza"';
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
 	$result .= '>';
 	require_once('select_comune.php');
 	$result .= isset($r['sigla_comune_residenza']) ? '' : '<option></option>';
-	$result .= select_comune($db, $r['sigla_comune_residenza']);
+	// $result .= select_comune($db, $r['sigla_comune_residenza']);
 	$result .= '</select>';
 
 	$result .= '<br />';
