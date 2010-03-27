@@ -3,16 +3,14 @@ var id_g;
 
 function showComuni(obj)
 {
-	if (obj.id.value == "provincia_nascita") {
+	if (obj.id == "provincia_nascita") {
 		id_g = "comune_nascita";
 	}
-	if (obj.id.value == "provincia_residenza") {
+	if (obj.id == "provincia_residenza") {
 		id_g = "comune_residenza";
 	}
-	
-	id_g = "comune_nascita";
 
-	alert("id "+id_g+" str "+iobj.value);
+	alert("showComuni id "+id_g+" str "+obj.value);
 
 	if (obj.value.length == 0) {
 		document.getElementById(id_g).innerHTML="";
@@ -24,14 +22,13 @@ function showComuni(obj)
 		return;
 	}
 	var url="include/comuni.php";
-	url=url+"?provincia="+str;
-	id_g = id;
+	url=url+"?provincia="+obj.value;
 	xmlhttp.onreadystatechange=stateChanged;
 	xmlhttp.open("GET",url,true);
 	xmlhttp.send(null);
 }
 
-function stateChanged
+function stateChanged()
 {
 	if (xmlhttp.readyState == 4) {
 		document.getElementById(id_g).innerHTML=xmlhttp.responseText;
