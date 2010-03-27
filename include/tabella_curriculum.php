@@ -10,6 +10,7 @@ function result_as_table($result, $tableFeatures="")
 	$table .= '<th align="left">Sezione</th>';
 	$table .= '<th align="left">Indirizzo</th>';
 	$table .= '<th align="left">Scuola</th>';
+	$table .= '<th align="left">Esito</th>';
 	$bg = '#eeeeee';
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
@@ -19,6 +20,9 @@ function result_as_table($result, $tableFeatures="")
 		$table .= '<td align="left">'.$r['sezione'].'</td>';
 		$table .= '<td align="left">'.$r['indirizzo'].'</td>';
 		$table .= '<td align="left">'.$r['denominazione'].'</td>';
+		$table .= '<td align="left">'.$r['esito'].'</td>';
+		$table .= '<td align="left"><a href="setta_esito.php?esito=positivo&matricola='.$r['matricola_studente'].'&as='.$r['anno_scolastico'].'">Promuovi</a></td>';
+		$table .= '<td align="left"><a href="setta_esito.php?esito=negativo&matricola='.$r['matricola_studente'].'&as='.$r['anno_scolastico'].'">Boccia</a></td>';
 		$table .= "</tr>\n";
 	}
 	$table .= "</table>\n\n";

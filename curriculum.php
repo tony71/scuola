@@ -27,7 +27,7 @@ try {
 	$r = $stm->fetch(PDO::FETCH_BOTH);
 	echo '<h1>Curriculum di ' . $r['cognome'] . ', ' . $r['nome'] . '</h1>';
 	
-	$sql = "select anno_scolastico, classe, sezione, indirizzo, denominazione  from vista_studenti_cv where matricola_studente='$matricola'";
+	$sql = "select matricola_studente, anno_scolastico, classe, sezione, indirizzo, denominazione, esito  from vista_studenti_cv where matricola_studente='$matricola' order by anno_scolastico asc";
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();
 	if ($num == 0) {
