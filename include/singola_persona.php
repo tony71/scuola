@@ -58,7 +58,9 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= '>';
 	require_once('select_comune.php');
 	$result .= isset($r['sigla_comune_nascita']) ? '' : '<option></option>';
-	// $result .= select_comune($db, $r['sigla_comune_nascita']);
+	if (isset($r['sigla_comune_nascita'])) {
+		$result .= select_comune($db, $r['sigla_comune_nascita'], $r['sigla_provincia_nascita']);
+	}
 	$result .= '</select>';
 
 	$result .= '<br />';
@@ -129,7 +131,9 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= '>';
 	require_once('select_comune.php');
 	$result .= isset($r['sigla_comune_residenza']) ? '' : '<option></option>';
-	// $result .= select_comune($db, $r['sigla_comune_residenza']);
+	if (isset($r['sigla_comune_residenza'])) {
+		$result .= select_comune($db, $r['sigla_comune_residenza'], $r['sigla_provincia_residenza']);
+	}
 	$result .= '</select>';
 
 	$result .= '<br />';

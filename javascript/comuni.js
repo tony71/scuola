@@ -10,7 +10,7 @@ function showComuni(obj)
 		id_g = "comune_residenza";
 	}
 
-	alert("showComuni id "+id_g+" str "+obj.value);
+	// alert("showComuni id "+id_g+" str "+obj.value);
 
 	if (obj.value.length == 0) {
 		document.getElementById(id_g).innerHTML="";
