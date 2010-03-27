@@ -2,6 +2,7 @@
 
 require_once('include/db_connection.php');
 
+$javascript = 'javascript/comuni.js';
 $page_title = 'Modifica Studente';
 include('include/header.html');
 
