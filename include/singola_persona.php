@@ -82,7 +82,7 @@ function singola_persona($r, $readonly=true, $db)
 		$ssc = explode(',', $str);
 	}
 	$result .= '<label for="prima_cittadinanza">Prima Cittadinanza:</label>';
-	$result .= '<select name="prima_cittadinanza" id="prima_cittadinanza"';
+	$result .= '<select name="cittadinanza[]" id="prima_cittadinanza"';
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
 	$result .= '>';
 	require_once('select_nazione.php');
@@ -93,7 +93,7 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= '<br />';
 
 	$result .= '<label for="seconda_cittadinanza">Seconda Cittadinanza:</label>';
-	$result .= '<select name="seconda_cittadinanza" id="seconda_cittadinanza"';
+	$result .= '<select name="cittadinanza[]" id="seconda_cittadinanza"';
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
 	$result .= '>';
 	require_once('select_nazione.php');

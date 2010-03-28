@@ -21,7 +21,17 @@
         $sql .= ", :comune_nascita";
         $sql .= ", :provincia_residenza";
         $sql .= ", :comune_residenza";
-        $sql .= ")";
+        $sql .= ", ARRAY[";
+	$first = TRUE;
+	foreach($_POST['cittadinanza'] as $key => $value) {
+		if ($first == FALSE) {
+			$sql .= ', ';
+		}
+		$sql .= "'".$value."'";
+		$first = FALSE;
+	}
+        $sql .= "])";
+
 
         try {
                 $stm = $db->prepare($sql);
