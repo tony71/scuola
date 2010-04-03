@@ -76,7 +76,7 @@ try {
 	$doc->fit_textline("La sottoscritta suor Maria Giuseppina Iasottile,", 50, 500, "position={left bottom}");
 	$doc->fit_textline("in qualita' di Coordinatrice delle Attivita' Educative e Didattiche", 50, 480, "position={left bottom}");
 	$doc->fit_textline("della Scuola Primaria Parificata Paritaria \"San Domenico Savio\",", 50, 460, "position={left bottom}");
-	$doc->fit_textline("DICHIARA", 300, 440, "position={left bottom}");
+	$doc->fit_textline("DICHIARA", 250, 440, "position={left bottom}");
 	$txt = "che l'alunno/a ";
 	$doc->fit_textline($txt, 50, 420, "position={left bottom}");
 	$txt = "nato/a a ";
@@ -89,8 +89,8 @@ try {
 	$doc->fit_textline($txt, 50, 340, "position={left bottom}");
 	$doc->fit_textline("Si rilascia il presente certificato su richiesta della famiglia,", 50, 300, "position={left bottom}");
 	$doc->fit_textline("per gli usi consentiti dalla legge.", 50, 280, "position={left bottom}");
-	$doc->fit_textline("La Coordinatrice delle Attività Educative e Didattiche", 200, 200, "position={right bottom}");
-	$doc->fit_textline("(Maria Giuseppina Iasottile)", 200, 180, "position={right bottom}");
+	$doc->fit_textline("La Coordinatrice delle Attivita' Educative e Didattiche", 200, 200, "position={left bottom}");
+	$doc->fit_textline("(Maria Giuseppina Iasottile)", 200, 180, "position={left bottom}");
 
 
 	$doc->end_page_ext("");
