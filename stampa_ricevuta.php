@@ -11,11 +11,11 @@ if (extension_loaded('pdf')) {
 	echo "PDFlib is not available.<br />\n";
 }
 
-if ((isset($_GET[id_ricevuta])) && (is_numeric($_GET[id_ricevuta]))) {
-	$id_ricevuta = $_GET[id_ricevuta];
+if ((isset($_GET['id_ricevuta'])) && (is_numeric($_GET['id_ricevuta']))) {
+	$id_ricevuta = $_GET['id_ricevuta'];
 }
-elseif ((isset($_POST[id_ricevuta])) && (is_numeric($_POST[id_ricevuta]))) {
-	$id_ricevuta = $_POST[id_ricevuta];
+elseif ((isset($_POST['id_ricevuta'])) && (is_numeric($_POST['id_ricevuta']))) {
+	$id_ricevuta = $_POST['id_ricevuta'];
 }
 else {
 	die("Error: Non trovo id_ricevuta");
