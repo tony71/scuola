@@ -50,14 +50,14 @@ try {
 	if (!$image) {
 		die("Error: " . $doc->get_errmsg());
 	}
-	$doc->fit_image($image, 500, 740, "scale 0.6");
+	$doc->fit_image($image, 450, 740, "scale 0.6");
 	$doc->close_image($image);
 
 	$font = $doc->load_font("Times-Roman", "winansi", "");
 	$doc->setfont($font, 10.0);
-	$doc->fit_textline("Scuola Primaria Parificata Paritaria \"San Domenico Savio\"", 150, 760, "position={left bottom}");
-	$doc->fit_textline("Via Paisiello 37 - 10154 Torino - Tel. 011 2304 111 - Fax 011 2304 166", 150, 750, "position={left bottom}");
-	$doc->fit_textline("e-mail: primaria@michelerua.it - sito web: www.michelerua.it/primaria",150, 740, "position={left bottom}");
+	$doc->fit_textline("Scuola Primaria Parificata Paritaria \"San Domenico Savio\"", 100, 760, "position={left bottom}");
+	$doc->fit_textline("Via Paisiello 37 - 10154 Torino - Tel. 011 2304 111 - Fax 011 2304 166", 100, 750, "position={left bottom}");
+	$doc->fit_textline("e-mail: primaria@michelerua.it - sito web: www.michelerua.it/primaria",100, 740, "position={left bottom}");
 	// fine HEADER
 
 	/*******************************************************
@@ -66,49 +66,32 @@ try {
 	$doc->fit_textline("Hello!&euro;",50,400, "position={left bottom}");
 	*********************************************************/
 
-	/*
-	$sql = "select * from vista_ricevute where id_ricevuta=$id_ricevuta";
-	$stm = $db->query($sql);
-	$r = $stm->fetch(PDO::FETCH_BOTH);
-	$txt = "Ricevuta del ";
-	$txt .= $r['data_it'];
-	$txt .= "     n.o ";
-	$txt .= $r['codice_scuola'];
-	$txt .= " / ";
-	$txt .= $r['numero_ricevuta'];
-	$doc->fit_textline($txt, 150, 620, "position={left bottom}");
+	$doc->setfont($font, 15.0);
+	$txt = "Torino, ";
+	require('include/oggi.php');
+	$txt .= oggi($db);
+	$doc->fit_textline($txt, 50, 620, "position={left bottom}");
+	$doc->fit_textline("Prot. num. ", 50, 600, "position={left bottom}");
+	$doc->fit_textline("Oggetto: dichiarazione di iscrizione e frequenza.", 50, 540, "position={left bottom}");
+	$doc->fit_textline("La sottoscritta suor Maria Giuseppina Iasottile,", 50, 500, "position={left bottom}");
+	$doc->fit_textline("in qualita' di Coordinatrice delle Attivita' Educative e Didattiche", 50, 480, "position={left bottom}");
+	$doc->fit_textline("della Scuola Primaria Parificata Paritaria \"San Domenico Savio\",", 50, 460, "position={left bottom}");
+	$doc->fit_textline("DICHIARA", 300, 440, "position={left bottom}");
+	$txt = "che l'alunno/a ";
+	$doc->fit_textline($txt, 50, 420, "position={left bottom}");
+	$txt = "nato/a a ";
+	$doc->fit_textline($txt, 50, 400, "position={left bottom}");
+	$txt = "il ";
+	$doc->fit_textline($txt, 50, 380, "position={left bottom}");
+	$txt = "risulta iscritto/a e frequenta regolarmente la classe ";
+	$doc->fit_textline($txt, 50, 360, "position={left bottom}");
+	$txt = "presso la nostra scuola, nell'anno scolastico ";
+	$doc->fit_textline($txt, 50, 340, "position={left bottom}");
+	$doc->fit_textline("Si rilascia il presente certificato su richiesta della famiglia,", 50, 300, "position={left bottom}");
+	$doc->fit_textline("per gli usi consentiti dalla legge.", 50, 280, "position={left bottom}");
+	$doc->fit_textline("La Coordinatrice delle Attività Educative e Didattiche", 200, 200, "position={right bottom}");
+	$doc->fit_textline("(Maria Giuseppina Iasottile)", 200, 180, "position={right bottom}");
 
-	$txt = "Allievo / a     ";
-	$txt .= $r['cognome'];
-	$doc->fit_textline($txt, 150, 600, "position={left bottom}");
-
-	$txt = "                      ";
-	$txt .= $r['nome'];
-	$doc->fit_textline($txt, 150, 580, "position={left bottom}");
-
-	$txt = $r['denominazione'];
-	$doc->fit_textline($txt, 150, 560, "position={left bottom}");
-
-	$txt = "Si dichiara di ricevere la somma di ";
-	$txt .= $r['importo_totale_it'];
-	$doc->fit_textline($txt, 50, 520, "position={left bottom}");
-
-	$txt = "per il pagamento di quanto sotto meglio descritto:";
-	$doc->fit_textline($txt, 50, 500, "position={left bottom}");
-
-	$sql = "select * from vista_ricevute_riga where id_ricevuta=$id_ricevuta";
-	$stm = $db->query($sql);
-	$y = 480;
-	while($r = $stm->fetch(PDO::FETCH_BOTH)) {
-		$txt = $r['importo_riga_it'];
-		$txt .= ' ' . $r['causale'];
-		$txt .= ' (' . $r['descrizione_tipo'] . ')';
-		$doc->fit_textline($txt, 50, $y, "position={left bottom}");
-		$txt = ' a.s. ' . $r['anno_scolastico'];
-		$doc->fit_textline($txt, 545, $y, "position={right bottom}");
-		$y -= 20;
-	}
-	*/
 
 	$doc->end_page_ext("");
 
