@@ -138,6 +138,8 @@ function singola_persona($r, $readonly=true, $db)
 
 	$result .= '<br />';
 
+	$result .= '<legend>Dati Domicilio:</legend>';
+
 	$result .= '<label for="via">Via:</label>';
 	$result .= '<input type="text" name="via" id="via" size="15" maxlength="50" value="' . (isset($r) ? $r['via'] : '') . '" ' . $s . ' />';
 
