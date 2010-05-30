@@ -1,2 +1,73 @@
 Rimosso .gitignore
 prova by fabietto\
+==Gestione utenti / gruppi==
+Rimozione ruolo segreteria:
+	scuola=> revoke all on database scuola from segreteria;
+	REVOKE
+	scuola=> drop role segreteria;
+	DROP ROLE
+Creazione ruolo segreteria. Per sapere quali relazioni danno problemi il modo
+piu' semplice e' guardare il log di postgres per esempio:
+tail -f data/pg_log/postgresql-Sun.log
+
+	scuola=> create role segreteria;
+	CREATE ROLE
+	scuola=> select rolname from pg_roles;
+	  rolname   
+	------------
+	 postgres
+	 tony
+	 segreteria
+	(3 rows)
+
+	scuola=> grant select on stato_studenti to segreteria;
+	GRANT
+	scuola=> grant select on vista_studenti_cv to segreteria;
+	GRANT
+	scuola=> grant select on scuole to segreteria;
+	GRANT
+	scuola=> grant select on anni_scolastici to segreteria;
+	GRANT
+	scuola=> grant select on classi to segreteria;
+	GRANT
+
+	scuola=> \du
+	             List of roles
+	 Role name  |  Attributes  | Member of 
+	------------+--------------+-----------
+	 postgres   | Superuser    | {}
+	            : Create role    
+	            : Create DB      
+	 segreteria | Cannot login | {}
+	 tony       | Create role  | {}
+	            : Create DB      
+
+	scuola=> \dp stato_studenti
+                               Access privileges
+	 Schema |      Name      | Type  | Access privileges | Column access privileges 
+	--------+----------------+-------+-------------------+--------------------------
+	 public | stato_studenti | table | tony=arwdDxt/tony | 
+	                                 : segreteria=r/tony   
+	(1 row)
+
+Creazione ruoli:
+	scuola=> create role segre1 login;
+	CREATE ROLE
+	scuola=> alter role segre1 password 'breve';
+	ALTER ROLE
+	scuola=> grant segreteria to segre1;
+	GRANT ROLE
+	scuola=> \du
+	              List of roles
+	 Role name  |  Attributes  |  Member of   
+	------------+--------------+--------------
+	 postgres   | Superuser    | {}
+	            : Create role    
+	            : Create DB      
+	 segre1     |              | {segreteria}
+	 segreteria | Cannot login | {}
+	 tony       | Create role  | {}
+	            : Create DB      
+
+
+
