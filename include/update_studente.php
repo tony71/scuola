@@ -87,8 +87,7 @@
 	$sql .= "anni_scuola_materna=:anni_scuola_materna, ";
 	$sql .= "caso_speciale=:caso_speciale, ";
 	$sql .= "motivazione_cs=:motivazione_cs, ";
-	$sql .= "hc=:hc, ";
-	$sql .= "stato=:stato ";
+	$sql .= "hc=:hc ";
 	$sql .= "WHERE id_persona=:id_persona ";
 
         try {
@@ -108,7 +107,6 @@
                 $stm->bindParam(":caso_speciale", $caso_speciale);
                 $stm->bindParam(":motivazione_cs", $motivazione_cs);
                 $stm->bindParam(":hc", $hc);
-                $stm->bindParam(":stato", $stato);
 
                 $stm->bindParam(":id_persona", $id);
 
