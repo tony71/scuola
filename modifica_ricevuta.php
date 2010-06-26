@@ -65,7 +65,7 @@ try {
 	echo '<input type="hidden" name="id_ricevuta" value="' . $id_ricevuta .'" />';
 	echo '</form>';
 	
-	$matricola = $r['matricola'];
+	$matricola = $r['matricola_studente'];
 }
 catch(PDOException $e) {
 	echo $e->getMessage();
