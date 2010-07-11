@@ -34,6 +34,7 @@ try {
 	$db = new PDO($conn_string, $user, $pass);
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$db->query('set DateStyle=SQL,Euro');
+	$db->query('set search_path to public,pagamenti');
 }
 catch(PDOException $e) {
 	unset($_SERVER['PHP_AUTH_USER']);
