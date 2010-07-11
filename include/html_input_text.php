@@ -5,7 +5,7 @@ function html_input_text($db, $column_name, $table_name, $val, $read_only=true)
 {
 $result = '';
 try {
-	if ($read_only) {
+	if ($read_only == true) {
 		$sql = "select html.get_input_text('$column_name', '$table_name'::regclass, '$val', true)";
 	}
 	else {

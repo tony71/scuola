@@ -18,8 +18,13 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= '<input type="text" name="nome" id="nome" size="15" maxlength="50" value="' . (isset($r) ? $r['nome'] : '') . '" ' . $s . ' />';
 	*/
 	require_once('html_input_text.php');
-	$result .= html_input_text($db, 'nome', 'persone', (isset($r) ? $r['nome'] : ''), $read_only);
+	$result .= html_input_text($db, 'nome', 'persone', (isset($r) ? $r['nome'] : ''), $readonly);
+	$result .= html_input_text($db, 'cognome', 'persone', (isset($r) ? $r['cognome'] : ''), $readonly);
+	$result .= html_input_text($db, 'sesso', 'persone', (isset($r) ? $r['sesso'] : ''), $readonly);
+	$result .= html_input_text($db, 'id_famiglia', 'persone', (isset($r) ? $r['id_famiglia'] : ''), $readonly);
+	$result .= html_input_text($db, 'tipo_parentela', 'persone', (isset($r) ? $r['tipo_parentela'] : ''), $readonly);
 
+	/*
 	$result .= '<label for="cognome" class="required">Cognome:</label>';
 	$result .= '<input type="text" name="cognome" id="cognome" size="15" maxlength="50" value="' . (isset($r) ? $r['cognome'] : '') . '" ' . $s . ' />';
 
@@ -31,14 +36,19 @@ function singola_persona($r, $readonly=true, $db)
 
 	$result .= '<label for="tipo_parentela" class="required">Tipo Parentela:</label>';
 	$result .= '<input type="text" name="tipo_parentela" id="tipo_parentela" size="1" maxlength="1" value="' . (isset($r) ? $r['tipo_parentela'] : '') . '" ' . $s . ' />';
+	*/
 
 	$result .= '<br />';
 
+	$result .= html_input_text($db, 'codice_fiscale', 'persone', (isset($r) ? $r['codice_fiscale'] : ''), $readonly);
+	$result .= html_input_text($db, 'professione', 'persone', (isset($r) ? $r['professione'] : ''), $readonly);
+	/*
 	$result .= '<label for="codice_fiscale">Codice Fiscale:</label>';
 	$result .= '<input type="text" name="codice_fiscale" id="codice_fiscale" size="16" maxlength="16" value="' . (isset($r) ? $r['codice_fiscale'] : '') . '" ' . $s . ' />';
 
 	$result .= '<label for="professione">Professione:</label>';
 	$result .= '<input type="text" name="professione" id="professione" size="16" maxlength="100" value="' . (isset($r) ? $r['professione'] : '') . '" ' . $s . ' />';
+	*/
 
 	$result .= '<br />';
 
