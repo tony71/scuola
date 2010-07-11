@@ -13,8 +13,12 @@ function singola_persona($r, $readonly=true, $db)
 
 	$result .= '<legend>Dati Anagrafici:</legend>';
 
+	/*
 	$result .= '<label for="nome" class="required">Nome:</label>';
 	$result .= '<input type="text" name="nome" id="nome" size="15" maxlength="50" value="' . (isset($r) ? $r['nome'] : '') . '" ' . $s . ' />';
+	*/
+	require_once('html_input_text.php');
+	$result .= html_input_text($db, 'nome', 'persone', (isset($r) ? $r['nome'] : ''), $read_only);
 
 	$result .= '<label for="cognome" class="required">Cognome:</label>';
 	$result .= '<input type="text" name="cognome" id="cognome" size="15" maxlength="50" value="' . (isset($r) ? $r['cognome'] : '') . '" ' . $s . ' />';
