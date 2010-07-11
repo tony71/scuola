@@ -19,9 +19,9 @@ ALTER SEQUENCE tipo_addebito_id_tipo_addebito_seq SET SCHEMA pagamenti;
 ***************************************************************************/
 --
 -- Sposto le funzioni
-ALTER FUNCTION crea_addebito(character, numeric, character varying, date, character, integer) SET SCHEMA pagamenti;
-ALTER FUNCTION crea_addebito_retta(character, numeric, character varying, date, character) SET SCHEMA pagamenti;
-ALTER FUNCTION crea_addebito_retta(character, character varying, date, character) SET SCHEMA pagamenti;
+-- ALTER FUNCTION crea_addebito(character, numeric, character varying, date, character, integer) SET SCHEMA pagamenti;
+-- ALTER FUNCTION crea_addebito_retta(character, numeric, character varying, date, character) SET SCHEMA pagamenti;
+-- ALTER FUNCTION crea_addebito_retta(character, character varying, date, character) SET SCHEMA pagamenti;
 ALTER FUNCTION crea_ricevuta(bigint) SET SCHEMA pagamenti;
 ALTER FUNCTION crea_ricevuta(bigint[]) SET SCHEMA pagamenti;
 ALTER FUNCTION crea_rimborso(bigint) SET SCHEMA pagamenti;
