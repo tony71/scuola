@@ -52,8 +52,11 @@ function singola_persona($r, $readonly=true, $db)
 
 	$result .= '<br />';
 
+	$result .= html_input_text($db, 'data_nascita', 'persone', (isset($r) ? $r['data_nascita'] : ''), $readonly);
+	/*
 	$result .= '<label for="data_nascita">Data di Nascita:</label>';
 	$result .= '<input type="text" name="data_nascita" id="data_nascita" size="10" maxlength="10" value="' . (isset($r) ? $r['data_nascita'] : '') . '" ' . $s . ' />';
+	*/
 
 	$result .= '<label for="provincia_nascita">Provincia di Nascita:</label>';
 	$result .= '<select name="provincia_nascita" id="provincia_nascita"';
