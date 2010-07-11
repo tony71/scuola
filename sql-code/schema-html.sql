@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Started on 2010-07-11 17:49:17 CEST
+-- Started on 2010-07-11 18:15:53 CEST
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -31,8 +31,8 @@ COMMENT ON SCHEMA html IS 'Generate HTML pages';
 SET search_path = html, pg_catalog;
 
 --
--- TOC entry 74 (class 1255 OID 23434)
--- Dependencies: 470 20
+-- TOC entry 75 (class 1255 OID 23434)
+-- Dependencies: 20 470
 -- Name: column_has_default(name, oid); Type: FUNCTION; Schema: html; Owner: -
 --
 
@@ -56,7 +56,7 @@ $$;
 
 --
 -- TOC entry 2005 (class 0 OID 0)
--- Dependencies: 74
+-- Dependencies: 75
 -- Name: FUNCTION column_has_default(column_name name, table_name oid); Type: COMMENT; Schema: html; Owner: -
 --
 
@@ -64,7 +64,7 @@ COMMENT ON FUNCTION column_has_default(column_name name, table_name oid) IS 'Ese
 
 
 --
--- TOC entry 73 (class 1255 OID 23433)
+-- TOC entry 74 (class 1255 OID 23433)
 -- Dependencies: 20 470
 -- Name: column_is_required(name, oid); Type: FUNCTION; Schema: html; Owner: -
 --
@@ -89,7 +89,7 @@ $$;
 
 --
 -- TOC entry 2006 (class 0 OID 0)
--- Dependencies: 73
+-- Dependencies: 74
 -- Name: FUNCTION column_is_required(column_name name, table_name oid); Type: COMMENT; Schema: html; Owner: -
 --
 
@@ -97,7 +97,7 @@ COMMENT ON FUNCTION column_is_required(column_name name, table_name oid) IS 'Ese
 
 
 --
--- TOC entry 66 (class 1255 OID 23171)
+-- TOC entry 67 (class 1255 OID 23171)
 -- Dependencies: 20 470
 -- Name: get_column_comment(name, oid); Type: FUNCTION; Schema: html; Owner: -
 --
@@ -122,7 +122,7 @@ $$;
 
 --
 -- TOC entry 2007 (class 0 OID 0)
--- Dependencies: 66
+-- Dependencies: 67
 -- Name: FUNCTION get_column_comment(column_name name, table_name oid); Type: COMMENT; Schema: html; Owner: -
 --
 
@@ -130,8 +130,8 @@ COMMENT ON FUNCTION get_column_comment(column_name name, table_name oid) IS 'Ese
 
 
 --
--- TOC entry 65 (class 1255 OID 23172)
--- Dependencies: 470 20
+-- TOC entry 66 (class 1255 OID 23172)
+-- Dependencies: 20 470
 -- Name: get_column_label(name, oid, character); Type: FUNCTION; Schema: html; Owner: -
 --
 
@@ -154,7 +154,7 @@ $_$;
 
 --
 -- TOC entry 2008 (class 0 OID 0)
--- Dependencies: 65
+-- Dependencies: 66
 -- Name: FUNCTION get_column_label(column_name name, table_name oid, lang character); Type: COMMENT; Schema: html; Owner: -
 --
 
@@ -163,18 +163,20 @@ Creare un commento che contiene la label: comment on column studenti.matricola_s
 
 
 --
--- TOC entry 76 (class 1255 OID 23443)
--- Dependencies: 20 470
+-- TOC entry 47 (class 1255 OID 23443)
+-- Dependencies: 470 20
 -- Name: get_column_max_size(name, oid); Type: FUNCTION; Schema: html; Owner: -
 --
 
 CREATE FUNCTION get_column_max_size(column_name name, table_name oid) RETURNS integer
     LANGUAGE plpgsql
     AS $$DECLARE
-	result pg_attribute.atttypmod%TYPE;
+	result  pg_attribute.atttypmod%TYPE;
+	id_tipo pg_attribute.atttypid%TYPE;
+	tipo pg_type%ROWTYPE;
 BEGIN
-	SELECT atttypmod
-	INTO result
+	SELECT atttypmod, atttypid
+	INTO result, id_tipo
 	FROM pg_attribute
 	WHERE attrelid=table_name
 	  AND attstattarget=-1
@@ -183,6 +185,18 @@ BEGIN
 	  AND attname=column_name;
 	IF (result <> -1) THEN
 		result := result - 4;
+	ELSE
+		SELECT *
+		INTO tipo
+		FROM pg_type
+		WHERE oid=id_tipo;
+		IF (tipo.typname = 'char') THEN
+			result := tipo.typlen;
+		ELSIF (tipo.typname = 'date') THEN
+			-- typlen e' 4 cioe' basta un intero
+			-- ma per una data facciamo 10 caratteri
+			result := 10;
+		END IF;
 	END IF;
 	-- Da aggiungere la gestione di atttypmod = -1
 	-- per esempio le date e i caratteri
@@ -193,7 +207,7 @@ $$;
 
 --
 -- TOC entry 2009 (class 0 OID 0)
--- Dependencies: 76
+-- Dependencies: 47
 -- Name: FUNCTION get_column_max_size(column_name name, table_name oid); Type: COMMENT; Schema: html; Owner: -
 --
 
@@ -240,7 +254,7 @@ COMMENT ON FUNCTION get_column_visible_size(column_name name, table_name oid) IS
 
 --
 -- TOC entry 45 (class 1255 OID 23444)
--- Dependencies: 470 20
+-- Dependencies: 20 470
 -- Name: get_input_text(name, oid, text, boolean); Type: FUNCTION; Schema: html; Owner: -
 --
 
@@ -268,7 +282,7 @@ $$;
 
 
 --
--- TOC entry 75 (class 1255 OID 23435)
+-- TOC entry 76 (class 1255 OID 23435)
 -- Dependencies: 20 470
 -- Name: show_column(name, oid); Type: FUNCTION; Schema: html; Owner: -
 --
@@ -295,16 +309,17 @@ $_$;
 
 --
 -- TOC entry 2011 (class 0 OID 0)
--- Dependencies: 75
+-- Dependencies: 76
 -- Name: FUNCTION show_column(column_name name, table_name oid); Type: COMMENT; Schema: html; Owner: -
 --
 
 COMMENT ON FUNCTION show_column(column_name name, table_name oid) IS 'Esempio d''uso: select html.show_column(''matricola_studente'', ''studenti''::regclass);Creare un commento che contiene la label, la size e show: comment on column studenti.matricola_studente is E''Matricola Studente\\nlabel@it="Matricola:"\\nsize="15"\\nshow="true"'';';
 
 
--- Completed on 2010-07-11 17:49:18 CEST
+-- Completed on 2010-07-11 18:15:53 CEST
 
 --
 -- PostgreSQL database dump complete
 --
+
 
