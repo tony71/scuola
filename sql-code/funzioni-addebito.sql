@@ -1,3 +1,5 @@
+set search_path to public,pagamenti;
+
 CREATE OR REPLACE FUNCTION pagamenti.crea_addebito(in_matricola character, in_importo numeric, in_causale character varying, in_data_scadenza date, in_anno_scolastico character, in_id_tipo_addebito integer)
   RETURNS bigint AS
 $BODY$DECLARE

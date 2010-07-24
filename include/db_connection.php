@@ -27,7 +27,7 @@ try {
 	}
 	syslog(LOG_INFO, 'Username: '.$user);
 	// syslog(LOG_INFO, 'Password: '.$pass);
-	$host = 'bi-proc';
+	$host = 'localhost';
 	$dbname = 'scuola';
 	$conn_string = 'pgsql:host=' . $host . ';';
 	$conn_string .= 'dbname=' . $dbname;
