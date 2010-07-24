@@ -128,12 +128,9 @@ else {
 	</fieldset>
 	<fieldset>
 		<legend>Scuola</legend>
-		<select name="scuola">
-			<option name="tutte">Tutte </option>
 			<?php
 			include('include/select_scuole.php');
 			?>
-		</select>
 	</fieldset>
 	<fieldset>
 		<legend>Anno scolastico</legend>
@@ -182,7 +179,8 @@ else {
 	</fieldset>
 	<fieldset>
 		<legend>Data</legend>
-		<input type="text" name="data" value="<?php require('include/oggi.php'); echo oggi($db); ?>" />
+		<!-- <input type="text" name="data" value="<?php require('include/oggi.php'); echo oggi($db); ?>" />-->
+		<input type="text" name="data" value="" />
 	</fieldset>
 	<input type="submit" name="submit" value="Cerca" />
 	<input type="hidden" name="submitted" value="TRUE" />
