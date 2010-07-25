@@ -1,4 +1,6 @@
 -- I dati si prendono dalla tabella codici_catastali
+-- Invece per gli stranieri mi pare che ci voglia solo
+-- lo stato estero di nascita (vedi flusso al ministero)
 
 update persone
 set provincia_nascita='TO', comune_nascita='L219'
