@@ -1,5 +1,7 @@
 create role segreteria;
 
+set search_path=public,pagamenti;
+
 grant all on table addebiti to segreteria;
 grant all on table anni_scolastici to segreteria;
 grant all on table attivita to segreteria;

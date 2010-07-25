@@ -5,3 +5,20 @@ Cartella dove inserire il codice SQL.
 
 - Schema html contiene una serie di funzioni per generare
   codice html (tipo <label/> e <input type="text">)
+
+
+Moifiche a Postgresql
+- pg_hba.conf: aggiunta la riga
+		host    all         all         192.168.1.0/24        md5
+	Modificate tutte le altre in md5 per usare localhost
+- postgresql.conf: modificata listen_addresses in
+		listen_addresses = '192.168.1.9, localhost'
+- Creazione di un nuovo utente (superuser per non usare postgres):
+	dall'utente postgres eseguire il comando:
+		createuser -P -s -e tony
+- Connettersi al db postgres:
+	psql --host=192.168.1.9 -d postgres -U tony
+- Installare i driver per connettersi a postgresql da php:
+	yum install php-pgsql.x86_64
+- Con SELinux di default httpd non puo' connettersi ad un DB. Per modificare:
+	setsebool -P httpd_can_network_connect_db=1

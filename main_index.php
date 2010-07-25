@@ -19,8 +19,13 @@ if (isset($_POST['scuola'])) {
 elseif (isset($_GET['scuola'])) {
 	$scuola = $_GET['scuola'];
 }
-if ($scuola == 'Tutte') {
-	unset($scuola);
+$first = TRUE;
+foreach($scuola as $key => $value) {
+	if ($first == FALSE) {
+		$lista_scuole .= ', ';
+	}
+	$lista_scuole .= "'" . $value . "'";
+	$first = FALSE;
 }
 
 if (isset($_POST['anno'])) {
@@ -90,7 +95,7 @@ else {
 $num = 0;
 
 if (isset($_POST['submitted'])) {
-	$sql = "select * from cerca_studenti('$nominativo','$scuola','$anno',$classe,'$sezione','$indirizzo','$stato',$data)";
+	$sql = "select * from cerca_studenti('$nominativo',ARRAY[$lista_scuole]::character(10)[],'$anno',$classe,'$sezione','$indirizzo','$stato',$data)";
 	$sql .= " order by cognome, nome";
 	try {
 		$stm = $db->query($sql);
