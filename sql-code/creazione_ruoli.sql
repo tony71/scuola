@@ -51,6 +51,7 @@ grant all on schema html to segreteria;
 grant all on schema pagamenti to segreteria;
 grant all on sequence pagamenti.addebiti_id_addebito_seq to segreteria;
 grant all on sequence pagamenti.ricevute_id_ricevuta_testata_seq to segreteria;
+grant all on sequence persone_id_seq to segreteria;
 
 create role fabio login password 'fruntiX';
 
