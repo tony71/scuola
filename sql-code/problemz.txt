@@ -1,6 +1,7 @@
 # NOTA: aggiungo in cima i nuovi problemi
 
 - mettere a posto i comuni di nascita e le province eccetera. lo facciamo questo sabato?
+  Per questo problema ho gia' fatto un file (vedi pulizia-dati.sql) con alcune query di esempio.
 - quando si visualizza una ricevuta (es: scuola/ricevute.php?matricola=0835) aggiungere una colonna con l'anno scolastico
 - dettagli ricevuta non funziona (es: scuola/dettagli_ricevuta.php?id_ricevuta=5
 - guardando gli addebiti pagati mi permette di creare ricevuto e rimborso, ma non dovrebbe. i rimborsi devono essere creati in un altro punto dell'interfaccia... PARLIAMONE (in realta' parlando qui con la contabile i rimborsi forse non li dobbiamo neanche trattare, quindi per ora togliamo proprio il pulsante)
