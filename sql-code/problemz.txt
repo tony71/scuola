@@ -5,5 +5,6 @@
 - quando si visualizza una ricevuta (es: scuola/ricevute.php?matricola=0835) aggiungere una colonna con l'anno scolastico
 - dettagli ricevuta non funziona (es: scuola/dettagli_ricevuta.php?id_ricevuta=5
 - guardando gli addebiti pagati mi permette di creare ricevuto e rimborso, ma non dovrebbe. i rimborsi devono essere creati in un altro punto dell'interfaccia... PARLIAMONE (in realta' parlando qui con la contabile i rimborsi forse non li dobbiamo neanche trattare, quindi per ora togliamo proprio il pulsante)
-
+- Ricerca iniziale: se non ci sono studenti niente pulsante export in excel
+- Generale: aggiungere l'ordinamento cliccando sull'intestazione della colonna
 
