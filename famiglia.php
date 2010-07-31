@@ -4,25 +4,20 @@ require_once('include/db_connection.php');
 $page_title = 'Benvenuti a Scuola';
 include('include/header.html');
 
-if (isset($_POST['submitted'])) {
-	$nominativo = $_POST['nominativo'];
-}
-elseif (isset($_GET['nominativo'])) {
-	$nominativo = $_GET['nominativo'];
+if (isset($_GET['id_famiglia'])) {
+	$id_fam = $_GET['id_famiglia'];
 }
 else {
 }
-$num = 0;
 
-if (isset($_POST['submitted'])) {
-	$sql = "select * from cerca_persone('$nominativo')";
+	$sql = "select * from persone where id_famiglia = '".$id_fam. "'";
 	$sql .= " order by cognome, nome";
 	try {
 		$stm = $db->query($sql);
 		$num = $stm->rowCount();
 		if ($num > 0) {
 			echo '<h1>Nominativi trovati: '. $num . '</h1>';
-			require('include/tabella_persone.php');
+			require('dettagli_famiglia.php');
 			echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"');
 		}
 		else {
@@ -42,19 +37,6 @@ if (isset($_POST['submitted'])) {
 	catch(PDOException $e) {
 		echo $e->getMessage();
 	}
-}
-else {
-?>
 
-<form action="main_index.php" method="post">
-	<fieldset>
-		<legend>Nome o Cognome</legend>
-		<input type="text" name="nominativo" />
-	</fieldset>
-	<input type="submit" name="submit" value="Cerca" />
-	<input type="hidden" name="submitted" value="TRUE" />
-</form>
-<?php
-}
 include('include/footer.html');
 ?>

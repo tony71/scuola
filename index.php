@@ -11,16 +11,29 @@ if (isset($_POST['submitted'])) {
 }
 else {
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
+		<?php
+			if (isset($javascript)) {
+				echo '<script type="text/javascript" src="';
+				echo $javascript;
+				echo '"></script>';
+			}
+		?>
 		<title>
-			Login
+			<?php echo $page_title; ?>
 		</title>
 		<link rel="stylesheet" href="include/style.css" type="text/css" media="screen" />
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	</head>
 	<body>
+		<div id="header">
+			<h1>Oratorio Salesiano Michele Rua</h1>
+			<h2>un bel posto per studiare...</h2>
+		</div>
+		<div id="content">
 		<form method="post" action="index.php">
 			<label>Nome Utente:</label>
 			<input type="text" name="username" />
@@ -30,8 +43,7 @@ else {
 			<input type="submit" name="submit" value="Login" />
 			<input type="hidden" name="submitted" value="TRUE" />
 		</form>
-	</body>
-</html>
 <?php
 }
+include('include/footer.html');
 ?>
