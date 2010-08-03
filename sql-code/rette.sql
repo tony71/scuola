@@ -32,63 +32,63 @@ GRANT ALL ON TABLE pagamenti.configurazione_rette TO segreteria;
 -----------------------------------------------------------
 -- Infanzia
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (1, 'TO1A139001', 165, '1a Rata', 18, 9);
+VALUES (1, 'TO1A139001', 165, 'Rata 1', 18, 9);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (2, 'TO1A139001', 165, '2a Rata', 10, 10);
+VALUES (2, 'TO1A139001', 165, 'Rata 2', 10, 10);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (3, 'TO1A139001', 165, '3a Rata', 10, 11);
+VALUES (3, 'TO1A139001', 165, 'Rata 3', 10, 11);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (4, 'TO1A139001', 165, '4a Rata', 10, 12);
+VALUES (4, 'TO1A139001', 165, 'Rata 4', 10, 12);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (5, 'TO1A139001', 165, '5a Rata', 10, 1);
+VALUES (5, 'TO1A139001', 165, 'Rata 5', 10, 1);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (6, 'TO1A139001', 165, '6a Rata', 10, 2);
+VALUES (6, 'TO1A139001', 165, 'Rata 6', 10, 2);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (7, 'TO1A139001', 165, '7a Rata', 10, 3);
+VALUES (7, 'TO1A139001', 165, 'Rata 7', 10, 3);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (8, 'TO1A139001', 165, '8a Rata', 10, 4);
+VALUES (8, 'TO1A139001', 165, 'Rata 8', 10, 4);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (9, 'TO1A139001', 165, '9a Rata', 10, 5);
+VALUES (9, 'TO1A139001', 165, 'Rata 9', 10, 5);
 
 -- Elementare
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (1, 'TO1E02100R', 250, '1a Rata', 18, 9);
+VALUES (1, 'TO1E02100R', 250, 'Rata 1', 18, 9);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (2, 'TO1E02100R', 250, '2a Rata', 10, 10);
+VALUES (2, 'TO1E02100R', 250, 'Rata 2', 10, 10);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (3, 'TO1E02100R', 250, '3a Rata', 10, 11);
+VALUES (3, 'TO1E02100R', 250, 'Rata 3', 10, 11);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (4, 'TO1E02100R', 250, '4a Rata', 10, 12);
+VALUES (4, 'TO1E02100R', 250, 'Rata 4', 10, 12);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (5, 'TO1E02100R', 250, '5a Rata', 10, 1);
+VALUES (5, 'TO1E02100R', 250, 'Rata 5', 10, 1);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (6, 'TO1E02100R', 250, '6a Rata', 10, 2);
+VALUES (6, 'TO1E02100R', 250, 'Rata 6', 10, 2);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (7, 'TO1E02100R', 250, '7a Rata', 10, 3);
+VALUES (7, 'TO1E02100R', 250, 'Rata 7', 10, 3);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (8, 'TO1E02100R', 250, '8a Rata', 10, 4);
+VALUES (8, 'TO1E02100R', 250, 'Rata 8', 10, 4);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (9, 'TO1E02100R', 250, '9a Rata', 10, 5);
+VALUES (9, 'TO1E02100R', 250, 'Rata 9', 10, 5);
 
 -- Media
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (1, 'TO1M054009', 290, '1a Rata', 18, 9);
+VALUES (1, 'TO1M054009', 290, 'Rata 1', 18, 9);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (2, 'TO1M054009', 290, '2a Rata', 10, 10);
+VALUES (2, 'TO1M054009', 290, 'Rata 2', 10, 10);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (3, 'TO1M054009', 290, '3a Rata', 10, 11);
+VALUES (3, 'TO1M054009', 290, 'Rata 3', 10, 11);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (4, 'TO1M054009', 290, '4a Rata', 10, 12);
+VALUES (4, 'TO1M054009', 290, 'Rata 4', 10, 12);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (5, 'TO1M054009', 290, '5a Rata', 10, 1);
+VALUES (5, 'TO1M054009', 290, 'Rata 5', 10, 1);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (6, 'TO1M054009', 290, '6a Rata', 10, 2);
+VALUES (6, 'TO1M054009', 290, 'Rata 6', 10, 2);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (7, 'TO1M054009', 290, '7a Rata', 10, 3);
+VALUES (7, 'TO1M054009', 290, 'Rata 7', 10, 3);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (8, 'TO1M054009', 290, '8a Rata', 10, 4);
+VALUES (8, 'TO1M054009', 290, 'Rata 8', 10, 4);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (9, 'TO1M054009', 290, '9a Rata', 10, 5);
+VALUES (9, 'TO1M054009', 290, 'Rata 9', 10, 5);
 
 
 -- Funzioni
