@@ -104,6 +104,7 @@ body {
         padding:10px;
         text-align:center;
         width:751px;
+        clear: both;
 }
 
 /**********
@@ -153,8 +154,8 @@ body {
 }
 
 /* aggiunto da fabietto */
-fieldset	{ margin-top: 20px; }
-fieldset label { padding: 3px 0px 3px 0px; font-weight: bold; display: block; text-align: center; }
-.rg 	{ border-width: 1px; border-style: solid; border-color: #ccc #999 #999 #ccc; padding: 5px 8px 0px 6px; font-size: 18pt; width: 70%; height: 32px; }
-.brg	{ height: 30px; margin-top: 5px; padding: 3px 5px 3px 5px; border-color: #ccc #999 #999 #ccc; border-width: 1px; border-style: solid; background: #aaa; }
+#main_search fieldset	{ margin-top: 20px; }
+#main_search label { padding: 3px 0px 3px 0px; font-weight: bold; display: block; text-align: center; }
 #main_search { text-align: center;  }
+#main_search .rg 	{ border-width: 1px; border-style: solid; border-color: #ccc #999 #999 #ccc; padding: 5px 8px 0px 6px; font-size: 18pt; width: 70%; height: 32px; }
+#main_search .brg	{ height: 30px; margin-top: 5px; padding: 3px 5px 3px 5px; border-color: #ccc #999 #999 #ccc; border-width: 1px; border-style: solid; background: #aaa; }
