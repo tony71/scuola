@@ -45,15 +45,16 @@ if (isset($_POST['submitted'])) {
 }
 else {
 ?>
-
+<div id="main_search">
 <form action="main_index.php" method="post">
 	<fieldset>
-		<legend>Nome o Cognome</legend>
-		<input type="text" name="nominativo" />
+		<label>Ricerca su Nomi e Cognomi</label>
+		<input type="text" name="nominativo" class="rg" />
 	</fieldset>
-	<input type="submit" name="submit" value="Cerca" />
+	<input type="submit" name="submit" value="Cerca" class="brg" />
 	<input type="hidden" name="submitted" value="TRUE" />
 </form>
+</div>
 <?php
 }
 include('include/footer.html');

@@ -32,23 +32,23 @@ GRANT ALL ON TABLE pagamenti.configurazione_rette TO segreteria;
 -----------------------------------------------------------
 -- Infanzia
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (1, 'TO1A139001', 165, 'Rata 1', 18, 9);
+VALUES (1, 'TO1A139001', 170, 'Rata 1 + riscaldamento', 18, 9);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (2, 'TO1A139001', 165, 'Rata 2', 10, 10);
+VALUES (2, 'TO1A139001', 185, 'Rata 2 + riscaldamento', 10, 10);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (3, 'TO1A139001', 165, 'Rata 3', 10, 11);
+VALUES (3, 'TO1A139001', 185, 'Rata 3 + riscaldamento', 10, 11);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (4, 'TO1A139001', 165, 'Rata 4', 10, 12);
+VALUES (4, 'TO1A139001', 185, 'Rata 4 + riscaldamento', 10, 12);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (5, 'TO1A139001', 165, 'Rata 5', 10, 1);
+VALUES (5, 'TO1A139001', 185, 'Rata 5 + riscaldamento', 10, 1);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (6, 'TO1A139001', 165, 'Rata 6', 10, 2);
+VALUES (6, 'TO1A139001', 185, 'Rata 6 + riscaldamento', 10, 2);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (7, 'TO1A139001', 165, 'Rata 7', 10, 3);
+VALUES (7, 'TO1A139001', 185, 'Rata 7 + riscaldamento', 10, 3);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (8, 'TO1A139001', 165, 'Rata 8', 10, 4);
+VALUES (8, 'TO1A139001', 185, 'Rata 8 + riscaldamento', 10, 4);
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)
-VALUES (9, 'TO1A139001', 165, 'Rata 9', 10, 5);
+VALUES (9, 'TO1A139001', 185, 'Rata 9 + riscaldamento', 10, 5);
 
 -- Elementare
 INSERT INTO configurazione_rette(numero_rata, codice_meccanografico, importo, causale, giorno_scadenza, mese_scadenza)

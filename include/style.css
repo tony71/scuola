@@ -53,6 +53,7 @@ body {
 #navigation {   
         background:#fafafa;
         border-right:1px solid #999;
+        border-bottom:1px solid #999;
         margin:0 auto;              
         width:750px;                
         height:40px;                
@@ -150,3 +151,10 @@ body {
 .required {
         font-weight: bold;
 }
+
+/* aggiunto da fabietto */
+fieldset	{ margin-top: 20px; }
+fieldset label { padding: 3px 0px 3px 0px; font-weight: bold; display: block; text-align: center; }
+.rg 	{ border-width: 1px; border-style: solid; border-color: #ccc #999 #999 #ccc; padding: 5px 8px 0px 6px; font-size: 18pt; width: 70%; height: 32px; }
+.brg	{ height: 30px; margin-top: 5px; padding: 3px 5px 3px 5px; border-color: #ccc #999 #999 #ccc; border-width: 1px; border-style: solid; background: #aaa; }
+#main_search { text-align: center;  }
