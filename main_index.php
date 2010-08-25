@@ -15,7 +15,7 @@ else {
 $num = 0;
 
 if (isset($_POST['submitted'])) {
-	$sql = "select * from cerca_persone('$nominativo')";
+	$sql = "select * from cerca_studente('$nominativo')";
 	$sql .= " order by cognome, nome";
 	try {
 		$stm = $db->query($sql);
@@ -48,7 +48,7 @@ else {
 <div id="main_search">
 <form action="main_index.php" method="post">
 	<fieldset>
-		<label>Ricerca su Nomi e Cognomi</label>
+		<label>Ricerca Studenti per Cognome</label>
 		<input type="text" name="nominativo" class="rg" />
 	</fieldset>
 	<input type="submit" name="submit" value="Cerca" class="brg" />
