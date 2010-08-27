@@ -32,7 +32,7 @@ if (isset($_POST['submitted'])) {
 		$filename = 'studenti.xls';
 		// echo '<a href="genera_excel.php?sql='.$sql.'&titolo='.$titolo.'&filename='.$filename.'" target="_blank">Excel</a>';
 		echo '<form action="genera_excel.php" method="post">';
-		echo '<input type="submit" name="submit" value="Excel" />';
+		echo '<input type="submit" name="submit" value="Esporta in Excel" />';
 		echo '<input type="hidden" name="sql" value="'.$sql.'" />';
 		echo '<input type="hidden" name="title" value="'.$titolo.'" />';
 		echo '<input type="hidden" name="filename" value="'.$filename.'" />';

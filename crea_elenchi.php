@@ -102,22 +102,22 @@ if (isset($_POST['submitted'])) {
 		$num = $stm->rowCount();
 		if ($num > 0) {
 			echo '<h1>Studenti trovati: '. $num . '</h1>';
-			require('include/tabella_studenti.php');
-			echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"');
-		}
-		else {
-			echo '<p class="error">Non trovo studenti nel DB.</p>';
-		}
-		$titolo ='Prova';
-		$filename = 'studenti.xls';
+			$titolo ='Report';
+		$filename = 'report.xls';
 		// echo '<a href="genera_excel.php?sql='.$sql.'&titolo='.$titolo.'&filename='.$filename.'" target="_blank">Excel</a>';
 		echo '<form action="genera_excel.php" method="post">';
-		echo '<input type="submit" name="submit" value="Excel" />';
+		echo '<input type="submit" name="submit" value="Esporta in Excel" />';
 		echo '<input type="hidden" name="sql" value="'.$sql.'" />';
 		echo '<input type="hidden" name="title" value="'.$titolo.'" />';
 		echo '<input type="hidden" name="filename" value="'.$filename.'" />';
 		echo '<input type="hidden" name="submitted" value="TRUE" />';
 		echo '</form>';
+		require('include/tabella_studenti.php');
+			echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"');
+		}
+		else {
+			echo '<p class="error">Non trovo studenti nel DB.</p>';
+		}
 	}
 	catch(PDOException $e) {
 		echo $e->getMessage();
@@ -128,68 +128,60 @@ else {
 
 <form action="crea_elenchi.php" method="post">
 	<fieldset>
-		<legend>Nome o Cognome</legend>
+		<legend>Studente</legend>
+		<label>Nome o Cognome</label>
 		<input type="text" name="nominativo" />
-	</fieldset>
-	<fieldset>
-		<legend>Scuola</legend>
-			<?php
-			include('include/select_scuole.php');
-			?>
-	</fieldset>
-	<fieldset>
-		<legend>Anno scolastico</legend>
+		<label>Anno scolastico</label>
 		<select name="anno">
 			<option name="tutti">Tutti </option>
-			<?php
-			include('include/select_anno.php');
-			?>
+			<?php include('include/select_anno.php'); ?>
 		</select>
-	</fieldset>
-	<fieldset>
-		<legend>Classe</legend>
-		<select name="classe">
-			<option name="tutte">Tutte </option>
-			<?php
-			include('include/select_classe.php');
-			?>
-		</select>
-	</fieldset>
-	<fieldset>
-		<legend>Sezione</legend>
-		<select name="sezione">
-			<option name="tutte">Tutte </option>
-			<?php
-			include('include/select_sezione.php');
-			?>
-		</select>
-	</fieldset>
-	<fieldset>
-		<legend>Indirizzo</legend>
-		<select name="indirizzo">
-			<option name="tutti">Tutti </option>
-			<?php
-			include('include/select_indirizzo.php');
-			?>
-		</select>
-	</fieldset>
-	<fieldset>
-		<legend>Stato Studente</legend>
+		<br />
+		<label>Stato Studente</label>
 		<select name="stato">
 			<option name="tutti">Tutti </option>
 			<?php
 			include('include/select_stato_studente.php');
 			?>
 		</select>
-	</fieldset>
-	<fieldset>
-		<legend>Data</legend>
+		<label>Data</label>
 		<!-- <input type="text" name="data" value="<?php require('include/oggi.php'); echo oggi($db); ?>" />-->
 		<input type="text" name="data" value="" />
 	</fieldset>
-	<input type="submit" name="submit" value="Cerca" />
+	
+	<fieldset>
+		<legend>Scuola</legend>
+			<?php include('include/select_scuole.php'); ?>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Classe</legend>
+		<label>Anno</label>
+		<select name="classe">
+			<option name="tutte">Tutte</option>
+			<?php include('include/select_classe.php'); ?>
+		</select>
+		<label>Sezione</label>
+		<select name="sezione">
+			<option name="tutte">Tutte</option>
+			<?php
+			include('include/select_sezione.php');
+			?>
+		</select>
+		<label>Indirizzo</label>
+		<select name="indirizzo">
+			<option name="tutti">Tutti</option>
+			<?php
+			include('include/select_indirizzo.php');
+			?>
+		</select>
+
+	</fieldset>
+
+	<input type="submit" name="submit" value="Crea Report" class="brg" />
 	<input type="hidden" name="submitted" value="TRUE" />
 </form>
+
 <?php
 }
 include('include/footer.html');

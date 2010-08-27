@@ -23,33 +23,35 @@ elseif (isset($_GET['matricola'])) {
 else {
 }
 
-$form = '<form action="addebiti.php" method="post">';
-$form .= '<fieldset>';
-$form .= '<legend>Seleziona una tabella</legend>';
+$form_filtra = '<form action="addebiti.php" method="post">';
+$form_filtra .= '<fieldset>';
+$form_filtra .= '<legend>Filtra gli addebiti</legend>';
 if ($table == 'vista_addebiti_non_pagati') {
-	$form .= ' Addebiti Non Pagati<input type="radio" name="table" value="vista_addebiti_non_pagati" checked="checked"/>';
+	$form_filtra .= ' Addebiti da Pagare <input type="radio" name="table" value="vista_addebiti_non_pagati" checked="checked" />';
+	$t = 'Addebiti da Pagare';
 }
 else {
-	$form .= ' Addebiti Non Pagati<input type="radio" name="table" value="vista_addebiti_non_pagati"/>';
+	$form_filtra .= ' Addebiti da Pagare <input type="radio" name="table" value="vista_addebiti_non_pagati" />';
 }
 if ($table == 'vista_addebiti_pagati') {
-	$form .= ' Addebiti Pagati<input type="radio" name="table" value="vista_addebiti_pagati" checked="checked"/>';
+	$form_filtra .= ' Addebiti Pagati <input type="radio" name="table" value="vista_addebiti_pagati" checked="checked"/>';
+	$t = 'Addebiti Pagati';
 }
 else {
-	$form .= ' Addebiti Pagati<input type="radio" name="table" value="vista_addebiti_pagati"/>';
+	$form_filtra .= ' Addebiti Pagati <input type="radio" name="table" value="vista_addebiti_pagati"/>';
 }
 if ($table == 'vista_addebiti') {
-	$form .= ' Tutti gli Addebiti<input type="radio" name="table" value="vista_addebiti" checked="checked"/>';
+	$form_filtra .= ' Tutti gli Addebiti <input type="radio" name="table" value="vista_addebiti" checked="checked"/>';
+	$t = 'Tutti gli Addebiti';
 }
 else {
-	$form .= ' Tutti gli Addebiti<input type="radio" name="table" value="vista_addebiti"/>';
+	$form_filtra .= ' Tutti gli Addebiti <input type="radio" name="table" value="vista_addebiti"/>';
 }
-$form .= '</fieldset>';
-$form .= '<input type="submit" name="submit" value="Submit" />';
-$form .= '<input type="hidden" name="submitted" value="TRUE" />';
-$form .= '<input type="hidden" name="matricola" value="'.$matricola.'" />';
-$form .= '</form>';
-echo $form;
+$form_filtra .= ' <input type="submit" name="submit" value="Filtra" class="brg" />';
+$form_filtra .= '<input type="hidden" name="submitted" value="TRUE" />';
+$form_filtra .= '<input type="hidden" name="matricola" value="'.$matricola.'" />';
+$form_filtra .= '</form>';
+$form_filtra .= '</fieldset>';
 
 try {
 	$sql = "select count(id_addebito) from $table where matricola_studente=:matricola";
@@ -64,7 +66,7 @@ try {
 	$stm->execute();
 	$m = $stm->fetch(PDO::FETCH_BOTH);
 
-	echo '<h1>Addebiti Registrati (' . $r[0] . ') ' . $m['cognome'] . ', ' . $m['nome'] . '</h1>';
+	echo '<h1>'.$t.' per '.$m['nome'].' '.$m['cognome'].'</h1>';
 }
 catch(PDOException $e) {
        	echo $e->getMessage();
@@ -103,12 +105,13 @@ try {
 		require('include/tabella_addebiti.php');
 		$form = '<form action="ricevuta_rimborso.php" method="post">';
 		$form .= result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"');
-		$form .= '<input type="submit" name="crea" value="Crea Ricevuta" />';
-		$form .= '<br />';
+		$form .= '<input type="submit" name="crea" value="Crea Ricevuta" class="brg" />';
+/*		$form .= '<br />';
 		$form .= '<input type="submit" name="crea" value="Crea Rimborso" />';
-		$form .= '<input type="hidden" name="submitted" value="TRUE" />';
+		$form .= '<input type="hidden" name="submitted" value="TRUE" />'; */
 		$form .= '</form>';
 		echo $form;
+		
 	}
 	else {
 		echo '<p class="error">Non sono presenti addebiti nel DB.</p>';
@@ -118,15 +121,17 @@ catch(PDOException $e) {
         echo $e->getMessage();
 }
 
-echo '<div align="center">';
 $form = '<form action="aggiungi_addebito.php" method="post">';
-$form .= '<input type="submit" name="nuovo_addebito" value="Nuovo Addebito" />';
+$form .= '<input type="submit" name="nuovo_addebito" value="Nuovo Addebito" class="brg" />';
 $form .= '<input type="hidden" name="submitted" value="TRUE" />';
 $form .= '<input type="hidden" name="matricola" value="'.$matricola.'" />';
 $form .= '</form>';
 echo $form;
 
-echo '</div>';
+echo $form_filtra;
+
+echo '<a href="dettagli_studente.php?matricola=' . $matricola . '" class="brg">Torna a Dettagli Studente</a>';
+
 
 if ($pages > 1) {
 	echo '<br /><p>';
@@ -174,8 +179,6 @@ if ($pages > 1) {
 	}
 	echo '</p>';
 }
-
-echo '<a href="dettagli_studente.php?matricola=' . $matricola . '">Torna a Dettagli Studente</a>';
 
 include('include/footer.html');
 ?>

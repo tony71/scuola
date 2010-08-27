@@ -1,161 +1,52 @@
-/*                                    
-    Author  :       Christopher Robinson
-    Email           :       christopher@edg3.co.uk
-    Website :       http://www.edg3.co.uk/        
-*/                                                    
-* {                                                   
-         border:0;                                     
-         margin:0;                                     
-         padding:0;                                    
-}                                                     
+* 		{ border:0; margin:0; padding:0; }                                                     
+body	{ background:#fafafa; color:#555; font:0.8em Arial, Helvetica, "bitstream vera sans", sans-serif; }                                                                      
+a 		{ color:#777; text-decoration:none;}                            
+a:hover { color:#333; text-decoration:none;}                            
 
-/* general */
-a {          
-        color:#777;
-        text-decoration:none;
-}                            
+#header		{ height:80px; margin:0 auto; width:751px; }                                    
+#header h1 	{ color:#888; font-size:300%; letter-spacing:-3px; text-align:right; padding:5px; margin-bottom:-20px; }                                    
+#header h2 	{ color:#CCC; font-size:200%; letter-spacing:-2px; text-align:right; }                                    
 
-a:hover {
-        color:#333;
-        text-decoration:none;
-}                            
+.navigation 		{ background:#fafafa; margin:9px auto; width:750px; height:30px; list-style:none; }                                   
+.navigation li 		{ float:left; list-style:none; }                                   
+.navigation a 		{ border-width: 1px; border-style: solid; border-color: #ccc #999 #999 #ccc;
+					  -moz-border-radius: 5px; border-radius: 5px; color:#555;
+                  	  display:block; line-height:29px; text-align:center; background:#c2e350;
+                  	  padding-left: 7px; padding-right: 7px; margin-left: 3px; }                                   
+.navigation a:hover { background:#e3e3e3; color:#555; }                                   
+.navigation .active { background:#e3e3e3; color:#777; }
 
-/* body */
-body {    
-        background:#fafafa;
-        color:#555;        
-        font:0.8em Arial, Helvetica, "bitstream vera sans", sans-serif;
-}                                                                      
+#content 	{ height:auto; margin: 9px auto; padding:0 0 20px; width:751px; line-height: 2em; }
+#content h1 { border-bottom:1px dashed #999; font-size:1.8em; padding:20px 0 0; margin-bottom: 19px; }
+#content p 	{ padding:20px 20px 0;}
 
-/* header */
-#header {   
-        border-bottom:1px solid #999;
-        height:80px;                 
-        margin:0 auto;               
-        width:751px;                 
-}                                    
-#header h1 {                         
-        color:#888;                  
-        font-size:300%;              
-        letter-spacing:-3px;         
-        text-align:right;            
-        padding:5px;                 
-        margin-bottom:-20px;         
-}                                    
-#header h2 {                         
-        color:#CCC;                  
-        font-size:200%;              
-        letter-spacing:-2px;         
-        text-align:right;            
-}                                    
+#footer 	{ border-top:1px solid #999; height:50px; margin:10px auto; padding:0px; text-align:center;
+	          width:751px; clear: both; }
 
-/* navigation */
-#navigation {   
-        background:#fafafa;
-        border-right:1px solid #999;
-        border-bottom:1px solid #999;
-        margin:0 auto;              
-        width:750px;                
-        height:40px;                
-        list-style:none;            
-}                                   
-#navigation li {                    
-        border-left:1px solid #999; 
-        float:left;                 
-        width:149px;                
-        list-style:none;            
-}                                   
-#navigation a {                     
-        color:#555;                 
-        display:block;              
-        line-height:40px;           
-        text-align:center;          
-}                                   
-#navigation a:hover {               
-        background:#e3e3e3;         
-        color:#555;                 
-}                                   
-#navigation .active {               
-        background:#e3e3e3;
-        color:#777;
-}
+.error		{ font-weight: bold; color: #C00; }
+.required	{ font-weight: bold; }
 
-/* content */
-#content {
-        height:auto;
-        margin:0 auto;
-        padding:0 0 20px;
-        width:751px;
-}
-#content h1 {
-        border-bottom:1px dashed #999;
-        font-size:1.8em;
-        padding:20px 0 0;
-}
-#content p {
-        padding:20px 20px 0;
-}
+/*
+#giudizio2 				{ position:relative; top:60px; left:-60px;}
+#contenitore_giudizi	{ margin: 1%; padding: 0; width: 97%;}
+#giudizio_sinistra,
+#giudizio_destra		{ float: left; width: 46.5%; margin: 1% 0 1% 1%; padding: 1%;}
+#giudizio_destra 		{ float: right;	margin: 1% 1% 1% 0;}
+.clear 					{ height: 0; font-size: 1px; margin: 0; padding: 0; line-height: 0; clear: both;}
+*/
 
-/* footer */
-#footer {
-        border-top:1px solid #999;
-        height:50px;
-        margin:0 auto;
-        padding:10px;
-        text-align:center;
-        width:751px;
-        clear: both;
-}
-
-/**********
-#giudizio2 {
-	position:relative;
-	top:60px;
-	left:-60px;
-}
-************/
-/**********************
-#contenitore_giudizi {
-	margin: 1%;
-	padding: 0;
-	width: 97%;
-}
-
-#giudizio_sinistra, #giudizio_destra {
-	float: left;
-	width: 46.5%;
-	margin: 1% 0 1% 1%;
-	padding: 1%;
-}
-
-#giudizio_destra {
-	float: right;
-	margin: 1% 1% 1% 0;
-}
-
-.clear {
-	height: 0;
-	font-size: 1px;
-	margin: 0;
-	padding: 0;
-	line-height: 0;
-	clear: both;
-}
-**************************/
-
-/* Added by Larry Ullman: */
-.error {
-        font-weight: bold;
-        color: #C00
-}
-
-.required {
-        font-weight: bold;
-}
-
-/* aggiunto da fabietto */
-#main_search fieldset	{ margin-top: 20px; }
-#main_search label { padding: 3px 0px 3px 0px; font-weight: bold; display: block; text-align: center; }
-#main_search { text-align: center;  }
-#main_search .rg 	{ border-width: 1px; border-style: solid; border-color: #ccc #999 #999 #ccc; padding: 5px 8px 0px 6px; font-size: 18pt; width: 70%; height: 32px; }
-#main_search .brg	{ height: 30px; margin-top: 5px; padding: 3px 5px 3px 5px; border-color: #ccc #999 #999 #ccc; border-width: 1px; border-style: solid; background: #aaa; }
+#main_search fieldset	{ margin-top: 20px; border: none; }
+#main_search label 		{ padding: 3px 0px 3px 0px; font-weight: bold; display: block; text-align: center; }
+#main_search 			{ text-align: center; border: 1px #999 dashed; padding: 11px;  }
+#main_search .rg 		{ border-width: 1px; border-style: solid; border-color: #ccc #999 #999 #ccc; 
+						  padding: 5px 8px 0px 6px; font-size: 18pt; width: 70%; height: 32px; }
+.brg					{ height: 30px; margin-top: 5px; padding: 3px 5px 3px 5px; background: #c2e350;
+						  border-color: #ccc #999 #999 #ccc; border-width: 1px; border-style: solid; 
+						  border-radius: 5px; -moz-border-radius: 5px; }
+.brg:hover				{ background-color: #ddd; }
+fieldset 				{ border: 1px #333 dashed; padding: 9px; margin-bottom: 11px; }
+legend 					{ padding: 3px; font-size: large; color: #3655c0; }
+input, select, textarea { font-size: 12pt; color: #333; border: 1px solid #999; padding: 1px 3px 1px 3px; }
+label 					{ margin: 3px 7px 3px 7px; }
+table 					{ line-height: 1em; }
+td						{ padding: 1px 0px 5px 1px; }

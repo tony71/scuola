@@ -1,9 +1,9 @@
 <?php
 function autenticate()
 {
-	header('WWW-Authenticate: Basic Realm="Secret Stash"');
+	header('WWW-Authenticate: Basic Realm="Inserire nome utente e password"');
 	header('HTTP/1.0 401 Unauthorized');
-	print('You must provide the proper credentials!');
+	print('Devi autenticarti per poter accedere al database');
 }
 
 try {

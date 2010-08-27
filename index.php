@@ -35,13 +35,17 @@ else {
 		</div>
 		<div id="content">
 		<form method="post" action="index.php">
-			<label>Nome Utente:</label>
+			<fieldset style="text-align:center;">
+			<legend>Autenticazione</legend>
+			<label>Nome Utente</label><br />
 			<input type="text" name="username" />
 			<br />
-			<label>Password:</label>
+			<label>Password</label><br />
 			<input type="password" name="password" />
-			<input type="submit" name="submit" value="Login" />
+			<br />
+			<input type="submit" name="submit" value="Login" class="brg" />
 			<input type="hidden" name="submitted" value="TRUE" />
+			</fieldset>
 		</form>
 <?php
 }

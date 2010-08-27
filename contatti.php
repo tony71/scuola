@@ -59,7 +59,7 @@ try {
 		exit();
 	}
 	$r = $stm->fetch(PDO::FETCH_BOTH);
-	echo '<h1>Contatti di ' . $r['cognome'] . ', ' . $r['nome'] . '</h1>';
+	echo '<h1>Contatti di ' . $r['nome'] . ' ' . $r['cognome'] . '</h1>';
 	
 	$sql = "select * from contatti_famiglia($id_persona) where id_persona=$id_persona order by cognome, nome";
 	$stm = $db->query($sql);
@@ -83,7 +83,7 @@ catch(PDOException $e) {
 
 echo '<br /><div align="center">';
 $form = '<form action="aggiungi_contatto.php" method="post">';
-$form .= '<input type="submit" name="nuovo_contatto" value="Nuovo Contatto" />';
+$form .= '<input type="submit" name="nuovo_contatto" value="Crea Nuovo Contatto" class="brg" />';
 $form .= '<input type="hidden" name="submitted" value="TRUE" />';
 $form .= '<input type="hidden" name="id_persona" value="'.$id_persona.'" />';
 $form .= '</form>';

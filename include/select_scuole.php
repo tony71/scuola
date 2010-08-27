@@ -6,7 +6,7 @@ try {
 	while ($r = $stm->fetch(PDO::FETCH_BOTH)) {
 		$option = '<input type="checkbox" name="scuola[]" value="';
 		$option .= $r['codice_meccanografico'];
-		$option .= '" />';
+		$option .= '" /> ';
 		$option .= $r['codice_meccanografico'] . ' - ' . $r['denominazione'].'<br />';
 		echo $option;
 	}

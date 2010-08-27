@@ -11,18 +11,20 @@ function singola_persona($r, $readonly=true, $db)
 
 	$result = '<fieldset>';
 
-	$result .= '<legend>Dati Anagrafici:</legend>';
+	$result .= '<legend>Dati Anagrafici</legend>';
 
 	/*
 	$result .= '<label for="nome" class="required">Nome:</label>';
 	$result .= '<input type="text" name="nome" id="nome" size="15" maxlength="50" value="' . (isset($r) ? $r['nome'] : '') . '" ' . $s . ' />';
 	*/
 	require_once('html_input_text.php');
-	$result .= html_input_text($db, 'nome', 'persone', (isset($r) ? $r['nome'] : ''), $readonly);
 	$result .= html_input_text($db, 'cognome', 'persone', (isset($r) ? $r['cognome'] : ''), $readonly);
+	$result .= html_input_text($db, 'nome', 'persone', (isset($r) ? $r['nome'] : ''), $readonly);
 	$result .= html_input_text($db, 'sesso', 'persone', (isset($r) ? $r['sesso'] : ''), $readonly);
+	$result .= '<br />';
 	$result .= html_input_text($db, 'id_famiglia', 'persone', (isset($r) ? $r['id_famiglia'] : ''), $readonly);
 	$result .= html_input_text($db, 'tipo_parentela', 'persone', (isset($r) ? $r['tipo_parentela'] : ''), $readonly);
+	$result .= html_input_text($db, 'professione', 'persone', (isset($r) ? $r['professione'] : ''), $readonly);
 
 	/*
 	$result .= '<label for="cognome" class="required">Cognome:</label>';
@@ -40,8 +42,8 @@ function singola_persona($r, $readonly=true, $db)
 
 	$result .= '<br />';
 
+	$result .= html_input_text($db, 'data_nascita', 'persone', (isset($r) ? $r['data_nascita'] : ''), $readonly);
 	$result .= html_input_text($db, 'codice_fiscale', 'persone', (isset($r) ? $r['codice_fiscale'] : ''), $readonly);
-	$result .= html_input_text($db, 'professione', 'persone', (isset($r) ? $r['professione'] : ''), $readonly);
 	/*
 	$result .= '<label for="codice_fiscale">Codice Fiscale:</label>';
 	$result .= '<input type="text" name="codice_fiscale" id="codice_fiscale" size="16" maxlength="16" value="' . (isset($r) ? $r['codice_fiscale'] : '') . '" ' . $s . ' />';
@@ -52,22 +54,10 @@ function singola_persona($r, $readonly=true, $db)
 
 	$result .= '<br />';
 
-	$result .= html_input_text($db, 'data_nascita', 'persone', (isset($r) ? $r['data_nascita'] : ''), $readonly);
 	/*
 	$result .= '<label for="data_nascita">Data di Nascita:</label>';
 	$result .= '<input type="text" name="data_nascita" id="data_nascita" size="10" maxlength="10" value="' . (isset($r) ? $r['data_nascita'] : '') . '" ' . $s . ' />';
 	*/
-
-	$result .= '<label for="provincia_nascita">Provincia di Nascita:</label>';
-	$result .= '<select name="provincia_nascita" id="provincia_nascita"';
-	$result .= ($readonly == true ? ' disabled="disabled"' : '');
-	$result .= ' onChange="showComuni(this)">';
-	require_once('select_provincia.php');
-	$result .= isset($r['sigla_provincia_nascita']) ? '' : '<option></option>';
-	$result .= select_provincia($db, $r['sigla_provincia_nascita']);
-	$result .= '</select>';
-
-	$result .= '<br />';
 
 	$result .= '<label for="comune_nascita">Comune di Nascita:</label>';
 	$result .= '<select name="comune_nascita" id="comune_nascita"';
@@ -82,6 +72,16 @@ function singola_persona($r, $readonly=true, $db)
 
 	$result .= '<br />';
 
+	$result .= '<label for="provincia_nascita">Provincia di Nascita:</label>';
+	$result .= '<select name="provincia_nascita" id="provincia_nascita"';
+	$result .= ($readonly == true ? ' disabled="disabled"' : '');
+	$result .= ' onChange="showComuni(this)">';
+	require_once('select_provincia.php');
+	$result .= isset($r['sigla_provincia_nascita']) ? '' : '<option></option>';
+	$result .= select_provincia($db, $r['sigla_provincia_nascita']);
+	$result .= '</select>';
+
+	$result .= '<br />';
 
 	$result .= '<label for="stato_nascita">Stato Estero di Nascita:</label>';
 	$result .= '<select name="stato_nascita" id="stato_nascita"';
@@ -129,20 +129,23 @@ function singola_persona($r, $readonly=true, $db)
 
 	$result .= '<fieldset>';
 
-	$result .= '<legend>Dati Residenza:</legend>';
+	$result .= '<legend>Dati Residenza</legend>';
 
-	$result .= '<label for="provincia_residenza">Provincia di Residenza:</label>';
-	$result .= '<select name="provincia_residenza" id="provincia_residenza"';
-	$result .= ($readonly == true ? ' disabled="disabled"' : '');
-	$result .= ' onChange="showComuni(this)">';
-	require_once('select_provincia.php');
-	$result .= isset($r['sigla_provincia_residenza']) ? '' : '<option></option>';
-	$result .= select_provincia($db, $r['sigla_provincia_residenza']);
-	$result .= '</select>';
+	$result .= '<label for="via">Indirizzo:</label>';
+	$result .= '<input type="text" name="via" id="via" size="50" maxlength="60" value="' . (isset($r) ? $r['via'] : '') . '" ' . $s . ' />';
+
+	$result .= '<label for="numero_civico">N&deg;:</label>';
+	$result .= '<input type="text" name="numero_civico" id="numero_civico" size="5" maxlength="10" value="' . (isset($r) ? $r['numero_civico'] : '') . '" ' . $s . ' />';
+
+	$result .= '<label for="cap">CAP</label>';
+	$result .= '<input type="text" name="cap" id="cap" size="5" maxlength="5" value="' . (isset($r) ? $r['cap'] : '') . '" ' . $s . ' />';
+
+	$result .= '<label for="quartiere">Quartiere:</label>';
+	$result .= '<input type="text" name="quartiere" id="quartiere" size="2" maxlength="2" value="' . (isset($r) ? $r['quartiere'] : '') . '" ' . $s . ' />';
 
 	$result .= '<br />';
 
-	$result .= '<label for="comune_residenza">Comune di Residenza:</label>';
+	$result .= '<label for="comune_residenza">Comune:</label>';
 	$result .= '<select name="comune_residenza" id="comune_residenza"';
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
 	$result .= '>';
@@ -153,27 +156,20 @@ function singola_persona($r, $readonly=true, $db)
 	}
 	$result .= '</select>';
 
+	$result .= '<label for="provincia_residenza">Provincia:</label>';
+	$result .= '<select name="provincia_residenza" id="provincia_residenza"';
+	$result .= ($readonly == true ? ' disabled="disabled"' : '');
+	$result .= ' onChange="showComuni(this)">';
+	require_once('select_provincia.php');
+	$result .= isset($r['sigla_provincia_residenza']) ? '' : '<option></option>';
+	$result .= select_provincia($db, $r['sigla_provincia_residenza']);
+	$result .= '</select>';
+
 	$result .= '<br />';
 
-	$result .= '<legend>Dati Domicilio:</legend>';
-
-	$result .= '<label for="via">Via:</label>';
-	$result .= '<input type="text" name="via" id="via" size="15" maxlength="50" value="' . (isset($r) ? $r['via'] : '') . '" ' . $s . ' />';
-
-	$result .= '<label for="numero_civico">Numero Civico:</label>';
-	$result .= '<input type="text" name="numero_civico" id="numero_civico" size="5" maxlength="10" value="' . (isset($r) ? $r['numero_civico'] : '') . '" ' . $s . ' />';
-
-	$result .= '<label for="citta">Citta</label>';
+/*	$result .= '<label for="citta">Citta</label>';
 	$result .= '<input type="text" name="citta" id="citta" size="15" maxlength="40" value="' . (isset($r) ? $r['citta'] : '') . '" ' . $s . ' />';
-
-	$result .= '<br />';
-
-	$result .= '<label for="cap">CAP</label>';
-	$result .= '<input type="text" name="cap" id="cap" size="5" maxlength="5" value="' . (isset($r) ? $r['cap'] : '') . '" ' . $s . ' />';
-
-	$result .= '<label for="quartiere">Quartiere:</label>';
-	$result .= '<input type="text" name="quartiere" id="quartiere" size="2" maxlength="2" value="' . (isset($r) ? $r['quartiere'] : '') . '" ' . $s . ' />';
-
+*/
 	$result .= '</fieldset>';
 
 	return $result;

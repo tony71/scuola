@@ -55,12 +55,15 @@ try {
 	}
 	
 	include('include/singolo_studente.php');
+	
 	$r = $stm->fetch(PDO::FETCH_BOTH);
-	echo singolo_studente($r, true, $db);
+	$ss = singolo_studente($r, true, $db);
 	$matricola = $r['matricola_studente'];
 	$id = $r['id_persona'];
 	include('include/tab_studente.html');
+	echo $ss;
 }
+
 catch(PDOException $e) {
         echo $e->getMessage();
 }

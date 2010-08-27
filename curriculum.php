@@ -27,6 +27,8 @@ try {
 	$r = $stm->fetch(PDO::FETCH_BOTH);
 	echo '<h1>Curriculum di ' . $r['cognome'] . ', ' . $r['nome'] . '</h1>';
 	
+include('include/tab_stato.html');
+
 	$sql = "select matricola_studente, anno_scolastico, classe, sezione, indirizzo, denominazione from vista_studenti_cv where matricola_studente='$matricola' order by anno_scolastico asc";
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();
@@ -45,15 +47,12 @@ catch(PDOException $e) {
 
 echo '<br /><div align="center">';
 $form = '<form action="aggiungi_curriculum.php" method="post">';
-$form .= '<input type="submit" name="nuovo_curriculum" value="Aggiorna Curriculum" />';
+$form .= '<input type="submit" name="nuovo_curriculum" value="Aggiorna Curriculum" class="brg" />';
 $form .= '<input type="hidden" name="submitted" value="TRUE" />';
 $form .= '<input type="hidden" name="matricola" value="'.$matricola.'" />';
 $form .= '</form>';
 echo $form;
 
-echo '<a href="dettagli_studente.php?matricola=' . $matricola . '">Torna a Dettagli Studente</a>';
-
-include('include/tab_stato.html');
 
 include('include/footer.html');
 ?>
