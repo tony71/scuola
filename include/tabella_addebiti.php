@@ -15,8 +15,8 @@ function result_as_table($result, $tableFeatures="")
 	$table .= '<th align="left">Causale</th>';
 	$table .= '<th align="left">Tipo</th>';
 	$table .= '<th align="left">Importo</th>';
+	$table .= '<th align="left">Pagato</th>';
 	$table .= '<th align="left">Residuo</th>';
-	$table .= '<th align="left">Saldo</th>';
 	$table .= '<th align="left">Data Scadenza</th>';
 	$table .= '<th align="left">A. S.</th>';
 	$bg = '#eeeeee';
@@ -33,8 +33,8 @@ function result_as_table($result, $tableFeatures="")
 		$table .= '<td align="left">'.$r['causale'].'</td>';
 		$table .= '<td align="left">'.$r['descrizione_tipo'].'</td>';
 		$table .= '<td align="left">'.$r['importo'].'</td>';
-		$table .= '<td align="left">'.$r['importo_residuo'].'</td>';
 		$table .= '<td align="left">'.$r['saldo'].'</td>';
+		$table .= '<td align="left">'.$r['importo_residuo'].'</td>';
 		$table .= '<td align="left">'.$r['data_scadenza'].'</td>';
 		$table .= '<td align="left">'.$r['anno_scolastico'].'</td>';
 		$table .= "</tr>\n";

@@ -72,7 +72,7 @@ catch(PDOException $e) {
        	echo $e->getMessage();
 }
 
-$display = 10; // 10 records per page
+$display = 20; // 10 records per page
 
 if (isset($_GET['p']) && is_numeric($_GET['p'])) {
 	$pages = $_GET['p'];
@@ -107,8 +107,8 @@ try {
 		$form .= result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"');
 		$form .= '<input type="submit" name="crea" value="Crea Ricevuta" class="brg" />';
 /*		$form .= '<br />';
-		$form .= '<input type="submit" name="crea" value="Crea Rimborso" />';
-		$form .= '<input type="hidden" name="submitted" value="TRUE" />'; */
+		$form .= '<input type="submit" name="crea" value="Crea Rimborso" />'; */
+		$form .= '<input type="hidden" name="submitted" value="TRUE" />';
 		$form .= '</form>';
 		echo $form;
 		

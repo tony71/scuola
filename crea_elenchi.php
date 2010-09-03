@@ -96,7 +96,7 @@ $num = 0;
 
 if (isset($_POST['submitted'])) {
 	$sql = "select * from cerca_studenti('$nominativo',ARRAY[$lista_scuole]::character(10)[],'$anno',$classe,'$sezione','$indirizzo','$stato',$data)";
-	$sql .= " order by cognome, nome";
+	$sql .= " order by matricola_studente, cognome, nome";
 	try {
 		$stm = $db->query($sql);
 		$num = $stm->rowCount();

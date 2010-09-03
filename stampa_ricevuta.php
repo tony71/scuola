@@ -99,11 +99,12 @@ try {
 	// fine FOOTER
 
 	/*******************************************************
-	$font = $ricevuta->load_font("Helvetica", "winansi", "");
+	$font = $ricevuta->load_font("Helvetica", "unicode", "");
 	$ricevuta->setfont($font, 24.0);
 	$ricevuta->fit_textline("Hello!&euro;",50,400, "position={left bottom}");
 	*********************************************************/
-
+	$font = $ricevuta->load_font("Helvetica", "winansi", "");
+	
 	$sql = "select * from vista_ricevute where id_ricevuta=$id_ricevuta";
 	$stm = $db->query($sql);
 	$r = $stm->fetch(PDO::FETCH_BOTH);
@@ -127,7 +128,8 @@ try {
 	$ricevuta->fit_textline($txt, 150, 560, "position={left bottom}");
 
 	$txt = "Si dichiara di ricevere la somma di ";
-	$txt .= $r['importo_totale_it'];
+	$txt .= "Euro".$r['importo_totale_it'];
+	
 	$ricevuta->fit_textline($txt, 50, 520, "position={left bottom}");
 
 	$txt = "per il pagamento di quanto sotto meglio descritto:";
@@ -137,7 +139,7 @@ try {
 	$stm = $db->query($sql);
 	$y = 480;
 	while($r = $stm->fetch(PDO::FETCH_BOTH)) {
-		$txt = $r['importo_riga_it'];
+		$txt = "Euro".$r['importo_riga_it'];
 		$txt .= ' ' . $r['causale'];
 		$txt .= ' (' . $r['descrizione_tipo'] . ')';
 		$ricevuta->fit_textline($txt, 50, $y, "position={left bottom}");
