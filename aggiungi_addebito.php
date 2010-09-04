@@ -36,7 +36,7 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Salva')) {
 
 	$host  = $_SERVER['HTTP_HOST'];
 	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-	$extra = 'dettagli_studente.php?matricola=' . $trimmed['matricola'];
+	$extra = 'addebiti.php?matricola=' . $trimmed['matricola'];
 	header("Location: http://$host$uri/$extra");
 }
 
@@ -62,6 +62,7 @@ catch(PDOException $e) {
 
 <form action="aggiungi_addebito.php" method="post">
 	<fieldset>
+		<input type="hidden" name="matricola" id="matricola" value="<?php echo $matricola; ?>" />
 		<p>
 		<label for="causale">Causale:</label>
 		<input type="text" name="causale" id="causale" size="60" maxlength="100" value="<?php if (isset($trimmed['causale'])) echo $trimmed['causale']; ?>" />
