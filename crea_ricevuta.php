@@ -24,6 +24,11 @@ if (isset($_POST['submitted'])) {
 	$stm = $db->query($sql);
 	$ricevuta = $stm->fetch(PDO::FETCH_BOTH);
 
+	$host  = $_SERVER['HTTP_HOST'];
+	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+	$extra = 'modifica_ricevuta.php?id_ricevuta=' . $id_ricevuta;
+	header("Location: http://$host$uri/$extra");
+
 	include('include/ricevuta_testata.php');
 	echo ricevuta_testata($ricevuta);
 
@@ -32,10 +37,13 @@ if (isset($_POST['submitted'])) {
 	include('include/ricevuta_righe.php');
 	list($table, $id_addebiti, $importi_riga) = tabella_ricevuta_righe($stm);
 	echo $table;
-
+	
+/*	
 	echo '<a href="modifica_ricevuta.php?id_ricevuta='.$id_ricevuta.'&id_addebiti='.urlencode(serialize($_POST['id_addebito'])).'&importi_riga='.urlencode(serialize($importi_riga)).'">Modifica Ricevuta</a>';
 	echo '<div class="navigation"><ul><li><a href="modifica_ricevuta.php?id_ricevuta='.$id_ricevuta.'">Modifica Ricevuta</a></li>';
-	echo '<li><a href="stampa_ricevuta.php?id_ricevuta='.$id_ricevuta.'" target="_blank">Stampa Ricevuta</a></li></ul></div>';
+	echo '<li><a href="stampa_ricevuta.php?id_ricevuta='.$id_ricevuta.'" target="_blank">Stampa Ricevuta</a></li></ul></div>'; */
+	
+	
 }
 
 include('include/footer.html');

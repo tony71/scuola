@@ -32,6 +32,10 @@ else {
 if (isset($_POST['submitted'])) {
 	include('include/update_ricevuta_testata.php');
 	include('include/update_ricevuta_riga.php');
+	$host  = $_SERVER['HTTP_HOST'];
+	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+	$extra = 'dettagli_studente.php?matricola=' . $trimmed['matricola'];
+	header("Location: http://$host$uri/$extra");
 }
 
 $page_title = 'Modifica Ricevuta';
@@ -60,7 +64,7 @@ try {
 	include('include/ricevuta_righe.php');
 	list($table, $id_addebiti, $importi_riga) = tabella_ricevuta_righe($stm);
 	echo $table;
-	echo '<p><input type="submit" name="submit" value="Submit" /></p>';
+	echo '<p><input type="submit" name="submit" value="Salva" /></p>';
 	echo '<input type="hidden" name="submitted" value="TRUE" />';
 	echo '<input type="hidden" name="id_ricevuta" value="' . $id_ricevuta .'" />';
 	echo '</form>';
@@ -71,7 +75,7 @@ catch(PDOException $e) {
 	echo $e->getMessage();
 }
 
-echo '<a href="dettagli_studente.php?matricola=' . $matricola . '">Torna a Dettagli Studente</a>';
+echo '<a href="addebiti.php?matricola=' . $matricola . '">Annulla</a>';
 
 include('include/footer.html');
 ?>
