@@ -151,7 +151,9 @@ else {
 	
 	<fieldset>
 		<legend>Scuola</legend>
+		<select name="scuola">
 			<?php include('include/select_scuole.php'); ?>
+		</select>
 	</fieldset>
 	
 	<fieldset>

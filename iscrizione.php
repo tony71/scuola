@@ -1,7 +1,7 @@
 <?php
 require_once('include/db_connection.php');
 
-if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
+if (isset($_POST['submitted']) && ($_POST['submit'] == 'Salva')) {
 	$trimmed = array_map('trim', $_POST);
 	$sql = 'SELECT * from stato_studente_iscritto (';
 	$sql .= ':codice_meccanografico, ';
@@ -92,7 +92,7 @@ catch(PDOException $e) {
 		</select>
 	</fieldset>
 	<div align="center">
-		<input type="submit" name="submit" value="Registra" />
+		<input type="submit" name="submit" value="Salva" />
 		<a href="curriculum.php?matricola=<?php echo $matricola; ?>">Back</a>
 	</div>
 	<input type="hidden" name="submitted" value="TRUE" />
