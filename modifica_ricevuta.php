@@ -30,11 +30,36 @@ else {
 
 
 if (isset($_POST['submitted'])) {
+	if (isset($_GET['matricola'])) {
+		$matricola = $_GET['matricola'];
+	}
+	elseif (isset($_POST['matricola'])) {
+		$matricola = $_POST['matricola'];
+	}
+	else {
+		echo '<p class="error">This page has been accessed in error.</p>';
+		include('include/footer.html');
+		exit();
+	}
+	if (($_POST['submit']) == "Annulla") {
+		$sql = "select cancella_ricevuta($id_ricevuta)";
+		try {
+			$stm = $db->query($sql);
+		}
+		catch(PDOException $e) {
+			echo $e->getMessage();
+			exit();
+		}
+		$host  = $_SERVER['HTTP_HOST'];
+		$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+		$extra = 'addebiti.php?matricola=' . $matricola;
+		header("Location: http://$host$uri/$extra");
+	}
 	include('include/update_ricevuta_testata.php');
 	include('include/update_ricevuta_riga.php');
 	$host  = $_SERVER['HTTP_HOST'];
 	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-	$extra = 'dettagli_studente.php?matricola=' . $trimmed['matricola'];
+	$extra = 'addebiti.php?matricola=' . $matricola;
 	header("Location: http://$host$uri/$extra");
 }
 
@@ -64,18 +89,18 @@ try {
 	include('include/ricevuta_righe.php');
 	list($table, $id_addebiti, $importi_riga) = tabella_ricevuta_righe($stm);
 	echo $table;
+	$matricola = $r['matricola_studente'];
 	echo '<p><input type="submit" name="submit" value="Salva" /></p>';
+	echo '<p><input type="submit" name="submit" value="Annulla" /></p>';
 	echo '<input type="hidden" name="submitted" value="TRUE" />';
 	echo '<input type="hidden" name="id_ricevuta" value="' . $id_ricevuta .'" />';
+	echo '<input type="hidden" name="matricola" value="'.$matricola.'" />';
 	echo '</form>';
 	
-	$matricola = $r['matricola_studente'];
 }
 catch(PDOException $e) {
 	echo $e->getMessage();
 }
-
-echo '<a href="addebiti.php?matricola=' . $matricola . '">Annulla</a>';
 
 include('include/footer.html');
 ?>
