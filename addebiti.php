@@ -72,7 +72,7 @@ catch(PDOException $e) {
        	echo $e->getMessage();
 }
 
-$display = 20; // 10 records per page
+$display = 20; // 20 records per page
 
 if (isset($_GET['p']) && is_numeric($_GET['p'])) {
 	$pages = $_GET['p'];
@@ -104,7 +104,7 @@ try {
 	if ($num > 0) {
 		require('include/tabella_addebiti.php');
 		$form = '<form action="ricevuta_rimborso.php" method="post">';
-		$form .= result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"');
+		$form .= result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="100%"');
 		$form .= '<input type="submit" name="crea" value="Crea Ricevuta" class="brg" />';
 /*		$form .= '<br />';
 		$form .= '<input type="submit" name="crea" value="Crea Rimborso" />'; */

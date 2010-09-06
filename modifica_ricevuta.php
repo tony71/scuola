@@ -67,7 +67,7 @@ $page_title = 'Modifica Ricevuta';
 include('include/header.html');
 
 
-echo "<h1>Modifica Ricevuta $id_ricevuta</h1>";
+echo "<h1>Modifica Ricevuta</h1>";
 
 $sql = "select * from vista_ricevute where id_ricevuta=$id_ricevuta";
 try {
