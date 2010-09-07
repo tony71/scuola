@@ -18,7 +18,7 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= '<input type="text" name="nome" id="nome" size="15" maxlength="50" value="' . (isset($r) ? $r['nome'] : '') . '" ' . $s . ' />';
 	*/
 	require_once('html_input_text.php');
-	$result .= html_input_text($db, 'cognome', 'persone', (isset($r) ? $r['cognome'] : ''), $readonly);
+	$result .= html_input_text($db, 'cognome', 'persone', (isset($r) ? pg_escape_string($r['cognome']) : ''), $readonly);
 	$result .= html_input_text($db, 'nome', 'persone', (isset($r) ? $r['nome'] : ''), $readonly);
 	$result .= html_input_text($db, 'sesso', 'persone', (isset($r) ? $r['sesso'] : ''), $readonly);
 	$result .= '<br />';
