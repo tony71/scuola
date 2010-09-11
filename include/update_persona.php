@@ -11,7 +11,7 @@
         $sql .= ", professione=:professione";
         $sql .= ", data_nascita=:data_nascita";
         $sql .= ", luogo_nascita=:luogo_nascita";
-        $sql .= ", cittadinanza=:cittadinanza";
+        // $sql .= ", cittadinanza=:cittadinanza";
         $sql .= ", codice_fiscale=:codice_fiscale";
         $sql .= ", via=:via";
         $sql .= ", numero_civico=:numero_civico";
@@ -32,7 +32,7 @@
                 $stm->bindParam(":professione", $professione);
                 $stm->bindParam(":data_nascita", $data_nascita);
                 $stm->bindParam(":luogo_nascita", $luogo_nascita);
-                $stm->bindParam(":cittadinanza", $cittadinanza);
+                // $stm->bindParam(":cittadinanza", $cittadinanza);
                 $stm->bindParam(":codice_fiscale", $codice_fiscale);
                 $stm->bindParam(":via", $via);
                 $stm->bindParam(":numero_civico", $numero_civico);
@@ -48,4 +48,32 @@
         catch(PDOException $e) {
                 echo '<p class="error">' . $e->getMessage(). '</p>';
         }
+
+	$sql = "DELETE FROM cittadinanze WHERE id_persona=:id";
+        try {
+                $stm = $db->prepare($sql);
+
+                $stm->bindParam(":id", $id);
+
+                $stm->execute();
+        }
+        catch(PDOException $e) {
+                echo '<p class="error">' . $e->getMessage(). '</p>';
+        }
+
+	$sql = "INSERT INTO cittadinanze(id_persona, codice_sidi) VALUES (:id, :codice_sidi)";
+
+	foreach($_POST['cittadinanza'] as $key => $value) {
+        	try {
+	                $stm = $db->prepare($sql);
+
+        	        $stm->bindParam(":id", $id);
+        	        $stm->bindParam(":codice_sidi", $value);
+
+                	$stm->execute();
+        	}
+		catch(PDOException $e) {
+                	echo '<p class="error">' . $e->getMessage(). '</p>';
+        	}
+	}
 ?>
