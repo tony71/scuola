@@ -19,7 +19,7 @@ if (isset($_POST['scuola'])) {
 elseif (isset($_GET['scuola'])) {
 	$scuola = $_GET['scuola'];
 }
-$first = TRUE;
+/*$first = TRUE;
 foreach($scuola as $key => $value) {
 	if ($first == FALSE) {
 		$lista_scuole .= ', ';
@@ -27,7 +27,7 @@ foreach($scuola as $key => $value) {
 	$lista_scuole .= "'" . $value . "'";
 	$first = FALSE;
 }
-
+*/
 if (isset($_POST['anno'])) {
 	$anno = $_POST['anno'];
 }
@@ -95,8 +95,8 @@ else {
 $num = 0;
 
 if (isset($_POST['submitted'])) {
-	$sql = "select * from cerca_studenti('$nominativo',ARRAY[$lista_scuole]::character(10)[],'$anno',$classe,'$sezione','$indirizzo','$stato',$data)";
-	$sql .= " order by matricola_studente, cognome, nome";
+	$sql = "select * from cerca_studenti('$nominativo','$scuola','$anno',$classe,'$sezione','$indirizzo','$stato',$data)";
+	$sql .= " order by cognome, nome";
 	try {
 		$stm = $db->query($sql);
 		$num = $stm->rowCount();
@@ -179,6 +179,17 @@ else {
 		</select>
 
 	</fieldset>
+
+	<fieldset>
+		<legend>Amministrazione</legend>
+		<label class="etichetta">Arretrati</label>
+		<input type="radio" name="amministrazione" value="arretrati" />
+		<label class="etichetta">Pagamenti giornalieri</label>
+		<input type="radio" name="amministrazione" value="giornalieri" />
+		<label class="etichetta">Pagamenti mensili</label>
+		<input type="radio" name="amministrazione" value="mensili" />
+	</fieldset>
+
 
 	<input type="submit" name="submit" value="Crea Report" class="brg" />
 	<input type="hidden" name="submitted" value="TRUE" />

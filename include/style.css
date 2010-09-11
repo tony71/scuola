@@ -50,3 +50,5 @@ input, select, textarea { font-size: 12pt; color: #333; border: 1px solid #999; 
 label 					{ margin: 3px 7px 3px 7px; }
 table 					{ line-height: 1em; }
 td						{ padding: 1px 0px 5px 1px; }
+.arretrati				{ float: right; color: red; font-size: large; }
+.etichetta				{ padding-left: 40px; }

@@ -1,6 +1,10 @@
 <?php
 $importo_riga = $_POST['importo_riga'];
 $id_addebito = $_POST['id_addebito'];
+if (isset($_POST['importo_riga'])) { echo 'pippo'; 
+
+
+
 foreach($id_addebito as $k => $addebito) {
         // Dati tabella ricevute_riga
 
@@ -24,5 +28,6 @@ foreach($id_addebito as $k => $addebito) {
         catch(PDOException $e) {
                 echo '<p class="error">' . $e->getMessage(). '</p>';
         }
+}
 }
 ?>

@@ -16,8 +16,26 @@ else {
 	exit();
 }
 
-echo "<h1>Dettagli Studente $matricola</h1>";
 
+
+$sql = "select * from vista_saldo_studente where matricola_studente='$matricola'";
+try {
+	$stm = $db->query($sql);
+	$num = $stm->rowCount();
+	if ($num == 0) {
+		$saldone = '0,00';
+	}
+	else
+	{
+		$row = $stm->fetch(PDO::FETCH_BOTH);
+		$saldone = $row['saldo_a_oggi'];
+	}
+}
+catch(PDOException $e) {
+        echo $e->getMessage();
+}
+
+echo "<span class=\"arretrati\"> Arretrati da pagare: &euro; $saldone</span><h1>Dettagli Studente $matricola</h1>";
 
 $sql = "select * from vista_studenti_senza_curriculum where matricola_studente='$matricola'";
 try {

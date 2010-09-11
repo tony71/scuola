@@ -27,25 +27,25 @@ $form_filtra = '<form action="addebiti.php" method="post">';
 $form_filtra .= '<fieldset>';
 $form_filtra .= '<legend>Filtra gli addebiti</legend>';
 if ($table == 'vista_addebiti_non_pagati') {
-	$form_filtra .= ' Addebiti da Pagare <input type="radio" name="table" value="vista_addebiti_non_pagati" checked="checked" />';
+	$form_filtra .= ' <label class="etichetta">Addebiti da Pagare</label> <input type="radio" name="table" value="vista_addebiti_non_pagati" checked="checked" />';
 	$t = 'Addebiti da Pagare';
 }
 else {
-	$form_filtra .= ' Addebiti da Pagare <input type="radio" name="table" value="vista_addebiti_non_pagati" />';
+	$form_filtra .= ' <label class="etichetta">Addebiti da Pagare</label> <input type="radio" name="table" value="vista_addebiti_non_pagati" />';
 }
 if ($table == 'vista_addebiti_pagati') {
-	$form_filtra .= ' Addebiti Pagati <input type="radio" name="table" value="vista_addebiti_pagati" checked="checked"/>';
+	$form_filtra .= ' <label class="etichetta">Addebiti Pagati</label> <input type="radio" name="table" value="vista_addebiti_pagati" checked="checked"/>';
 	$t = 'Addebiti Pagati';
 }
 else {
-	$form_filtra .= ' Addebiti Pagati <input type="radio" name="table" value="vista_addebiti_pagati"/>';
+	$form_filtra .= ' <label class="etichetta">Addebiti Pagati</label> <input type="radio" name="table" value="vista_addebiti_pagati"/>';
 }
 if ($table == 'vista_addebiti') {
-	$form_filtra .= ' Tutti gli Addebiti <input type="radio" name="table" value="vista_addebiti" checked="checked"/>';
+	$form_filtra .= ' <label class="etichetta">Tutti gli Addebiti</label> <input type="radio" name="table" value="vista_addebiti" checked="checked"/>';
 	$t = 'Tutti gli Addebiti';
 }
 else {
-	$form_filtra .= ' Tutti gli Addebiti <input type="radio" name="table" value="vista_addebiti"/>';
+	$form_filtra .= ' <label class="etichetta">Tutti gli Addebiti</label> <input type="radio" name="table" value="vista_addebiti"/>';
 }
 $form_filtra .= ' <input type="submit" name="submit" value="Filtra" class="brg" />';
 $form_filtra .= '<input type="hidden" name="submitted" value="TRUE" />';
