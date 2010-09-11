@@ -91,8 +91,12 @@ try {
 	list($table, $id_addebiti, $importi_riga) = tabella_ricevuta_righe($stm);
 	echo $table;
 	$matricola = $r['matricola_studente'];
+	$host  = $_SERVER['HTTP_HOST'];
+	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+	$extra = 'stampa_ricevuta.php?id_ricevuta=' . $r['id_ricevuta'];
 	echo '<p><input type="submit" name="submit" value="Salva" 
-	onClick="window.open(\'http://pico/scuola/stampa_ricevuta.php?id_ricevuta='.$r['id_ricevuta'].'\')" /> ';
+	onClick="window.open(\'http://'.$host.$uri.'/'.$extra.'\')" /> ';
+	// onClick="window.open(\'http://pico/scuola/stampa_ricevuta.php?id_ricevuta='.$r['id_ricevuta'].'\')" /> ';
 	echo '<input type="submit" name="submit" value="Annulla" /></p>';
 	echo '<input type="hidden" name="submitted" value="TRUE" />';
 	echo '<input type="hidden" name="id_ricevuta" value="' . $id_ricevuta .'" />';
