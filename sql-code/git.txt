@@ -3,3 +3,4 @@ Per copiare il repository in /var/www/html eseguire:
 # git clone git://github.com/tony71/scuola
 # git pull
 # git status
+# git commit -a -m "Uso di git"
