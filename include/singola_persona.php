@@ -115,7 +115,8 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= '>';
 	require_once('select_nazione.php');
 	$result .= isset($ssc[1]) ? '' : '<option></option>';
-	$result .= select_nazione($db, $ssc[1]);
+	$p = isset($ssc[1]) ? $ssc[1] : null;
+	$result .= select_nazione($db, $p);
 	$result .= '</select>';
 
 	$result .= '<br />';
