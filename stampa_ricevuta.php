@@ -32,7 +32,7 @@ try {
 		die("Error: " . $ricevuta->get_errmsg());
 	}
 	$ricevuta->set_info("Creator", "stampa_ricevuta.php");
-	$ricevuta->set_info("Author", "tony");
+	$ricevuta->set_info("Author", "Oratorio Salesiano Michele Rua");
 	$ricevuta->set_info("Title", "Ricevuta");
 
 	// Per far si che &euro; stampi il simbolo di euro

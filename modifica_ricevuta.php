@@ -37,15 +37,13 @@ if (isset($_POST['submitted'])) {
 		$matricola = $_POST['matricola'];
 	}
 	else {
-		echo '<p class="error">This page has been accessed in error.</p>';
+		echo '<p class="error">Uhm... Non dovresti accedere cos&igrave; a questa pagina...</p>';
 		include('include/footer.html');
 		exit();
 	}
 	if (($_POST['submit']) == "Annulla") {
 		$sql = "select cancella_ricevuta($id_ricevuta)";
-		try {
-			$stm = $db->query($sql);
-		}
+		try { $stm = $db->query($sql); }
 		catch(PDOException $e) {
 			echo $e->getMessage();
 			exit();
@@ -57,10 +55,12 @@ if (isset($_POST['submitted'])) {
 	}
 	include('include/update_ricevuta_testata.php');
 	include('include/update_ricevuta_riga.php');
+	
 	$host  = $_SERVER['HTTP_HOST'];
 	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 	$extra = 'addebiti.php?matricola=' . $matricola;
 	header("Location: http://$host$uri/$extra");
+	
 }
 
 $page_title = 'Modifica Ricevuta';
@@ -90,8 +90,9 @@ try {
 	list($table, $id_addebiti, $importi_riga) = tabella_ricevuta_righe($stm);
 	echo $table;
 	$matricola = $r['matricola_studente'];
-	echo '<p><input type="submit" name="submit" value="Salva" /></p>';
-	echo '<p><input type="submit" name="submit" value="Annulla" /></p>';
+	echo '<p><input type="submit" name="submit" value="Salva" 
+	onClick="window.open(\'http://pico/scuola/stampa_ricevuta.php?id_ricevuta='.$r['id_ricevuta'].')" /> ';
+	echo '<input type="submit" name="submit" value="Annulla" /></p>';
 	echo '<input type="hidden" name="submitted" value="TRUE" />';
 	echo '<input type="hidden" name="id_ricevuta" value="' . $id_ricevuta .'" />';
 	echo '<input type="hidden" name="matricola" value="'.$matricola.'" />';

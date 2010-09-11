@@ -4,7 +4,7 @@ function result_as_table($result, $tableFeatures="")
 	$table = "<table $tableFeatures>\n\n";
 	$noFields = $result->columnCount();
 	$table .= "<tr>\n";
-	$table .= '<th align="left"><b>Dettagli</b></th>';
+	// $table .= '<th align="left"><b>Dettagli</b></th>';
 	$table .= '<th align="left"><b>Stampa</b></th>';
 	/******
 	for ($i = 1; $i < $noFields; $i++) {
@@ -22,7 +22,7 @@ function result_as_table($result, $tableFeatures="")
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
 		$table .= '<tr bgcolor="' . $bg . '">';
-		$table .= '<td align="left"><a href="dettagli_ricevuta.php?id_ricevuta=' . $r['id_ricevuta'] . '">Dettagli</a></td>';
+		// $table .= '<td align="left"><a href="dettagli_ricevuta.php?id_ricevuta=' . $r['id_ricevuta'] . '">Dettagli</a></td>';
 		$table .= '<td align="left"><a href="stampa_ricevuta.php?id_ricevuta=' . $r['id_ricevuta'] . '" target="_blank">Stampa</a></td>';
 		/****
 		// foreach ($r as $column) {
