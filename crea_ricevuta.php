@@ -32,7 +32,7 @@ if (isset($_POST['submitted'])) {
 	include('include/ricevuta_testata.php');
 	echo ricevuta_testata($ricevuta);
 
-	$sql = "select * from ricevute_riga where id_ricevuta=$id_ricevuta";
+	$sql = "select * from vista_ricevute_riga where id_ricevuta=$id_ricevuta";
 	$stm = $db->query($sql);
 	include('include/ricevuta_righe.php');
 	list($table, $id_addebiti, $importi_riga) = tabella_ricevuta_righe($stm);
