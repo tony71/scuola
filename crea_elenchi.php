@@ -91,36 +91,64 @@ else {
 	$data = "'".$data."'";
 }
 
+if (isset($_POST['amministrazione'])) {
+	$amministrazione = $_POST['amministrazione'];
+}
+elseif (isset($_GET['amministrazione'])) {
+	$amministrazione = $_GET['amministrazione'];
+}
 
 $num = 0;
 
 if (isset($_POST['submitted'])) {
-	$sql = "select * from cerca_studenti('$nominativo','$scuola','$anno',$classe,'$sezione','$indirizzo','$stato',$data)";
-	$sql .= " order by cognome, nome";
-	try {
-		$stm = $db->query($sql);
-		$num = $stm->rowCount();
-		if ($num > 0) {
-			echo '<h1>Studenti trovati: '. $num . '</h1>';
-			$titolo ='Report';
-		$filename = 'report.xls';
-		// echo '<a href="genera_excel.php?sql='.$sql.'&titolo='.$titolo.'&filename='.$filename.'" target="_blank">Excel</a>';
-		echo '<form action="genera_excel.php" method="post">';
-		echo '<input type="submit" name="submit" value="Esporta in Excel" />';
-		echo '<input type="hidden" name="sql" value="'.$sql.'" />';
-		echo '<input type="hidden" name="title" value="'.$titolo.'" />';
-		echo '<input type="hidden" name="filename" value="'.$filename.'" />';
-		echo '<input type="hidden" name="submitted" value="TRUE" />';
-		echo '</form>';
-		require('include/tabella_studenti.php');
-			echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"');
+	if ($amministrazione == 'giornalieri') {
+		try {
+			$sql = "select crea_report_giornaliero_ricevuta($data,'$scuola')";
+			$stm = $db->query($sql);
+			$sql = "select * from ricevute_report_giornaliero order by tipo, cognome, nome";
+			$stm = $db->query($sql);
+			$titolo = 'Report giornaliero '.$scuola;
+			$filename = 'report.xls';
+			echo '<form action="genera_excel.php" method="post">';
+			echo '<input type="submit" name="submit" value="Esporta in Excel" />';
+			echo '<input type="hidden" name="sql" value="'.$sql.'" />';
+			echo '<input type="hidden" name="title" value="'.$titolo.'" />';
+			echo '<input type="hidden" name="filename" value="'.$filename.'" />';
+			echo '<input type="hidden" name="submitted" value="TRUE" />';
+			echo '</form>';
 		}
-		else {
-			echo '<p class="error">Non trovo studenti nel DB.</p>';
+		catch(PDOException $e) {
+			echo $e->getMessage();
 		}
 	}
-	catch(PDOException $e) {
-		echo $e->getMessage();
+	else {
+		$sql = "select * from cerca_studenti('$nominativo','$scuola','$anno',$classe,'$sezione','$indirizzo','$stato',$data)";
+		$sql .= " order by cognome, nome";
+		try {
+			$stm = $db->query($sql);
+			$num = $stm->rowCount();
+			if ($num > 0) {
+				echo '<h1>Studenti trovati: '. $num . '</h1>';
+				$titolo ='Report';
+				$filename = 'report.xls';
+				// echo '<a href="genera_excel.php?sql='.$sql.'&titolo='.$titolo.'&filename='.$filename.'" target="_blank">Excel</a>';
+				echo '<form action="genera_excel.php" method="post">';
+				echo '<input type="submit" name="submit" value="Esporta in Excel" />';
+				echo '<input type="hidden" name="sql" value="'.$sql.'" />';
+				echo '<input type="hidden" name="title" value="'.$titolo.'" />';
+				echo '<input type="hidden" name="filename" value="'.$filename.'" />';
+				echo '<input type="hidden" name="submitted" value="TRUE" />';
+				echo '</form>';
+				require('include/tabella_studenti.php');
+				echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"');
+			}
+			else {
+				echo '<p class="error">Non trovo studenti nel DB.</p>';
+			}
+		}
+		catch(PDOException $e) {
+			echo $e->getMessage();
+		}
 	}
 }
 else {

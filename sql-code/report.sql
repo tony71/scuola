@@ -63,16 +63,22 @@ WITH (
   OIDS=FALSE
 );
 
-GRANT ALL ON TABLE pagamenti.addebiti TO segreteria;
+GRANT ALL ON TABLE pagamenti.ricevute_report_giornaliero TO segreteria;
 
 
 
-CREATE OR REPLACE FUNCTION pagamenti.crea_report_giornaliero_ricevuta(in_data date, in_codice_scuola character)
+CREATE OR REPLACE FUNCTION pagamenti.crea_report_giornaliero_ricevuta(in_data date, in_codice_meccanografico character)
   RETURNS boolean AS
 $BODY$DECLARE
+	in_codice_scuola scuole.codice_scuola%TYPE;
         result boolean := true;
 BEGIN
-        RAISE LOG 'crea_report_giornaliero_ricevuta %, %', in_data, in_codice_scuola;
+        RAISE LOG 'crea_report_giornaliero_ricevuta %, %', in_data, in_codice_meccanografico;
+
+        SELECT codice_scuola
+        INTO in_codice_scuola
+        FROM scuole
+        WHERE codice_meccanografico=in_codice_meccanografico;
 
         EXECUTE 'TRUNCATE TABLE ricevute_report_giornaliero';
 
