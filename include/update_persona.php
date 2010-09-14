@@ -19,6 +19,11 @@
         $sql .= ", id_provincia=:id_provincia";
         $sql .= ", cap=:cap";
         $sql .= ", quartiere=:quartiere";
+        $sql .= ", stato_nascita=:stato_nascita";
+        $sql .= ", provincia_nascita=:provincia_nascita";
+        $sql .= ", comune_nascita=:comune_nascita";
+        $sql .= ", provincia_residenza=:provincia_residenza";
+        $sql .= ", comune_residenza=:comune_residenza";
         $sql .= " WHERE id_persona=:id";
 
         try {
@@ -40,6 +45,11 @@
                 $stm->bindParam(":id_provincia", $id_provincia);
                 $stm->bindParam(":cap", $cap);
                 $stm->bindParam(":quartiere", $quartiere, PDO::PARAM_STR, 2);
+                $stm->bindParam(":stato_nascita", $stato_nascita);
+                $stm->bindParam(":provincia_nascita", $provincia_nascita);
+                $stm->bindParam(":comune_nascita", $comune_nascita);
+                $stm->bindParam(":provincia_residenza", $provincia_residenza);
+                $stm->bindParam(":comune_residenza", $comune_residenza);
 
                 $stm->bindParam(":id", $id);
 
