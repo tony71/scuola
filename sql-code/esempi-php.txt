@@ -1,0 +1,9 @@
+			Error Log
+Usare la funzione error_log (potrebbe essere necessario modificare php.ini)
+Purtroppo logga tutto come [error]
+Su fedora 13 non ho modificato nulla: i log vanno in /var/log/httpd/error_log
+
+		Funzioni per il controllo dell'output
+Vedi PDOStatement::debugDumpParams sezione Tip
+http://www.php.net/manual/en/pdostatement.debugdumpparams.php
+e include/update_persona.php per un esempio d'uso
