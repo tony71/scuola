@@ -15,6 +15,7 @@ else {
 $num = 0;
 
 if (isset($_POST['submitted'])) {
+	$nominativo = pg_escape_string($nominativo);
 	$sql = "select * from cerca_studente('$nominativo')";
 	$sql .= " order by cognome, nome";
 	try {

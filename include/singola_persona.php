@@ -22,7 +22,7 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= html_input_text($db, 'nome', 'persone', (isset($r) ? $r['nome'] : ''), $readonly);
 	$result .= html_input_text($db, 'sesso', 'persone', (isset($r) ? $r['sesso'] : ''), $readonly);
 	$result .= '<br />';
-	$result .= html_input_text($db, 'id_famiglia', 'persone', (isset($r) ? $r['id_famiglia'] : ''), $readonly);
+	$result .= html_input_text($db, 'id_famiglia', 'persone', (isset($r) ? pg_escape_string($r['id_famiglia']) : ''), $readonly);
 	$result .= html_input_text($db, 'tipo_parentela', 'persone', (isset($r) ? $r['tipo_parentela'] : ''), $readonly);
 	$result .= html_input_text($db, 'professione', 'persone', (isset($r) ? $r['professione'] : ''), $readonly);
 
