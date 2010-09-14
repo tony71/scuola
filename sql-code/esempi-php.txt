@@ -1,5 +1,6 @@
 			Error Log
 Usare la funzione error_log (potrebbe essere necessario modificare php.ini)
+http://www.php.net/manual/en/function.error-log.php
 Purtroppo logga tutto come [error]
 Su fedora 13 non ho modificato nulla: i log vanno in /var/log/httpd/error_log
 
