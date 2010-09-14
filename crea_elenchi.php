@@ -103,9 +103,7 @@ $num = 0;
 if (isset($_POST['submitted'])) {
 	if ($amministrazione == 'giornalieri') {
 		try {
-			$sql = "select crea_report_giornaliero_ricevuta($data,'$scuola')";
-			$stm = $db->query($sql);
-			$sql = "select * from ricevute_report_giornaliero order by tipo, cognome, nome";
+			$sql = "select * from crea_report_giornaliero_ricevuta($data,'$scuola')  order by tipo, cognome, nome";
 			$stm = $db->query($sql);
 			$titolo = 'Report giornaliero '.$scuola;
 			$filename = 'report.xls';
