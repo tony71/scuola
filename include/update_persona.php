@@ -54,6 +54,12 @@
                 $stm->bindParam(":id", $id);
 
                 $stm->execute();
+
+		ob_start();
+		$stm->debugDumpParams();
+		$buffer = ob_get_contents();
+		ob_end_clean();
+		error_log($buffer);
         }
         catch(PDOException $e) {
                 echo '<p class="error">' . $e->getMessage(). '</p>';
@@ -66,6 +72,12 @@
                 $stm->bindParam(":id", $id);
 
                 $stm->execute();
+
+		ob_start();
+		$stm->debugDumpParams();
+		$buffer = ob_get_contents();
+		ob_end_clean();
+		error_log($buffer);
         }
         catch(PDOException $e) {
                 echo '<p class="error">' . $e->getMessage(). '</p>';
@@ -81,6 +93,12 @@
         	        $stm->bindParam(":codice_sidi", $value);
 
                 	$stm->execute();
+
+			ob_start();
+			$stm->debugDumpParams();
+			$buffer = ob_get_contents();
+			ob_end_clean();
+			error_log($buffer);
         	}
 		catch(PDOException $e) {
                 	echo '<p class="error">' . $e->getMessage(). '</p>';
