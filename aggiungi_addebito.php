@@ -45,7 +45,7 @@ include('include/header.html');
 
 
 try {
-	$matricola = $_POST[matricola];
+	$matricola = $_POST['matricola'];
 	$sql = "select nome, cognome from vista_studenti where matricola_studente=:matricola";
 	$stm = $db->prepare($sql);
 	$stm->bindParam(":matricola", $matricola, PDO::PARAM_STR, 10);
