@@ -17,6 +17,21 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Salva')) {
 	$sql .= ':anno_scolastico, ';
 	$sql .= ':matricola, ';
 	$sql .= ':id_tipo_addebito)';
+
+	$sql1 = 'INSERT INTO addebiti (';
+	$sql1 .= 'importo, ';
+	$sql1 .= 'causale, ';
+	$sql1 .= 'data_scadenza, ';
+	$sql1 .= 'anno_scolastico, ';
+	$sql1 .= 'matricola, ';
+	$sql1 .= 'id_tipo_addebito) ';
+	$sql1 .= 'VALUES (';
+	$sql1 .= "to_number(:importo, '99999D99'), ";
+	$sql1 .= ':causale, ';
+	$sql1 .= ':data_scadenza, ';
+	$sql1 .= ':anno_scolastico, ';
+	$sql1 .= ':matricola, ';
+	$sql1 .= ':id_tipo_addebito)';
 	
         try {
                 $stm = $db->prepare($sql);
@@ -32,6 +47,20 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Salva')) {
         }
         catch(PDOException $e) {
                 echo '<p class="error">' . $e->getMessage(). '</p>';
+		syslog(LOG_INFO, $e->getMessage());
+		syslog(LOG_INFO, $e->getCode());
+		if ($e->getCode() == '22P02') {
+                	$stm = $db->prepare($sql1);
+
+                	$stm->bindParam(":importo", $trimmed['importo']);
+               		$stm->bindParam(":causale", $trimmed['causale']);
+                	$stm->bindParam(":data_scadenza", $trimmed['data_scadenza']);
+                	$stm->bindParam(":anno_scolastico", $trimmed['anno_scolastico']);
+                	$stm->bindParam(":matricola", $trimmed['matricola']);
+                	$stm->bindParam(":id_tipo_addebito", $trimmed['id_tipo_addebito']);
+
+                	$stm->execute();
+		}
         }
 
 	$host  = $_SERVER['HTTP_HOST'];
