@@ -119,6 +119,24 @@ if (isset($_POST['submitted'])) {
 			echo $e->getMessage();
 		}
 	}
+	else if ($amministrazione == 'mensili') {
+		try {
+			$sql = "select * from crea_report_mensile_ricevuta($data,'$scuola')  order by data, tipo";
+			$stm = $db->query($sql);
+			$titolo = 'Report mensile '.$scuola;
+			$filename = 'report.xls';
+			echo '<form action="genera_excel.php" method="post">';
+			echo '<input type="submit" name="submit" value="Esporta in Excel" />';
+			echo '<input type="hidden" name="sql" value="'.$sql.'" />';
+			echo '<input type="hidden" name="title" value="'.$titolo.'" />';
+			echo '<input type="hidden" name="filename" value="'.$filename.'" />';
+			echo '<input type="hidden" name="submitted" value="TRUE" />';
+			echo '</form>';
+		}
+		catch(PDOException $e) {
+			echo $e->getMessage();
+		}
+	}
 	else {
 		$sql = "select * from cerca_studenti('$nominativo','$scuola','$anno',$classe,'$sezione','$indirizzo','$stato',$data)";
 		$sql .= " order by cognome, nome";

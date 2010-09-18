@@ -194,3 +194,108 @@ END;$BODY$
   COST 100;
 
 COMMENT ON FUNCTION pagamenti.crea_report_giornaliero_ricevuta(date, character) IS 'Crea report giornaliero';
+
+
+CREATE OR REPLACE FUNCTION pagamenti.crea_report_mensile_ricevuta(IN in_data date, IN in_codice_meccanografico character)
+  RETURNS TABLE(data date, tipo character, retta numeric, iscrizione numeric, attivita numeric, libri numeric, mensa numeric, dopo_scuola numeric, tuta numeric, diario_e_abbon numeric, totale numeric) AS
+$BODY$DECLARE
+	in_codice_scuola scuole.codice_scuola%TYPE;
+	sql TEXT;
+BEGIN
+        RAISE LOG 'crea_report_mensile_ricevuta %, %', in_data, in_codice_meccanografico;
+
+        PERFORM *
+	FROM pg_catalog.pg_class
+	WHERE relname = 'ricevute_report_mensile'
+	AND relnamespace = pg_catalog.pg_my_temp_schema();
+	
+        IF NOT FOUND THEN
+		CREATE TEMPORARY TABLE ricevute_report_mensile (
+			data_out date NOT NULL,
+			tipo_out character(3) NOT NULL,
+			retta_out  numeric(7,2) NOT NULL DEFAULT 0.0,
+			iscrizione_out  numeric(7,2) NOT NULL DEFAULT 0.0,
+			attivita_out  numeric(7,2) NOT NULL DEFAULT 0.0,
+			libri_out  numeric(7,2) NOT NULL DEFAULT 0.0,
+			mensa_out  numeric(7,2) NOT NULL DEFAULT 0.0,
+			dopo_scuola_out numeric(7,2) NOT NULL DEFAULT 0.0,
+			tuta_out  numeric(7,2) NOT NULL DEFAULT 0.0,
+			diario_e_abbon_out  numeric(7,2) NOT NULL DEFAULT 0.0,
+			totale_out  numeric(7,2) NOT NULL DEFAULT 0.0
+		);
+	END IF;
+	
+        SELECT codice_scuola
+        INTO in_codice_scuola
+        FROM scuole
+        WHERE codice_meccanografico=in_codice_meccanografico;
+
+        DELETE FROM ricevute_report_mensile;
+
+        INSERT INTO ricevute_report_mensile(data_out, tipo_out)
+        SELECT DISTINCT v.data_it::date, v.pag
+        FROM vista_ricevute_report_mensile_cab v
+        WHERE EXTRACT(YEAR FROM data_it::date)=EXTRACT(YEAR FROM in_data)
+        AND EXTRACT(MONTH FROM data_it::date)=EXTRACT(MONTH FROM in_data)
+        AND codice_scuola=in_codice_scuola;
+
+        UPDATE ricevute_report_mensile AS b
+        SET retta_out =a.sum
+        FROM vista_ricevute_report_mensile_cab a
+        WHERE data_it::date=b.data_out
+        AND a.pag=b.tipo_out
+        AND a.descrizione_tipo='rette';
+
+        UPDATE ricevute_report_mensile AS b
+        SET iscrizione_out =a.sum
+        FROM vista_ricevute_report_mensile_cab a
+        WHERE data_it::date=b.data_out 
+        AND a.pag=b.tipo_out
+        AND a.descrizione_tipo='iscrizioni';
+
+        UPDATE ricevute_report_mensile AS b
+        SET attivita_out =a.sum
+        FROM vista_ricevute_report_mensile_cab a
+        WHERE data_it::date=b.data_out 
+        AND a.pag=b.tipo_out
+        AND a.descrizione_tipo='corsi extrascolastici';
+
+        UPDATE ricevute_report_mensile AS b
+        SET mensa_out =a.sum
+        FROM vista_ricevute_report_mensile_cab a
+        WHERE data_it::date=b.data_out 
+        AND a.pag=b.tipo_out
+        AND a.descrizione_tipo='mensa';
+        
+        UPDATE ricevute_report_mensile AS b
+        SET dopo_scuola_out =a.sum
+        FROM vista_ricevute_report_mensile_cab a
+        WHERE data_it::date=b.data_out 
+        AND a.pag=b.tipo_out
+        AND a.descrizione_tipo='doposcuola, ripetizioni';
+
+        UPDATE ricevute_report_mensile AS b
+        SET tuta_out =a.sum
+        FROM vista_ricevute_report_mensile_cab a
+        WHERE data_it::date=b.data_out 
+        AND a.pag=b.tipo_out
+        AND a.descrizione_tipo='tuta, divisa';
+
+        UPDATE ricevute_report_mensile AS b
+        SET diario_e_abbon_out =a.sum
+        FROM vista_ricevute_report_mensile_cab a
+        WHERE data_it::date=b.data_out 
+        AND a.pag=b.tipo_out
+        AND a.descrizione_tipo='diari e abbonamenti';
+
+        UPDATE ricevute_report_mensile r
+        SET totale_out =r.retta_out +r.iscrizione_out +r.attivita_out +r.mensa_out +r.dopo_scuola_out +r.tuta_out +r.diario_e_abbon_out ;
+
+        sql := 'SELECT * FROM ricevute_report_mensile';
+        RETURN QUERY EXECUTE sql;
+END;$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100
+  ROWS 1000;
+
+COMMENT ON FUNCTION pagamenti.crea_report_mensile_ricevuta(date, character) IS 'Crea report mensile';
