@@ -43,6 +43,7 @@ catch(PDOException $e) {
 	autenticate();
         echo $e->getMessage();
 	echo '<br />Exception code is: ' . $e->getCode();
+	syslog(LOG_INFO, $e->getCode());
 	exit;
 }
 ?>
