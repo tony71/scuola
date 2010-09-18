@@ -67,7 +67,7 @@ catch(PDOException $e) {
 		<select name="anno">
 			<?php
 			require_once('include/db_connection.php');
-			include('include/select_anno.php');
+			include('include/select_anno.php'); echo select_anno_scolastico($db);
 			?>
 		</select>
 	</fieldset>

@@ -79,7 +79,7 @@ catch(PDOException $e) {
 		<legend>Anno scolastico</legend>
 		<select name="anno_scolastico">
 			<?php
-			include('include/select_anno.php');
+			include('include/select_anno.php'); echo select_anno_scolastico($db);
 			?>
 		</select>
 	</fieldset>

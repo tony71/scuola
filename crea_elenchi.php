@@ -182,7 +182,7 @@ else {
 		<label>Anno scolastico</label>
 		<select name="anno">
 			<option name="tutti">Tutti </option>
-			<?php include('include/select_anno.php'); ?>
+			<?php include('include/select_anno.php'); echo select_anno_scolastico($db); ?>
 		</select>
 		<br />
 		<label>Stato Studente</label>

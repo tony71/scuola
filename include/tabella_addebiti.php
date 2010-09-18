@@ -30,7 +30,7 @@ function result_as_table($result, $tableFeatures="")
 			$table .= '<td align="left">'.$r[$i].'</td>';
 		}
 		****/
-		$table .= '<td align="left">'.$r['causale'].'</td>';
+		$table .= '<td align="left"><a href="modifica_addebito.php?id_addebito='.$r['id_addebito'].'">'.$r['causale'].'</a></td>';
 		$table .= '<td align="left">'.$r['descrizione_tipo'].'</td>';
 		$table .= '<td align="left">'.$r['importo'].'</td>';
 		$table .= '<td align="left">'.$r['saldo'].'</td>';
