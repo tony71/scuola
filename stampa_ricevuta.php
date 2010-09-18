@@ -24,6 +24,7 @@ else {
 require_once('include/db_connection.php');
 
 try {
+	$euro = " ".chr(128);
 	$ricevuta = new PDFLib();
 
 
@@ -98,13 +99,15 @@ try {
 	$ricevuta->fit_textline("Ufficio Amministrazione", 545, 80, "position={right bottom}");
 	// fine FOOTER
 
-	/*******************************************************
+	/********************************************************
 	$font = $ricevuta->load_font("Helvetica", "unicode", "");
 	$ricevuta->setfont($font, 24.0);
-	$ricevuta->fit_textline("Hello!&euro;",50,400, "position={left bottom}");
-	*********************************************************/
+	// $ricevuta->fit_textline("Hello!&euro;",50,400, "position={left bottom}");
+	$ricevuta->fit_textline("Hello!",50,400, "position={left bottom}");
+	*************************************************************/
+
 	$font = $ricevuta->load_font("Helvetica", "winansi", "");
-	
+
 	$sql = "select * from vista_ricevute where id_ricevuta=$id_ricevuta";
 	$stm = $db->query($sql);
 	$r = $stm->fetch(PDO::FETCH_BOTH);
@@ -128,7 +131,8 @@ try {
 	$ricevuta->fit_textline($txt, 150, 560, "position={left bottom}");
 
 	$txt = "Si dichiara di ricevere la somma di ";
-	$txt .= "Euro".$r['importo_totale_it'];
+	//$txt .= "Euro".$r['importo_totale_it'];
+	$txt .= $r['importo_totale_it'].$euro;
 	
 	$ricevuta->fit_textline($txt, 50, 520, "position={left bottom}");
 
@@ -139,7 +143,8 @@ try {
 	$stm = $db->query($sql);
 	$y = 480;
 	while($r = $stm->fetch(PDO::FETCH_BOTH)) {
-		$txt = "Euro".$r['importo_riga_it'];
+		// $txt = "Euro".$r['importo_riga_it'];
+		$txt = $r['importo_riga_it'].$euro;
 		$txt .= ' ' . $r['causale'];
 		$txt .= ' (' . $r['descrizione_tipo'] . ')';
 		$ricevuta->fit_textline($txt, 50, $y, "position={left bottom}");

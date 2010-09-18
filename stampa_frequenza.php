@@ -60,11 +60,11 @@ try {
 	$doc->fit_textline("e-mail: primaria@michelerua.it - sito web: www.michelerua.it/primaria",100, 740, "position={left bottom}");
 	// fine HEADER
 
-	/*******************************************************
-	$font = $doc->load_font("Helvetica", "winansi", "");
+	/*****************************************************
+	$font = $doc->load_font("Helvetica", "unicode", "");
 	$doc->setfont($font, 24.0);
-	$doc->fit_textline("Hello!&euro;",50,400, "position={left bottom}");
-	*********************************************************/
+	$doc->fit_textline("Hello!ò",50,400, "position={left bottom}");
+	*******************************************************/
 
 	$doc->setfont($font, 15.0);
 	$txt = "Torino, ";
