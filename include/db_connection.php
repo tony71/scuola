@@ -34,6 +34,7 @@ try {
 	$db = new PDO($conn_string, $user, $pass);
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$db->query('set DateStyle=SQL,Euro');
+	$db->query('set lc_numeric="it_IT.UTF-8"');
 	$db->query('set search_path to public,pagamenti');
 }
 catch(PDOException $e) {
