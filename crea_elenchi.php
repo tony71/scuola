@@ -114,6 +114,8 @@ if (isset($_POST['submitted'])) {
 			echo '<input type="hidden" name="filename" value="'.$filename.'" />';
 			echo '<input type="hidden" name="submitted" value="TRUE" />';
 			echo '</form>';
+			require_once('include/tabella_generica.php');
+			echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"');
 		}
 		catch(PDOException $e) {
 			echo $e->getMessage();
@@ -132,6 +134,8 @@ if (isset($_POST['submitted'])) {
 			echo '<input type="hidden" name="filename" value="'.$filename.'" />';
 			echo '<input type="hidden" name="submitted" value="TRUE" />';
 			echo '</form>';
+			require_once('include/tabella_generica.php');
+			echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"');
 		}
 		catch(PDOException $e) {
 			echo $e->getMessage();
