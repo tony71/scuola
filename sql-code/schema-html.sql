@@ -2,7 +2,9 @@
 -- PostgreSQL database dump
 --
 
--- Started on 2010-07-11 18:15:53 CEST
+-- Dumped from database version 9.0rc1
+-- Dumped by pg_dump version 9.0rc1
+-- Started on 2010-09-19 01:10:32 CEST
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -12,7 +14,7 @@ SET client_min_messages = warning;
 SET escape_string_warning = off;
 
 --
--- TOC entry 20 (class 2615 OID 23168)
+-- TOC entry 7 (class 2615 OID 17630)
 -- Name: html; Type: SCHEMA; Schema: -; Owner: -
 --
 
@@ -20,8 +22,8 @@ CREATE SCHEMA html;
 
 
 --
--- TOC entry 2004 (class 0 OID 0)
--- Dependencies: 20
+-- TOC entry 2052 (class 0 OID 0)
+-- Dependencies: 7
 -- Name: SCHEMA html; Type: COMMENT; Schema: -; Owner: -
 --
 
@@ -31,8 +33,8 @@ COMMENT ON SCHEMA html IS 'Generate HTML pages';
 SET search_path = html, pg_catalog;
 
 --
--- TOC entry 75 (class 1255 OID 23434)
--- Dependencies: 20 470
+-- TOC entry 29 (class 1255 OID 17648)
+-- Dependencies: 7 497
 -- Name: column_has_default(name, oid); Type: FUNCTION; Schema: html; Owner: -
 --
 
@@ -55,8 +57,8 @@ $$;
 
 
 --
--- TOC entry 2005 (class 0 OID 0)
--- Dependencies: 75
+-- TOC entry 2054 (class 0 OID 0)
+-- Dependencies: 29
 -- Name: FUNCTION column_has_default(column_name name, table_name oid); Type: COMMENT; Schema: html; Owner: -
 --
 
@@ -64,8 +66,8 @@ COMMENT ON FUNCTION column_has_default(column_name name, table_name oid) IS 'Ese
 
 
 --
--- TOC entry 74 (class 1255 OID 23433)
--- Dependencies: 20 470
+-- TOC entry 30 (class 1255 OID 17649)
+-- Dependencies: 497 7
 -- Name: column_is_required(name, oid); Type: FUNCTION; Schema: html; Owner: -
 --
 
@@ -88,8 +90,8 @@ $$;
 
 
 --
--- TOC entry 2006 (class 0 OID 0)
--- Dependencies: 74
+-- TOC entry 2055 (class 0 OID 0)
+-- Dependencies: 30
 -- Name: FUNCTION column_is_required(column_name name, table_name oid); Type: COMMENT; Schema: html; Owner: -
 --
 
@@ -97,8 +99,45 @@ COMMENT ON FUNCTION column_is_required(column_name name, table_name oid) IS 'Ese
 
 
 --
--- TOC entry 67 (class 1255 OID 23171)
--- Dependencies: 20 470
+-- TOC entry 81 (class 1255 OID 18770)
+-- Dependencies: 497 7 304 304 304
+-- Name: column_is_required(information_schema.sql_identifier, information_schema.sql_identifier, information_schema.sql_identifier); Type: FUNCTION; Schema: html; Owner: -
+--
+
+CREATE FUNCTION column_is_required(in_schema_name information_schema.sql_identifier, in_table_name information_schema.sql_identifier, in_column_name information_schema.sql_identifier) RETURNS boolean
+    LANGUAGE plpgsql
+    AS $$DECLARE
+	result boolean := false;
+	b information_schema.yes_or_no;
+BEGIN
+	SELECT is_nullable
+	INTO b
+	FROM information_schema.columns c
+	WHERE c.table_schema=in_schema_name
+	AND c.table_name=in_table_name
+	AND c.column_name=in_column_name;
+
+	IF (b = 'NO') THEN
+		result := true;
+	END IF;
+
+	RETURN result;
+END;
+$$;
+
+
+--
+-- TOC entry 2056 (class 0 OID 0)
+-- Dependencies: 81
+-- Name: FUNCTION column_is_required(in_schema_name information_schema.sql_identifier, in_table_name information_schema.sql_identifier, in_column_name information_schema.sql_identifier); Type: COMMENT; Schema: html; Owner: -
+--
+
+COMMENT ON FUNCTION column_is_required(in_schema_name information_schema.sql_identifier, in_table_name information_schema.sql_identifier, in_column_name information_schema.sql_identifier) IS 'Esempio d''uso: select html.column_is_required(''pagamenti'', ''addebiti'', ''importo'');';
+
+
+--
+-- TOC entry 31 (class 1255 OID 17650)
+-- Dependencies: 7 497
 -- Name: get_column_comment(name, oid); Type: FUNCTION; Schema: html; Owner: -
 --
 
@@ -121,8 +160,8 @@ $$;
 
 
 --
--- TOC entry 2007 (class 0 OID 0)
--- Dependencies: 67
+-- TOC entry 2057 (class 0 OID 0)
+-- Dependencies: 31
 -- Name: FUNCTION get_column_comment(column_name name, table_name oid); Type: COMMENT; Schema: html; Owner: -
 --
 
@@ -130,8 +169,8 @@ COMMENT ON FUNCTION get_column_comment(column_name name, table_name oid) IS 'Ese
 
 
 --
--- TOC entry 66 (class 1255 OID 23172)
--- Dependencies: 20 470
+-- TOC entry 32 (class 1255 OID 17651)
+-- Dependencies: 497 7
 -- Name: get_column_label(name, oid, character); Type: FUNCTION; Schema: html; Owner: -
 --
 
@@ -153,8 +192,8 @@ $_$;
 
 
 --
--- TOC entry 2008 (class 0 OID 0)
--- Dependencies: 66
+-- TOC entry 2058 (class 0 OID 0)
+-- Dependencies: 32
 -- Name: FUNCTION get_column_label(column_name name, table_name oid, lang character); Type: COMMENT; Schema: html; Owner: -
 --
 
@@ -163,8 +202,8 @@ Creare un commento che contiene la label: comment on column studenti.matricola_s
 
 
 --
--- TOC entry 47 (class 1255 OID 23443)
--- Dependencies: 470 20
+-- TOC entry 33 (class 1255 OID 17652)
+-- Dependencies: 7 497
 -- Name: get_column_max_size(name, oid); Type: FUNCTION; Schema: html; Owner: -
 --
 
@@ -206,8 +245,8 @@ $$;
 
 
 --
--- TOC entry 2009 (class 0 OID 0)
--- Dependencies: 47
+-- TOC entry 2059 (class 0 OID 0)
+-- Dependencies: 33
 -- Name: FUNCTION get_column_max_size(column_name name, table_name oid); Type: COMMENT; Schema: html; Owner: -
 --
 
@@ -215,8 +254,8 @@ COMMENT ON FUNCTION get_column_max_size(column_name name, table_name oid) IS 'Ri
 
 
 --
--- TOC entry 44 (class 1255 OID 23436)
--- Dependencies: 20 470
+-- TOC entry 34 (class 1255 OID 17653)
+-- Dependencies: 497 7
 -- Name: get_column_visible_size(name, oid); Type: FUNCTION; Schema: html; Owner: -
 --
 
@@ -244,8 +283,8 @@ $_$;
 
 
 --
--- TOC entry 2010 (class 0 OID 0)
--- Dependencies: 44
+-- TOC entry 2060 (class 0 OID 0)
+-- Dependencies: 34
 -- Name: FUNCTION get_column_visible_size(column_name name, table_name oid); Type: COMMENT; Schema: html; Owner: -
 --
 
@@ -253,8 +292,8 @@ COMMENT ON FUNCTION get_column_visible_size(column_name name, table_name oid) IS
 
 
 --
--- TOC entry 45 (class 1255 OID 23444)
--- Dependencies: 20 470
+-- TOC entry 35 (class 1255 OID 17654)
+-- Dependencies: 497 7
 -- Name: get_input_text(name, oid, text, boolean); Type: FUNCTION; Schema: html; Owner: -
 --
 
@@ -282,8 +321,8 @@ $$;
 
 
 --
--- TOC entry 76 (class 1255 OID 23435)
--- Dependencies: 20 470
+-- TOC entry 36 (class 1255 OID 17655)
+-- Dependencies: 497 7
 -- Name: show_column(name, oid); Type: FUNCTION; Schema: html; Owner: -
 --
 
@@ -308,18 +347,30 @@ $_$;
 
 
 --
--- TOC entry 2011 (class 0 OID 0)
--- Dependencies: 76
+-- TOC entry 2061 (class 0 OID 0)
+-- Dependencies: 36
 -- Name: FUNCTION show_column(column_name name, table_name oid); Type: COMMENT; Schema: html; Owner: -
 --
 
 COMMENT ON FUNCTION show_column(column_name name, table_name oid) IS 'Esempio d''uso: select html.show_column(''matricola_studente'', ''studenti''::regclass);Creare un commento che contiene la label, la size e show: comment on column studenti.matricola_studente is E''Matricola Studente\\nlabel@it="Matricola:"\\nsize="15"\\nshow="true"'';';
 
 
--- Completed on 2010-07-11 18:15:53 CEST
+--
+-- TOC entry 2053 (class 0 OID 0)
+-- Dependencies: 7
+-- Name: html; Type: ACL; Schema: -; Owner: -
+--
+
+REVOKE ALL ON SCHEMA html FROM PUBLIC;
+REVOKE ALL ON SCHEMA html FROM tony;
+GRANT ALL ON SCHEMA html TO tony;
+GRANT ALL ON SCHEMA html TO postgres;
+GRANT ALL ON SCHEMA html TO segreteria;
+
+
+-- Completed on 2010-09-19 01:10:32 CEST
 
 --
 -- PostgreSQL database dump complete
 --
-
 
