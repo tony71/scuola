@@ -8,7 +8,7 @@ if (function_exists('PDF_new')) {
 if (extension_loaded('pdf')) {
 	// echo "PDFlib is available.<br />\n";
 } else {
-	echo "PDFlib is not available.<br />\n";
+	echo "Manca la libreria PDFlib.<br />\n";
 }
 
 if ((isset($_GET['id_ricevuta'])) && (is_numeric($_GET['id_ricevuta']))) {
@@ -24,7 +24,7 @@ else {
 require_once('include/db_connection.php');
 
 try {
-	$euro = " ".chr(128);
+	$euro = chr(128)." ";
 	$ricevuta = new PDFLib();
 
 
@@ -53,14 +53,14 @@ try {
 	$top_right = "top_right.jpeg";
 	$image = $ricevuta->load_image("jpeg", $top_left, "");
 	if (!$image) {
-		die("Error: " . $ricevuta->get_errmsg());
+		die("Errore: " . $ricevuta->get_errmsg());
 	}
 	$ricevuta->fit_image($image, 51, 740, "scale 0.5");
 	$ricevuta->close_image($image);
 
 	$image = $ricevuta->load_image("jpeg", $top_right, "");
 	if (!$image) {
-		die("Error: " . $ricevuta->get_errmsg());
+		die("Errore: " . $ricevuta->get_errmsg());
 	}
 	$ricevuta->fit_image($image, 500, 740, "scale 0.6");
 	$ricevuta->close_image($image);
@@ -93,7 +93,7 @@ try {
 
 	// inizio FOOTER
 	$ricevuta->fit_textline("Operazioni esenti da IVA, ai sensi dell'art. 10 del D.P.R. 26 ottobre 1972, n. 633 e successive modificazioni", 300, 40, "position={center bottom}");
-	$ricevuta->setfont($font, 15.0);
+	$ricevuta->setfont($font, 14.0);
 	$ricevuta->fit_textline("Distinti saluti.", 50, 130, "position={left bottom}");
 	$ricevuta->fit_textline("Oratorio Salesiano Michele Rua", 545, 100, "position={right bottom}");
 	$ricevuta->fit_textline("Ufficio Amministrazione", 545, 80, "position={right bottom}");
@@ -107,47 +107,63 @@ try {
 	*************************************************************/
 
 	$font = $ricevuta->load_font("Helvetica", "winansi", "");
-
+	$ricevuta->setfont($font, 13.0);
+	
 	$sql = "select * from vista_ricevute where id_ricevuta=$id_ricevuta";
 	$stm = $db->query($sql);
 	$r = $stm->fetch(PDO::FETCH_BOTH);
 	$txt = "Ricevuta del ";
-	$txt .= $r['data_it'];
-	$txt .= "     n.o ";
+	$ricevuta->fit_textline($txt, 290, 620, "position={left bottom}");
+	$txt = $r['data_it'];
+	$txt .= "     n. ";
 	$txt .= $r['codice_scuola'];
 	$txt .= " / ";
 	$txt .= $r['numero_ricevuta'];
-	$ricevuta->fit_textline($txt, 150, 620, "position={left bottom}");
 
-	$txt = "Allievo / a     ";
-	$txt .= $r['cognome'];
-	$ricevuta->fit_textline($txt, 150, 600, "position={left bottom}");
+	$font = $ricevuta->load_font("Helvetica-Bold", "winansi", "");
+	$ricevuta->setfont($font, 13.0);
 
-	$txt = "                      ";
-	$txt .= $r['nome'];
-	$ricevuta->fit_textline($txt, 150, 580, "position={left bottom}");
+	$ricevuta->fit_textline($txt, 370, 620, "position={left bottom}");
 
-	$txt = $r['denominazione'];
-	$ricevuta->fit_textline($txt, 150, 560, "position={left bottom}");
+	$font = $ricevuta->load_font("Helvetica", "winansi", "");
+	$ricevuta->setfont($font, 13.0);
+
+	$txt = "Allievo/a     ";
+	$ricevuta->fit_textline($txt, 50, 580, "position={left bottom}");
+
+	$font = $ricevuta->load_font("Helvetica-Bold", "winansi", "");
+	$ricevuta->setfont($font, 13.0);
+	$txt = $r['cognome']." ".$r['nome'];
+	$ricevuta->fit_textline($txt, 120, 580, "position={left bottom}");
+
+	$font = $ricevuta->load_font("Helvetica", "winansi", "");
+	$ricevuta->setfont($font, 13.0);
+
+	// $txt = "                      ";
+	$txt = "matricola     ".$r['matricola_studente']."      C.F. ".$r['codice_fiscale'];
+	$ricevuta->fit_textline($txt, 50, 560, "position={left bottom}");
+
+	$txt = "frequentante la ".$r['denominazione'];
+	$ricevuta->fit_textline($txt, 50, 540, "position={left bottom}");
 
 	$txt = "Si dichiara di ricevere la somma di ";
 	//$txt .= "Euro".$r['importo_totale_it'];
-	$txt .= $r['importo_totale_it'].$euro;
+	$txt .= $euro.$r['importo_totale_it'];
 	
-	$ricevuta->fit_textline($txt, 50, 520, "position={left bottom}");
+	$ricevuta->fit_textline($txt, 50, 500, "position={left bottom}");
 
 	$txt = "per il pagamento di quanto sotto meglio descritto:";
-	$ricevuta->fit_textline($txt, 50, 500, "position={left bottom}");
+	$ricevuta->fit_textline($txt, 50, 480, "position={left bottom}");
 
 	$sql = "select * from vista_ricevute_riga where id_ricevuta=$id_ricevuta";
 	$stm = $db->query($sql);
-	$y = 480;
+	$y = 450;
 	while($r = $stm->fetch(PDO::FETCH_BOTH)) {
-		// $txt = "Euro".$r['importo_riga_it'];
-		$txt = $r['importo_riga_it'].$euro;
-		$txt .= ' ' . $r['causale'];
-		$txt .= ' (' . $r['descrizione_tipo'] . ')';
+		$txt = $euro.$r['importo_riga_it'];
 		$ricevuta->fit_textline($txt, 50, $y, "position={left bottom}");
+		$txt = $r['causale'];
+		// $txt .= ' (' . $r['descrizione_tipo'] . ')';
+		$ricevuta->fit_textline($txt, 150, $y, "position={left bottom}");
 		$txt = ' a.s. ' . $r['anno_scolastico'];
 		$ricevuta->fit_textline($txt, 545, $y, "position={right bottom}");
 		$y -= 20;
@@ -162,7 +178,8 @@ try {
 
 	header("Content-type: application/pdf");
 	header("Content-Length: $len");
-	header("Content-Disposition: inline; filename=hello.pdf");
+	$nome_file = "Ricevuta".$r['numero_ricevuta'].".pdf";
+	header("Content-Disposition: inline; filename=$nome_file");
 	print $buf;
 }
 catch (PDFlibException $e) {
