@@ -92,6 +92,8 @@ try {
 	// fine HEADER
 
 	// inizio FOOTER
+	$font = $ricevuta->load_font("Helvetica", "winansi", "");
+	$ricevuta->setfont($font, 9.0);
 	$ricevuta->fit_textline("Operazioni esenti da IVA, ai sensi dell'art. 10 del D.P.R. 26 ottobre 1972, n. 633 e successive modificazioni", 300, 40, "position={center bottom}");
 	$ricevuta->setfont($font, 14.0);
 	$ricevuta->fit_textline("Distinti saluti.", 50, 130, "position={left bottom}");
@@ -117,8 +119,10 @@ try {
 	$txt = $r['data_it'];
 	$txt .= "     n. ";
 	$txt .= $r['codice_scuola'];
-	$txt .= " / ";
+	$txt .= "-";
 	$txt .= $r['numero_ricevuta'];
+	
+	$nr = $r['codice_scuola']."-".$r['numero_ricevuta'];
 
 	$font = $ricevuta->load_font("Helvetica-Bold", "winansi", "");
 	$ricevuta->setfont($font, 13.0);
@@ -164,7 +168,7 @@ try {
 		$txt = $r['causale'];
 		// $txt .= ' (' . $r['descrizione_tipo'] . ')';
 		$ricevuta->fit_textline($txt, 150, $y, "position={left bottom}");
-		$txt = ' a.s. ' . $r['anno_scolastico'];
+		$txt = 'a.s. ' . $r['anno_scolastico'];
 		$ricevuta->fit_textline($txt, 545, $y, "position={right bottom}");
 		$y -= 20;
 	}
@@ -178,7 +182,7 @@ try {
 
 	header("Content-type: application/pdf");
 	header("Content-Length: $len");
-	$nome_file = "Ricevuta".$r['numero_ricevuta'].".pdf";
+	$nome_file = "Ricevuta-".$nr.".pdf";
 	header("Content-Disposition: inline; filename=$nome_file");
 	print $buf;
 }
