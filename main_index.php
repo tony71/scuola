@@ -21,13 +21,24 @@ if (isset($_POST['submitted'])) {
 	try {
 		$stm = $db->query($sql);
 		$num = $stm->rowCount();
-		if ($num > 0) {
+		if ($num > 1) {
 			echo '<h1>Nominativi trovati: '. $num . '</h1>';
 			require('include/tabella_persone.php');
 			echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"');
 		}
-		else {
-			echo '<p class="error">Non trovo nominativi nel DB.</p>';
+		else 
+		{
+			if ($num == 1) {
+				$host  = $_SERVER['HTTP_HOST'];
+				$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+				$r     = $stm->fetch(PDO::FETCH_BOTH);
+				$extra = 'dettagli_studente.php?matricola='.$r['matricola_studente'];
+				header("Location: http://$host$uri/$extra");
+			}
+			else 
+			{ 
+				echo '<p class="error">Non trovo nominativi nel DB.</p>'; 
+			}
 		}
 		$titolo ='Nominativi';
 		$filename = 'studenti.xls';
