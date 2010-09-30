@@ -1,10 +1,13 @@
 # NOTA: in cima i problemi piu' ugenti
 
-- da addebiti posso fare: nuovo addebito o crea ricevuta.
-  da crea ricevuta posso fare: salva&stampa o annulla
-  se faccio annulla, niente è successo e torno ad addebiti.php
-  se faccio salva, crea effettivamente la ricevuta e mi mostra il pdf. deve tornare ad addebiti
 - quando si visualizza una ricevuta (es: scuola/ricevute.php?matricola=0835) aggiungere una colonna con l'anno scolastico
-- eliminare dettagli ricevuta (vedi: scuola/dettagli_ricevuta.php?id_ricevuta=5
 - Generale: aggiungere l'ordinamento cliccando sull'intestazione della colonna
-
+- eventi studente
+- caratteri accentati nei pdf?
+- annullamento ricevuta
+- ricerca persone da verificare... non trova le mamme...
+- report arretrati non funge
+- abbiamo aggiunto un tipo di pagamento (prescuola) quindi bisogna aggiungerlo nei report giornaliero e mensile
+- nel report giornaliero mettere i totali in verticale
+- mettere le statistiche degli allievi nella home
+- aggiustare gli stati di Giorgio DE FANO e Raffaele DE GIORGIO (trasferiti) e di Francesca PELLE (bocciata e trasferita)
