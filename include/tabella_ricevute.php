@@ -1,5 +1,5 @@
 <?php
-function result_as_table($result, $tableFeatures="")
+function result_as_table($result, $tableFeatures="", $link)
 {
 	$table = "<table $tableFeatures>\n\n";
 	$noFields = $result->columnCount();
@@ -13,12 +13,12 @@ function result_as_table($result, $tableFeatures="")
 		$table .= '<th align="left">'.$field.'</th>';
 	}
 	*******/
-	$table .= '<th align="left">Numero</th>';
-	$table .= '<th align="left">Importo</th>';
-	$table .= '<th align="left">Data</th>';
+	$table .= '<th align="left"><a href="'.$link.'&sort=numero">Numero</th>';
+	$table .= '<th align="left"><a href="'.$link.'&sort=importo">Importo</th>';
+	$table .= '<th align="left"><a href="'.$link.'&sort=data">Data</th>';
 	$table .= '<th align="left">Tipo</th>';
 	$table .= '<th align="left">Scuola</th>';
-	$table .= '<th align="left">A.S.</th>';
+	$table .= '<th align="left"><a href="'.$link.'&sort=as">A.S.</th>';
 	$bg = '#eeeeee';
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');

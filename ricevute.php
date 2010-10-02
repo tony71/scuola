@@ -54,13 +54,37 @@ else {
 	$start = 0;
 }
 
-$sql = "select * from vista_ricevute where matricola_studente='$matricola' order by data_ricevuta desc,id_ricevuta desc limit $display offset $start";
+$sort = (isset($_GET['sort'])) ? $_GET['sort'] : 'default';
+
+switch ($sort) {
+	case 'numero':
+		$order_by = 'numero_ricevuta desc';
+		break;
+	case 'importo':
+		$order_by = 'importo_totale desc';
+		break;
+	case 'data':
+		$order_by = 'data_ricevuta desc';
+		break;
+	case 'as':
+		$order_by = 'anno_scolastico asc';
+		break;
+	case 'default':
+		$order_by = 'data_ricevuta desc, id_ricevuta desc';
+		break;
+	default:
+		$order_by = 'data_ricevuta desc, id_ricevuta desc';
+		$sort = 'default';
+		break;
+}
+
+$sql = "select * from vista_ricevute where matricola_studente='$matricola' order by $order_by limit $display offset $start";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();
 	if ($num > 0) {
 		require('include/tabella_ricevute.php');
-		echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"');
+		echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"', "ricevute.php?matricola=$matricola");
 	}
 	else {
 		echo '<p class="error">Non sono presenti ricevute nel DB.</p>';

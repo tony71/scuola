@@ -1,7 +1,7 @@
 # NOTA: in cima i problemi piu' ugenti
 
-- quando si visualizza una ricevuta (es: scuola/ricevute.php?matricola=0835) aggiungere una colonna con l'anno scolastico
-- Generale: aggiungere l'ordinamento cliccando sull'intestazione della colonna
+- quando si visualizza una ricevuta (es: scuola/ricevute.php?matricola=0835) aggiungere una colonna con l'anno scolastico (FATTO)
+- Generale: aggiungere l'ordinamento cliccando sull'intestazione della colonna (FATTO per le ricevute)
 - eventi studente
 - caratteri accentati nei pdf?
 - annullamento ricevuta
