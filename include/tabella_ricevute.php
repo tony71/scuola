@@ -18,6 +18,7 @@ function result_as_table($result, $tableFeatures="")
 	$table .= '<th align="left">Data</th>';
 	$table .= '<th align="left">Tipo</th>';
 	$table .= '<th align="left">Scuola</th>';
+	$table .= '<th align="left">A.S.</th>';
 	$bg = '#eeeeee';
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
@@ -35,6 +36,7 @@ function result_as_table($result, $tableFeatures="")
 		$table .= '<td align="left">'.$r['data_ricevuta'].'</td>';
 		$table .= '<td align="left">'.$r['tipo_pagamento'].'</td>';
 		$table .= '<td align="left">'.$r['codice_scuola'].'</td>';
+		$table .= '<td align="left">'.$r['anno_scolastico'].'</td>';
 		$table .= "</tr>\n";
 	}
 	$table .= "</table>\n\n";
