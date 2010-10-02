@@ -7,7 +7,7 @@
 - annullamento ricevuta
 - ricerca persone da verificare... non trova le mamme...
 - report arretrati non funge (report ancora NON implemantato: crea un elenco studenti)
-- abbiamo aggiunto un tipo di pagamento (prescuola) quindi bisogna aggiungerlo nei report giornaliero e mensile
+- abbiamo aggiunto un tipo di pagamento (prescuola) quindi bisogna aggiungerlo nei report giornaliero e mensile (FATTO)
 - nel report giornaliero mettere i totali in verticale
 - mettere le statistiche degli allievi nella home
 - aggiustare gli stati di Giorgio DE FANO e Raffaele DE GIORGIO (trasferiti) e di Francesca PELLE (bocciata e trasferita)
