@@ -6,7 +6,7 @@
 - caratteri accentati nei pdf?
 - annullamento ricevuta
 - ricerca persone da verificare... non trova le mamme...
-- report arretrati non funge
+- report arretrati non funge (report ancora NON implemantato: crea un elenco studenti)
 - abbiamo aggiunto un tipo di pagamento (prescuola) quindi bisogna aggiungerlo nei report giornaliero e mensile
 - nel report giornaliero mettere i totali in verticale
 - mettere le statistiche degli allievi nella home
