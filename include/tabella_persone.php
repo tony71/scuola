@@ -1,16 +1,16 @@
 <?php
-function result_as_table($result, $tableFeatures="")
+function result_as_table($result, $tableFeatures="", $link)
 {
 	$table = "<table $tableFeatures>\n\n";
 	$noFields = $result->columnCount();
 	$table .= "<tr>\n";
 	$table .= '<th align="left">N.</th>';
 	$table .= '<th align="left">G/F</th>';
-	$table .= '<th align="left">Nome</th>';
-	$table .= '<th align="left">Cognome</th>';
-	$table .= '<th align="left">Data di Nascita</th>';
-	$table .= '<th align="left">Comune di Nascita</th>';
-	$table .= '<th align="left">Matricola</th>';
+	$table .= '<th align="left"><a href="'.$link.'&sort=nome">Nome</th>';
+	$table .= '<th align="left"><a href="'.$link.'&sort=cognome">Cognome</th>';
+	$table .= '<th align="left"><a href="'.$link.'&sort=data">Data di Nascita</th>';
+	$table .= '<th align="left"><a href="'.$link.'&sort=comune">Comune di Nascita</th>';
+	$table .= '<th align="left"><a href="'.$link.'&sort=matricola">Matricola</th>';
 	$bg = '#fff';
 	$i = 1;
 		
