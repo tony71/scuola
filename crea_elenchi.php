@@ -141,6 +141,26 @@ if (isset($_POST['submitted'])) {
 			echo $e->getMessage();
 		}
 	}
+	else if ($amministrazione == 'arretrati') {
+		try {
+			$sql = "select * from vista_report_arretrati  order by cognome, nome";
+			$stm = $db->query($sql);
+			$titolo = 'Report arretrati';
+			$filename = 'report.xls';
+			echo '<form action="genera_excel.php" method="post">';
+			echo '<input type="submit" name="submit" value="Esporta in Excel" />';
+			echo '<input type="hidden" name="sql" value="'.$sql.'" />';
+			echo '<input type="hidden" name="title" value="'.$titolo.'" />';
+			echo '<input type="hidden" name="filename" value="'.$filename.'" />';
+			echo '<input type="hidden" name="submitted" value="TRUE" />';
+			echo '</form>';
+			require_once('include/tabella_arretrati.php');
+			echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"', null);
+		}
+		catch(PDOException $e) {
+			echo $e->getMessage();
+		}
+	}
 	else {
 		$sql = "select * from cerca_studenti('$nominativo','$scuola','$anno',$classe,'$sezione','$indirizzo','$stato',$data)";
 		$sql .= " order by cognome, nome";
