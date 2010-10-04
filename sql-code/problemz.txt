@@ -1,13 +1,11 @@
 # NOTA: in cima i problemi piu' ugenti
 
-- quando si visualizza una ricevuta (es: scuola/ricevute.php?matricola=0835) aggiungere una colonna con l'anno scolastico (FATTO)
+- URGENTE: report mensile non discrimina la scuola...
 - Generale: aggiungere l'ordinamento cliccando sull'intestazione della colonna (FATTO per le ricevute e la ricerca studenti)
 - eventi studente
 - caratteri accentati nei pdf?
 - annullamento ricevuta
-- ricerca persone da verificare... non trova le mamme...
 - report arretrati non funge (report ancora NON implemantato: crea un elenco studenti)
-- abbiamo aggiunto un tipo di pagamento (prescuola) quindi bisogna aggiungerlo nei report giornaliero e mensile (FATTO)
 - nel report giornaliero mettere i totali in verticale
 - mettere le statistiche degli allievi nella home
-- aggiustare gli stati di Giorgio DE FANO e Raffaele DE GIORGIO (trasferiti) e di Francesca PELLE (bocciata e trasferita)
+- QUESTO LO FACCIO IO (fab): aggiustare gli stati di Giorgio DE FANO e Raffaele DE GIORGIO (trasferiti) e di Francesca PELLE (bocciata e trasferita)
