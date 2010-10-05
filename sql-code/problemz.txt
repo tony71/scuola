@@ -1,6 +1,5 @@
 # NOTA: in cima i problemi piu' ugenti
 
-- URGENTE: report mensile non discrimina la scuola...
 - Generale: aggiungere l'ordinamento cliccando sull'intestazione della colonna (FATTO per le ricevute e la ricerca studenti)
 - eventi studente
 - caratteri accentati nei pdf?

@@ -94,7 +94,7 @@ try {
 	$host  = $_SERVER['HTTP_HOST'];
 	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 	$extra = 'stampa_ricevuta.php?id_ricevuta=' . $r['id_ricevuta'];
-	echo '<p><input type="submit" name="submit" value="Salva" 
+	echo '<p><input type="submit" name="submit" value="Salva e Stampa" 
 	onClick="window.open(\'http://'.$host.$uri.'/'.$extra.'\')" /> ';
 	// onClick="window.open(\'http://pico/scuola/stampa_ricevuta.php?id_ricevuta='.$r['id_ricevuta'].'\')" /> ';
 	echo '<input type="submit" name="submit" value="Annulla" /></p>';
