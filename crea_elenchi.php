@@ -106,7 +106,7 @@ if (isset($_POST['submitted'])) {
 			$sql = "select * from crea_report_giornaliero_ricevuta($data,'$scuola')  order by tipo, cognome, nome";
 			$stm = $db->query($sql);
 			$titolo = 'Report giornaliero '.$scuola;
-			$filename = 'report.xls';
+			$filename = 'Report-giornaliero.xls';
 			echo '<form action="genera_excel.php" method="post">';
 			echo '<input type="submit" name="submit" value="Esporta in Excel" />';
 			echo '<input type="hidden" name="sql" value="'.$sql.'" />';
@@ -126,7 +126,7 @@ if (isset($_POST['submitted'])) {
 			$sql = "select * from crea_report_mensile_ricevuta($data,'$scuola')  order by data, tipo";
 			$stm = $db->query($sql);
 			$titolo = 'Report mensile '.$scuola;
-			$filename = 'report.xls';
+			$filename = 'Report-mensile.xls';
 			echo '<form action="genera_excel.php" method="post">';
 			echo '<input type="submit" name="submit" value="Esporta in Excel" />';
 			echo '<input type="hidden" name="sql" value="'.$sql.'" />';
@@ -146,7 +146,7 @@ if (isset($_POST['submitted'])) {
 			$sql = "select * from vista_report_arretrati  order by cognome, nome";
 			$stm = $db->query($sql);
 			$titolo = 'Report arretrati';
-			$filename = 'report.xls';
+			$filename = 'Report-arretrati.xls';
 			echo '<form action="genera_excel.php" method="post">';
 			echo '<input type="submit" name="submit" value="Esporta in Excel" />';
 			echo '<input type="hidden" name="sql" value="'.$sql.'" />';

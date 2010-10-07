@@ -4,7 +4,7 @@
 - eventi studente
 - caratteri accentati nei pdf?
 - annullamento ricevuta
-- report arretrati non funge (report ancora NON implemantato: crea un elenco studenti)
+- report arretrati non funge (report ancora NON implementato: crea un elenco studenti)
 - nel report giornaliero mettere i totali in verticale
 - mettere le statistiche degli allievi nella home
 - QUESTO LO FACCIO IO (fab): aggiustare gli stati di Giorgio DE FANO e Raffaele DE GIORGIO (trasferiti) e di Francesca PELLE (bocciata e trasferita)
