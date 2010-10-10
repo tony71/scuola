@@ -4,10 +4,9 @@
 	header ("Content-Type: text/xml");
 	header ("Content-Disposition: inline; filename=$filename");
 	require_once('include/db_connection.php');
-	$sql = $_POST['sql'];
+	$query = pg_escape_string($_POST['sql']);
 	try {
-		$stm = $db->query('CREATE TEMP TABLE tmp AS '.$sql);
-		$sql = "select xmlroot(table_to_xml('tmp'::regclass, true, false, 'Prova'),version '1.0', standalone yes)";
+		$sql = "select xmlroot(query_to_xml('$query'::text, true, false, 'Prova'),version '1.0', standalone yes)";
 		$stm = $db->query($sql);
 		$r = $stm->fetch(PDO::FETCH_BOTH);
 		echo $r[0];
