@@ -19,7 +19,7 @@ function singola_persona($r, $readonly=true, $db)
 	*/
 	require_once('html_input_text.php');
 	$result .= html_input_text($db, 'cognome', 'persone', (isset($r) ? pg_escape_string($r['cognome']) : ''), $readonly);
-	$result .= html_input_text($db, 'nome', 'persone', (isset($r) ? $r['nome'] : ''), $readonly);
+	$result .= html_input_text($db, 'nome', 'persone', (isset($r) ? pg_escape_string($r['nome']) : ''), $readonly);
 	$result .= html_input_text($db, 'sesso', 'persone', (isset($r) ? $r['sesso'] : ''), $readonly);
 	$result .= '<br />';
 	$result .= html_input_text($db, 'id_famiglia', 'persone', (isset($r) ? pg_escape_string($r['id_famiglia']) : ''), $readonly);

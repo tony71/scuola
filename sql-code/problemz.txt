@@ -2,7 +2,7 @@
 
 - Generale: aggiungere l'ordinamento cliccando sull'intestazione della colonna (FATTO per le ricevute e la ricerca studenti)
 - eventi studente
-- caratteri accentati nei pdf?
+- nella ricevuta in pdf i caratteri accentati vanno a puttane...
 - annullamento ricevuta
 - report arretrati (FATTO: da controllare)
 - nel report giornaliero mettere i totali in verticale
