@@ -1,7 +1,7 @@
 <?php
 require_once('include/db_connection.php');
 
-if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
+if (isset($_POST['submitted']) && ($_POST['submit'] == 'Salva')) {
 	$trimmed = array_map('trim', $_POST);
 	$sql = 'INSERT INTO contatti_persona (';
 	$sql .= 'id_persona, ';
@@ -32,7 +32,7 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
 	header("Location: http://$host$uri/$extra");
 }
 
-$page_title = 'Registra Contatto';
+$page_title = 'Salva Contatto';
 include('include/header.html');
 
 
@@ -67,7 +67,7 @@ catch(PDOException $e) {
 		</textarea>
 	</fieldset>
 	<div align="center">
-		<input type="submit" name="submit" value="Registra" />
+		<input type="submit" name="submit" value="Salva" />
 	</div>
 	<input type="hidden" name="submitted" value="TRUE" />
 </form>
