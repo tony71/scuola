@@ -54,9 +54,10 @@ try {
 	echo '<form action="modifica_addebito.php" method="post">';
 	$r = $stm->fetch(PDO::FETCH_BOTH);
 	echo singolo_addebito($db, $r, false);
-	echo '<p><input type="submit" name="submit" value="Salva" /></p>';
+	echo '<p><input type="submit" name="submit" value="Salva" />';
 	echo '<input type="hidden" name="submitted" value="TRUE" />';
 	echo '<input type="hidden" name="id_addebito" value="'.$id_addebito.'" />';
+	echo '<a href="addebiti.php?matricola=' . $matricola . ' " >Annulla</a></p>';
 	echo '</form>';
 	
 }
@@ -65,7 +66,6 @@ catch(PDOException $e) {
 	syslog(LOG_INFO, $e->getMessage());
 }
 
-echo '<a href="addebiti.php?matricola=' . $matricola . '">Torna agli Addebiti</a>';
 
 include('include/footer.html');
 ?>

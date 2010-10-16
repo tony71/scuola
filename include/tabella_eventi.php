@@ -1,0 +1,23 @@
+<?php
+function result_as_table($result, $tableFeatures="")
+{
+	$table = "<table $tableFeatures>\n\n";
+	$noFields = $result->columnCount();
+	$table .= "<tr>\n";
+	$table .= '<th align="left"><b>Seleziona</b></th>';
+	$table .= '<th align="left" style="width:200px;">Data</th>';
+	$table .= '<th align="left" style="width:200px;">Commento</th>';
+	$bg = '#eeeeee';
+	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
+		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
+		$table .= '<tr bgcolor="' . $bg . '">';
+		$table .= '<td align="center"><input type="checkbox" name="id_evento[]" value="'.$r['id_evento'].'" /></td>';
+		$table .= '<td align="left">'.$r['data'].'</td>';
+		$table .= '<td align="left">'.$r['commento'].'</td>';
+		$table .= "</tr>\n";
+	}
+	$table .= "</table>\n\n";
+	
+	return $table;
+}
+?>

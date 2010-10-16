@@ -1,7 +1,8 @@
 # NOTA: in cima i problemi piu' ugenti
 
 - Generale: aggiungere l'ordinamento cliccando sull'intestazione della colonna (FATTO per le ricevute e la ricerca studenti)
-- eventi studente
+- elimina e modifica contatti studente
+- modifica eventi studente
 - nella ricevuta in pdf i caratteri accentati vanno a puttane...
 - annullamento ricevuta
 - report arretrati (FATTO: da controllare)
