@@ -1,11 +1,12 @@
 # NOTA: in cima i problemi piu' ugenti
 
-- Generale: aggiungere l'ordinamento cliccando sull'intestazione della colonna (FATTO per le ricevute e la ricerca studenti)
+- se non seleziono alcun addebito non deve essere attivo il pulsante "crea ricevuta"
 - elimina e modifica contatti studente
 - modifica eventi studente
+- nel report giornaliero mettere i totali in verticale
+- mettere le statistiche degli allievi nella home
+- Generale: aggiungere l'ordinamento cliccando sull'intestazione della colonna (FATTO per le ricevute e la ricerca studenti)
 - nella ricevuta in pdf i caratteri accentati vanno a puttane...
 - annullamento ricevuta
 - report arretrati (FATTO: da controllare)
-- nel report giornaliero mettere i totali in verticale
-- mettere le statistiche degli allievi nella home
 - QUESTO LO FACCIO IO (fab): aggiustare gli stati di Giorgio DE FANO e Raffaele DE GIORGIO (trasferiti) e di Francesca PELLE (bocciata e trasferita)
