@@ -4,9 +4,9 @@ function result_as_table($result, $tableFeatures="")
 	$table = "<table $tableFeatures>\n\n";
 	$noFields = $result->columnCount();
 	$table .= "<tr>\n";
-	$table .= '<th align="left"><b>Seleziona</b></th>';
-	$table .= '<th align="left" style="width:200px;">Data</th>';
-	$table .= '<th align="left" style="width:200px;">Commento</th>';
+	$table .= '<th align="left" style="width:50px;"><b>Selez.</b></th>';
+	$table .= '<th align="left" style="width:90px;">Data</th>';
+	$table .= '<th align="left" style="width:600px;">Commento</th>';
 	$bg = '#eeeeee';
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
