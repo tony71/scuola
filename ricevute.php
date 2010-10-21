@@ -26,7 +26,7 @@ try {
 	$stm->execute();
 	$m = $stm->fetch(PDO::FETCH_BOTH);
 
-	echo '<h1>Ricevute (' . $r[0] . ') ' . $m['cognome'] . ', ' . $m['nome'] . '</h1>';
+	echo '<h1>Ricevute di '.$m['nome'].' '.$m['cognome'].'</h1>';
 }
 catch(PDOException $e) {
        	echo $e->getMessage();
@@ -78,7 +78,7 @@ switch ($sort) {
 		break;
 }
 
-$sql = "select * from vista_ricevute where matricola_studente='$matricola' order by $order_by limit $display offset $start";
+$sql = "select * from vista_ricevute2 where matricola_studente='$matricola' order by $order_by limit $display offset $start";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();

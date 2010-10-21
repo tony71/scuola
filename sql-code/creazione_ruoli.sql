@@ -41,6 +41,7 @@ grant all on vista_domicili to segreteria;
 grant all on vista_persone to segreteria;
 grant all on vista_residenze to segreteria;
 grant all on vista_ricevute to segreteria;
+grant all on vista_ricevute2 to segreteria;
 grant all on vista_ricevute_riga to segreteria;
 grant all on vista_studenti to segreteria;
 grant all on vista_studenti_con_curriculum to segreteria;
