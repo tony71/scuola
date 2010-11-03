@@ -1,7 +1,7 @@
 <?php
 require_once('include/db_connection.php');
 
-if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
+if (isset($_POST['submitted']) && ($_POST['submit'] == 'Salva')) {
 	$trimmed = array_map('trim', $_POST);
 	$sql = 'SELECT * from stato_studente_trasferito (';
 	$sql .= ':matricola, ';
@@ -69,8 +69,8 @@ catch(PDOException $e) {
 		<input type="text" name="data" value="<?php require('include/oggi.php'); echo oggi($db); ?>" />
 	</fieldset>
 	<div align="center">
-		<input type="submit" name="submit" value="Registra" />
-		<a href="curriculum.php?matricola=<?php echo $matricola; ?>">Back</a>
+		<input type="submit" name="submit" value="Salva" />
+		<a href="curriculum.php?matricola=<?php echo $matricola; ?>">Annulla</a>
 	</div>
 	<input type="hidden" name="submitted" value="TRUE" />
 </form>

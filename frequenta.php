@@ -73,8 +73,8 @@ catch(PDOException $e) {
 		</select>
 	</fieldset>
 	<div align="center">
-		<input type="submit" name="submit" value="Registra" />
-		<a href="curriculum.php?matricola=<?php echo $matricola; ?>">Back</a>
+		<input type="submit" name="submit" value="Salva" />
+		<a href="curriculum.php?matricola=<?php echo $matricola; ?>">Annulla</a>
 	</div>
 	<input type="hidden" name="submitted" value="TRUE" />
 </form>

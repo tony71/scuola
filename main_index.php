@@ -96,5 +96,6 @@ else {
 </div>
 <?php
 }
+include('statistiche.php');
 include('include/footer.html');
 ?>
