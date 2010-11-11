@@ -46,7 +46,7 @@ if (isset($_POST['submitted'])) {
 else {
 ?>
 <div id="main_search">
-<form action="cerca_persone.php" method="post">
+<form action="cerca_persone.php" method="post" name="ricerca">
 	<fieldset>
 		<label>Ricerca Persone per Cognome</label>
 		<input type="text" name="nominativo" class="rg" />

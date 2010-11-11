@@ -85,7 +85,7 @@ if (isset($_POST['submitted']) or isset($_GET['submitted'])) {
 else {
 ?>
 <div id="main_search">
-<form action="main_index.php" method="post">
+<form action="main_index.php" method="post" name="ricerca">
 	<fieldset>
 		<label>Ricerca Studenti per Cognome</label>
 		<input type="text" name="nominativo" class="rg" />
