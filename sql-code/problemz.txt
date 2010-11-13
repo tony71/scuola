@@ -1,7 +1,7 @@
 # NOTA: in cima i problemi piu' ugenti
 
 - se non seleziono alcun addebito non deve essere attivo il pulsante "crea ricevuta"
-- elimina e modifica contatti studente
+- elimina e modifica contatti studente FATTO (modifica commanto KO)
 - modifica eventi studente
 - nel report giornaliero mettere i totali in verticale
 - mettere le statistiche degli allievi nella home
