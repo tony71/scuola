@@ -17,6 +17,33 @@ else {
 }
 
 
+$sql = "select id_persona from studenti where matricola_studente='$matricola'";
+try {
+	$stm = $db->query($sql);
+	$row = $stm->fetch(PDO::FETCH_BOTH);
+	$id_persona = $row['id_persona'];
+}
+catch(PDOException $e) {
+        echo $e->getMessage();
+}
+
+$sql = "select foto from persone where id_persona=$id_persona";
+try {
+	$stm = $db->query($sql);
+	$row = $stm->fetch(PDO::FETCH_BOTH);
+	$foto = base64_decode($row['foto']);
+
+	$im = imagecreatefromstring($foto);
+	if ($im !== false) {
+		$tmp_file = "./tmp/$id_persona.jpeg";
+		imagejpeg($im, $tmp_file);
+		imagedestroy($im);
+		echo '<img src="'.$tmp_file.'" />';
+	}
+}
+catch(PDOException $e) {
+        echo $e->getMessage();
+}
 
 $sql = "select * from vista_saldo_studente where matricola_studente='$matricola'";
 try {

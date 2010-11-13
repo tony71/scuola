@@ -61,6 +61,7 @@ catch(PDOException $e) {
 }
 
 echo '<a href="dettagli_studente.php?matricola=' . $matricola . '">Torna a Dettagli Studente</a>';
+echo '<br /><a href="carica_foto.php?matricola=' . $matricola . '">Carica Foto</a>';
 
 include('include/footer.html');
 ?>
