@@ -1,0 +1,8 @@
+Fedora 13
+yum install php
+yum install php-pdo
+yum install php-pgsql
+yum install php-gd
+Fedora 13 rpmfusion nonfree
+yum install pdflib-lite.x86_64
+yum install php-pecl-pdflib.x86_64
