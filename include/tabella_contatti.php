@@ -9,6 +9,8 @@ function result_as_table($result, $tableFeatures="")
 	$table .= '<th align="left">Cognome</th>';
 	$table .= '<th align="left">Parentela</th>';
 	$table .= '<th align="left">Sesso</th>'; */
+	$table .= '<th align="left" style="width:200px;">Elimina</th>';
+	$table .= '<th align="left" style="width:200px;">Modifica</th>';
 	$table .= '<th align="left" style="width:200px;">Commento</th>';
 	$table .= '<th align="left" style="width:200px;">Contatto</th>';
 	$bg = '#eeeeee';
@@ -19,6 +21,8 @@ function result_as_table($result, $tableFeatures="")
 		$table .= '<td align="left">'.$r['cognome'].'</td>';
 		$table .= '<td align="center">'.$r['tipo_parentela'].'</td>';
 		$table .= '<td align="center">'.$r['sesso'].'</td>'; */
+		$table .= '<td align="left"><a href="elimina_contatto.php?id_persona=' . $r['id_persona'] . '&contatto='.$r['contatto'].'&commento='.$r['commento'].'">Elimina</a></td>';
+		$table .= '<td align="left"><a href="modifica_contatto.php?id_persona=' . $r['id_persona'] . '&contatto='.$r['contatto'].'&commento='.$r['commento'].'">Modifica</a></td>';
 		$table .= '<td align="left">'.$r['commento'].'</td>';
 		$table .= '<td align="left">'.$r['contatto'].'</td>';
 		$table .= "</tr>\n";
