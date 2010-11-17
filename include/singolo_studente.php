@@ -1,5 +1,5 @@
 <?php
-function singolo_studente($r, $readonly=true, $prov)
+function singolo_studente($r, $readonly=true, $prov, $tmp_file)
 {
 	if ($readonly == true) {
 		$s = 'readonly="readonly" ';
@@ -9,7 +9,7 @@ function singolo_studente($r, $readonly=true, $prov)
 	}
 		
 	include('singola_persona.php');
-	$result = singola_persona($r, $readonly, $prov);
+	$result = singola_persona($r, $readonly, $prov, $tmp_file);
 
 	$result .= '<fieldset>';
 	$result .= '<legend>Dati Studente</legend>';

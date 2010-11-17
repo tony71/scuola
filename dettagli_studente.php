@@ -16,7 +16,6 @@ else {
 	exit();
 }
 
-
 $sql = "select id_persona from studenti where matricola_studente='$matricola'";
 try {
 	$stm = $db->query($sql);
@@ -27,18 +26,18 @@ catch(PDOException $e) {
         echo $e->getMessage();
 }
 
-$sql = "select foto from persone where id_persona=$id_persona";
+
+$sqlf = "select foto from persone where id_persona=$id_persona";
 try {
-	$stm = $db->query($sql);
-	$row = $stm->fetch(PDO::FETCH_BOTH);
-	$foto = base64_decode($row['foto']);
+	$stmf = $db->query($sqlf);
+	$rowf = $stmf->fetch(PDO::FETCH_BOTH);
+	$foto = base64_decode($rowf['foto']);
 
 	$im = imagecreatefromstring($foto);
 	if ($im !== false) {
 		$tmp_file = "./tmp/$id_persona.jpeg";
 		imagejpeg($im, $tmp_file);
 		imagedestroy($im);
-		echo '<img src="'.$tmp_file.'" />';
 	}
 }
 catch(PDOException $e) {
@@ -100,9 +99,9 @@ try {
 	}
 	
 	include('include/singolo_studente.php');
-	
+
 	$r = $stm->fetch(PDO::FETCH_BOTH);
-	$ss = singolo_studente($r, true, $db);
+	$ss = singolo_studente($r, true, $db, $tmp_file);
 	$matricola = $r['matricola_studente'];
 	$id = $r['id_persona'];
 	include('include/tab_studente.html');

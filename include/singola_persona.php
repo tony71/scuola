@@ -1,5 +1,5 @@
 <?php
-function singola_persona($r, $readonly=true, $db)
+function singola_persona($r, $readonly=true, $db, $tmp_file)
 {
 	if ($readonly == true) {
 		$s = 'readonly="readonly" ';
@@ -18,12 +18,15 @@ function singola_persona($r, $readonly=true, $db)
 	$result .= '<input type="text" name="nome" id="nome" size="15" maxlength="50" value="' . (isset($r) ? $r['nome'] : '') . '" ' . $s . ' />';
 	*/
 	require_once('html_input_text.php');
+	$result .= '<img src="'.$tmp_file.'" align="right"/>';
+
 	$result .= html_input_text($db, 'cognome', 'persone', (isset($r) ? pg_escape_string($r['cognome']) : ''), $readonly);
 	$result .= html_input_text($db, 'nome', 'persone', (isset($r) ? pg_escape_string($r['nome']) : ''), $readonly);
-	$result .= html_input_text($db, 'sesso', 'persone', (isset($r) ? $r['sesso'] : ''), $readonly);
 	$result .= '<br />';
+	$result .= html_input_text($db, 'sesso', 'persone', (isset($r) ? $r['sesso'] : ''), $readonly);
 	$result .= html_input_text($db, 'id_famiglia', 'persone', (isset($r) ? pg_escape_string($r['id_famiglia']) : ''), $readonly);
 	$result .= html_input_text($db, 'tipo_parentela', 'persone', (isset($r) ? $r['tipo_parentela'] : ''), $readonly);
+	$result .= '<br />';
 	$result .= html_input_text($db, 'professione', 'persone', (isset($r) ? $r['professione'] : ''), $readonly);
 
 	/*
@@ -41,7 +44,7 @@ function singola_persona($r, $readonly=true, $db)
 	*/
 
 	$result .= '<br />';
-
+	
 	$result .= html_input_text($db, 'data_nascita', 'persone', (isset($r) ? $r['data_nascita'] : ''), $readonly);
 	$result .= html_input_text($db, 'codice_fiscale', 'persone', (isset($r) ? $r['codice_fiscale'] : ''), $readonly);
 	/*
