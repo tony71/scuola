@@ -6,6 +6,7 @@ function result_as_table($result, $tableFeatures="", $link)
 	$table .= "<tr>\n";
 	// $table .= '<th align="left"><b>Dettagli</b></th>';
 	$table .= '<th align="left"><b>Stampa</b></th>';
+	$table .= '<th align="left"><b>Elimina</b></th>';
 	/******
 	for ($i = 1; $i < $noFields; $i++) {
 		$meta = $result->getColumnMeta($i);
@@ -23,6 +24,7 @@ function result_as_table($result, $tableFeatures="", $link)
 		$table .= '<tr bgcolor="' . $bg . '">';
 		// $table .= '<td align="left"><a href="dettagli_ricevuta.php?id_ricevuta=' . $r['id_ricevuta'] . '">Dettagli</a></td>';
 		$table .= '<td align="left"><a href="stampa_ricevuta.php?id_ricevuta=' . $r['id_ricevuta'] . '" target="_blank">Stampa</a></td>';
+		$table .= '<td align="left"><a href="elimina_ricevuta.php?id_ricevuta=' . $r['id_ricevuta'] . '">Elimina</a></td>';
 		/****
 		// foreach ($r as $column) {
 		for ($i = 1; $i < $noFields; ++$i) {
