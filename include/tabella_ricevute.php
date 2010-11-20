@@ -32,7 +32,7 @@ function result_as_table($result, $tableFeatures="", $link)
 		****/
 		$tp = $r['tipo_pagamento'];
 		$tp = ($tp == 'c' ? 'contanti' : ($tp == 'a' ? 'assegno' : 'bonifico'));
-		$table .= '<td align="left">'.$r['codice_scuola'].'-'.$r['numero_ricevuta'].'</td>';
+		$table .= '<td align="left"><a href="modifica_ricevuta_testata.php?id_ricevuta='.$r['id_ricevuta'].'">'.$r['codice_scuola'].'-'.$r['numero_ricevuta'].'</a></td>';
 		$table .= '<td align="left">'.$r['importo_totale'].'</td>';
 		$table .= '<td align="left">'.$r['data_ricevuta'].'</td>';
 		$table .= '<td align="left">'.$tp.'</td>';
