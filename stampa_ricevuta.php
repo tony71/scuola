@@ -165,7 +165,7 @@ try {
 	while($r = $stm->fetch(PDO::FETCH_BOTH)) {
 		$txt = $euro.$r['importo_riga_it'];
 		$ricevuta->fit_textline($txt, 50, $y, "position={left bottom}");
-		$txt = $r['causale'];
+		$txt = $r['nuova_causale'];
 		// $txt .= ' (' . $r['descrizione_tipo'] . ')';
 		$ricevuta->fit_textline($txt, 150, $y, "position={left bottom}");
 		$txt = 'a.s. ' . $r['anno_scolastico'];
