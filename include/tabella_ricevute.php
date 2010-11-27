@@ -18,6 +18,7 @@ function result_as_table($result, $tableFeatures="", $link)
 	$table .= '<th align="left"><a href="'.$link.'&sort=data">Data</th>';
 	$table .= '<th align="left">Tipo pagamento</th>';
 	$table .= '<th align="left"><b>Elimina</b></th>';
+	$table .= '<th align="left"><b>Annulla</b></th>';
 	$bg = '#eeeeee';
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
@@ -37,6 +38,7 @@ function result_as_table($result, $tableFeatures="", $link)
 		$table .= '<td align="left">'.$r['data_ricevuta'].'</td>';
 		$table .= '<td align="left">'.$tp.'</td>';
 		$table .= '<td align="left"><a href="elimina_ricevuta.php?id_ricevuta=' . $r['id_ricevuta'] . '">Elimina</a></td>';
+		$table .= '<td align="left"><a href="annulla_ricevuta.php?id_ricevuta=' . $r['id_ricevuta'] . '">Annulla</a></td>';
 		$table .= "</tr>\n";
 	}
 	$table .= "</table>\n\n";
