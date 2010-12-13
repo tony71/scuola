@@ -19,6 +19,7 @@ function result_as_table($result, $tableFeatures="")
 	$table .= '<th align="left">Residuo</th>';
 	$table .= '<th align="left">Data Scadenza</th>';
 	$table .= '<th align="left">A. S.</th>';
+	$table .= '<th align="left">Cancella</th>';
 	$bg = '#eeeeee';
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
@@ -37,6 +38,7 @@ function result_as_table($result, $tableFeatures="")
 		$table .= '<td align="left">'.$r['importo_residuo'].'</td>';
 		$table .= '<td align="left">'.$r['data_scadenza'].'</td>';
 		$table .= '<td align="left">'.$r['anno_scolastico'].'</td>';
+		$table .= '<td align="left"><a href="cancella_addebito.php?id_addebito='.$r['id_addebito'].'">Cancella</a></td>';
 		$table .= "</tr>\n";
 	}
 	$table .= "</table>\n\n";
