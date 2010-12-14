@@ -9,9 +9,9 @@ function result_as_table($result, $tableFeatures="")
 	$table .= '<th align="left">Cognome</th>';
 	$table .= '<th align="left">Parentela</th>';
 	$table .= '<th align="left">Sesso</th>'; */
-	$table .= '<th align="left" style="width:200px;">Elimina</th>';
-	$table .= '<th align="left" style="width:200px;">Modifica</th>';
-	$table .= '<th align="left" style="width:200px;">Commento</th>';
+	$table .= '<th align="left" style="width:80px;">Elimina</th>';
+	$table .= '<th align="left" style="width:80px;">Modifica</th>';
+	$table .= '<th align="left" style="width:150px;">Commento</th>';
 	$table .= '<th align="left" style="width:200px;">Contatto</th>';
 	$bg = '#eeeeee';
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
