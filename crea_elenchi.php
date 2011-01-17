@@ -122,7 +122,7 @@ if (isset($_POST['submitted'])) {
 
 	if ($amministrazione == 'giornalieri') {
 		try {
-			$sql = "select * from crea_report_giornaliero_ricevuta($data,'$scuola')  order by tipo, cognome, nome";
+			$sql = "select * from crea_report_giornaliero_ricevuta($data,'$scuola')  order by numero_ricevuta";
 			$stm = $db->query($sql);
 			$titolo = 'Report giornaliero '.$scuola;
 			$filename = 'Report-giornaliero.'.$estensione;
