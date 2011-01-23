@@ -1,7 +1,7 @@
 Per copiare il repository in /var/www/html eseguire:
 # cd /var/www/html
 # git clone git@github.com:tony71/scuola.git
-# git clone git://github.com/tony71/scuola
+##FINE CLONAZIONE
 # git pull
 # git status
 # git commit -a -m "Uso di git"
