@@ -13,7 +13,7 @@ function result_as_table($result, $tableFeatures="")
 		$table .= '<tr bgcolor="' . $bg . '">';
 		$table .= '<td align="center"><input type="checkbox" name="id_evento[]" value="'.$r['id_evento'].'" /></td>';
 		$table .= '<td align="left">'.$r['data'].'</td>';
-		$table .= '<td align="left">'.$r['commento'].'</td>';
+		$table .= '<td align="left"><a href="modifica_evento.php?id_evento='.$r['id_evento'].'">'.$r['commento'].'</td>';
 		$table .= "</tr>\n";
 	}
 	$table .= "</table>\n\n";
