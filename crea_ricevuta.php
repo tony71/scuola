@@ -16,6 +16,7 @@ foreach($_POST['id_addebito'] as $key => $value) {
 $sql .= '])';
 
 if (isset($_POST['submitted'])) {
+	try {
 	$stm = $db->query($sql);
 	$row = $stm->fetch(PDO::FETCH_BOTH);
 	$id_ricevuta = $row['0'];
@@ -42,8 +43,10 @@ if (isset($_POST['submitted'])) {
 	echo '<a href="modifica_ricevuta.php?id_ricevuta='.$id_ricevuta.'&id_addebiti='.urlencode(serialize($_POST['id_addebito'])).'&importi_riga='.urlencode(serialize($importi_riga)).'">Modifica Ricevuta</a>';
 	echo '<div class="navigation"><ul><li><a href="modifica_ricevuta.php?id_ricevuta='.$id_ricevuta.'">Modifica Ricevuta</a></li>';
 	echo '<li><a href="stampa_ricevuta.php?id_ricevuta='.$id_ricevuta.'" target="_blank">Stampa Ricevuta</a></li></ul></div>'; */
-	
-	
+	}
+	catch(PDOException $e) {
+       		echo $e->getMessage();
+	}
 }
 
 include('include/footer.html');
