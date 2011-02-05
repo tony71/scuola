@@ -16,7 +16,7 @@ CREATE OR REPLACE VIEW pagamenti.vista_addebiti_scaduti AS
 
 
 CREATE OR REPLACE FUNCTION pagamenti.crea_report_addebiti_scaduti(IN in_data_scadenza date)
-  RETURNS TABLE(matricola_studente character, cognome character varying, nome character varying, saldo_a_oggi numeric) AS
+  RETURNS TABLE(matricola_studente character, nome character varying, cognome character varying, saldo_a_oggi numeric) AS
 $BODY$DECLARE
         sql TEXT;
 BEGIN

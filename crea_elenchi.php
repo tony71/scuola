@@ -91,6 +91,20 @@ else {
 	$data = "'".$data."'";
 }
 
+
+if (isset($_POST['data_arretrati'])) {
+	$data_arretrati = $_POST['data_arretrati'];
+}
+elseif (isset($_GET['data_arretrati'])) {
+	$data_arretrati = $_GET['data_arretrati'];
+}
+if (empty($data_arretrati)) {
+	$data_arretrati = 'NULL';
+}
+else {
+	$data_arretrati = "'".$data_arretrati."'";
+}
+
 if (isset($_POST['amministrazione'])) {
 	$amministrazione = $_POST['amministrazione'];
 }
@@ -162,7 +176,7 @@ if (isset($_POST['submitted'])) {
 	}
 	else if ($amministrazione == 'arretrati') {
 		try {
-			$sql = "select * from vista_report_arretrati  order by cognome, nome";
+			$sql = "select * from crea_report_addebiti_scaduti($data_arretrati)  order by cognome, nome";
 			$stm = $db->query($sql);
 			$titolo = 'Report arretrati';
 			$filename = 'Report-arretrati.'.$estensione;
@@ -274,6 +288,8 @@ else {
 			<option value="xml">XML</option>
 		</select>
 		<legend>Amministrazione</legend>
+		<label>Data Arretrati</label>
+		<input type="text" name="data_arretrati" value="" />
 		<label class="etichetta">Arretrati</label>
 		<input type="radio" name="amministrazione" value="arretrati" />
 		<label class="etichetta">Pagamenti giornalieri</label>
