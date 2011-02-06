@@ -41,4 +41,6 @@ GRANT ALL ON TABLE pagamenti.vista_addebiti_non_pagati2 TO tony;
 GRANT ALL ON TABLE pagamenti.vista_addebiti_non_pagati2 TO postgres;
 GRANT ALL ON TABLE pagamenti.vista_addebiti_non_pagati2 TO segreteria;
 
-
+- pagamenti.vista_ricevute2 (VIEW NON Rimossa)
+Rispetto a vista_ricevute ha in meno la colonna anno_scolastico.
+Ha 4 record in meno
