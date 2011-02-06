@@ -13,6 +13,7 @@ CREATE OR REPLACE VIEW pagamenti.vista_addebiti_scaduti AS
  SELECT vista_addebiti.id_addebito, vista_addebiti.importo, vista_addebiti.importo_residuo, vista_addebiti.causale, vista_addebiti.data_scadenza, vista_addebiti.anno_scolastico, vista_addebiti.matricola_studente, vista_addebiti.saldo, vista_addebiti.descrizione_tipo
    FROM pagamenti.vista_addebiti
   WHERE vista_addebiti.importo_residuo > 0::numeric AND vista_addebiti.data_scadenza < now();
+GRANT ALL ON TABLE pagamenti.vista_addebiti_scaduti TO segreteria;
 
 
 CREATE OR REPLACE FUNCTION pagamenti.crea_report_addebiti_scaduti(IN in_data_scadenza date)
