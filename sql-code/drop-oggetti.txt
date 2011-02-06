@@ -1,6 +1,9 @@
 Per cercare nel codice php dove viene usata qualche cosa:
 grep -r -n -i vista_report_arretrati *
 
+Per cercare nel codice del DB dove viene usata qualche cosa:
+select proname, prosrc from pg_proc where prosrc ~ 'vista_report_arretrati';
+
 - pagamenti.vista_report_arretrati (VIEW Rimossa)
 
 CREATE OR REPLACE VIEW pagamenti.vista_report_arretrati AS 
@@ -12,3 +15,17 @@ ALTER TABLE pagamenti.vista_report_arretrati OWNER TO tony;
 GRANT ALL ON TABLE pagamenti.vista_report_arretrati TO tony;
 GRANT ALL ON TABLE pagamenti.vista_report_arretrati TO postgres;
 GRANT ALL ON TABLE pagamenti.vista_report_arretrati TO segreteria;
+
+- pagamenti.vista_saldo_studente2 (VIEW Rimossa)
+
+CREATE OR REPLACE VIEW pagamenti.vista_saldo_studente2 AS 
+ SELECT a.matricola_studente, sum(a.importo_residuo) AS saldo_a_oggi
+   FROM pagamenti.vista_addebiti_non_pagati2 a
+  WHERE a.data_scadenza < 'now'::text::date
+  GROUP BY a.matricola_studente;
+
+ALTER TABLE pagamenti.vista_saldo_studente2 OWNER TO tony;
+GRANT ALL ON TABLE pagamenti.vista_saldo_studente2 TO tony;
+GRANT ALL ON TABLE pagamenti.vista_saldo_studente2 TO postgres;
+GRANT ALL ON TABLE pagamenti.vista_saldo_studente2 TO segreteria;
+

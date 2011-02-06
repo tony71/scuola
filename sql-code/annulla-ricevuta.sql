@@ -162,11 +162,6 @@ from vista_saldo_studente
 where matricola_studente='m09056'
 ;
 
-select *
-from vista_saldo_studente2
-where matricola_studente='m09056'
-;
-
 -- ANNULLA la ricevuta e rifai le query sopra: i dati dovrebbero essere
 -- "consistenti" con l'operazione di annullamento
 select annulla_ricevuta(1170);
