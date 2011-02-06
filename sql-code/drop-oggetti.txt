@@ -1,0 +1,14 @@
+Per cercare nel codice php dove viene usata qualche cosa:
+grep -r -n -i vista_report_arretrati *
+
+- pagamenti.vista_report_arretrati (VIEW Rimossa)
+
+CREATE OR REPLACE VIEW pagamenti.vista_report_arretrati AS 
+ SELECT a.matricola_studente, b.nome, b.cognome, a.saldo_a_oggi
+   FROM pagamenti.vista_saldo_studente a
+NATURAL JOIN vista_studenti b;
+
+ALTER TABLE pagamenti.vista_report_arretrati OWNER TO tony;
+GRANT ALL ON TABLE pagamenti.vista_report_arretrati TO tony;
+GRANT ALL ON TABLE pagamenti.vista_report_arretrati TO postgres;
+GRANT ALL ON TABLE pagamenti.vista_report_arretrati TO segreteria;

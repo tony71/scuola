@@ -153,7 +153,7 @@ where id_addebito in (
 );
 
 select *
-from vista_report_arretrati
+from crea_report_addebiti_scaduti(null)
 where matricola_studente='m09056'
 ;
 
