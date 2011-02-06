@@ -29,3 +29,16 @@ GRANT ALL ON TABLE pagamenti.vista_saldo_studente2 TO tony;
 GRANT ALL ON TABLE pagamenti.vista_saldo_studente2 TO postgres;
 GRANT ALL ON TABLE pagamenti.vista_saldo_studente2 TO segreteria;
 
+- pagamenti.vista_addebiti_non_pagati2 (VIEW Rimossa)
+
+CREATE OR REPLACE VIEW pagamenti.vista_addebiti_non_pagati2 AS 
+ SELECT a.id_addebito, a.importo, a.importo_residuo, a.causale, a.data_scadenza, a.anno_scolastico, a.matricola_studente, a.saldo, a.descrizione_tipo
+   FROM pagamenti.vista_addebiti a
+  WHERE a.importo_residuo >= 0.0;
+
+ALTER TABLE pagamenti.vista_addebiti_non_pagati2 OWNER TO tony;
+GRANT ALL ON TABLE pagamenti.vista_addebiti_non_pagati2 TO tony;
+GRANT ALL ON TABLE pagamenti.vista_addebiti_non_pagati2 TO postgres;
+GRANT ALL ON TABLE pagamenti.vista_addebiti_non_pagati2 TO segreteria;
+
+
