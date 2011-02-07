@@ -162,7 +162,7 @@ if (isset($_POST['submitted'])) {
 	}
 	else if ($amministrazione == 'arretrati') {
 		try {
-			$sql = "select * from vista_report_arretrati  order by cognome, nome";
+			$sql = "select * from vista_report_arretrati order by cognome, nome";
 			$stm = $db->query($sql);
 			$titolo = 'Report arretrati';
 			$filename = 'Report-arretrati.'.$estensione;
