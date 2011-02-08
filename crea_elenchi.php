@@ -176,11 +176,7 @@ if (isset($_POST['submitted'])) {
 	}
 	else if ($amministrazione == 'arretrati') {
 		try {
-<<<<<<< HEAD
-			$sql = "select * from vista_report_arretrati order by cognome, nome";
-=======
 			$sql = "select * from crea_report_addebiti_scaduti($data_arretrati)  order by cognome, nome";
->>>>>>> 0922285d9ca3738cc7605978c451c3d427e117fd
 			$stm = $db->query($sql);
 			$titolo = 'Report arretrati';
 			$filename = 'Report-arretrati.'.$estensione;
