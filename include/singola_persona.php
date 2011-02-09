@@ -62,6 +62,17 @@ function singola_persona($r, $readonly=true, $db, $tmp_file)
 	$result .= '<input type="text" name="data_nascita" id="data_nascita" size="10" maxlength="10" value="' . (isset($r) ? $r['data_nascita'] : '') . '" ' . $s . ' />';
 	*/
 
+	$result .= '<label for="provincia_nascita">Provincia di Nascita:</label>';
+	$result .= '<select name="provincia_nascita" id="provincia_nascita"';
+	$result .= ($readonly == true ? ' disabled="disabled"' : '');
+	$result .= ' onChange="showComuni(this)">';
+	require_once('select_provincia.php');
+	$result .= isset($r['sigla_provincia_nascita']) ? '' : '<option></option>';
+	$result .= select_provincia($db, $r['sigla_provincia_nascita']);
+	$result .= '</select>';
+
+	$result .= '<br />';
+
 	$result .= '<label for="comune_nascita">Comune di Nascita:</label>';
 	$result .= '<select name="comune_nascita" id="comune_nascita"';
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
@@ -71,17 +82,6 @@ function singola_persona($r, $readonly=true, $db, $tmp_file)
 	if (isset($r['sigla_comune_nascita'])) {
 		$result .= select_comune($db, $r['sigla_comune_nascita'], $r['sigla_provincia_nascita']);
 	}
-	$result .= '</select>';
-
-	$result .= '<br />';
-
-	$result .= '<label for="provincia_nascita">Provincia di Nascita:</label>';
-	$result .= '<select name="provincia_nascita" id="provincia_nascita"';
-	$result .= ($readonly == true ? ' disabled="disabled"' : '');
-	$result .= ' onChange="showComuni(this)">';
-	require_once('select_provincia.php');
-	$result .= isset($r['sigla_provincia_nascita']) ? '' : '<option></option>';
-	$result .= select_provincia($db, $r['sigla_provincia_nascita']);
 	$result .= '</select>';
 
 	$result .= '<br />';
@@ -149,17 +149,6 @@ function singola_persona($r, $readonly=true, $db, $tmp_file)
 
 	$result .= '<br />';
 
-	$result .= '<label for="comune_residenza">Comune:</label>';
-	$result .= '<select name="comune_residenza" id="comune_residenza"';
-	$result .= ($readonly == true ? ' disabled="disabled"' : '');
-	$result .= '>';
-	require_once('select_comune.php');
-	$result .= isset($r['sigla_comune_residenza']) ? '' : '<option></option>';
-	if (isset($r['sigla_comune_residenza'])) {
-		$result .= select_comune($db, $r['sigla_comune_residenza'], $r['sigla_provincia_residenza']);
-	}
-	$result .= '</select>';
-
 	$result .= '<label for="provincia_residenza">Provincia:</label>';
 	$result .= '<select name="provincia_residenza" id="provincia_residenza"';
 	$result .= ($readonly == true ? ' disabled="disabled"' : '');
@@ -170,6 +159,17 @@ function singola_persona($r, $readonly=true, $db, $tmp_file)
 	$result .= '</select>';
 
 	$result .= '<br />';
+
+	$result .= '<label for="comune_residenza">Comune:</label>';
+	$result .= '<select name="comune_residenza" id="comune_residenza"';
+	$result .= ($readonly == true ? ' disabled="disabled"' : '');
+	$result .= '>';
+	require_once('select_comune.php');
+	$result .= isset($r['sigla_comune_residenza']) ? '' : '<option></option>';
+	if (isset($r['sigla_comune_residenza'])) {
+		$result .= select_comune($db, $r['sigla_comune_residenza'], $r['sigla_provincia_residenza']);
+	}
+	$result .= '</select>';
 
 /*	$result .= '<label for="citta">Citta</label>';
 	$result .= '<input type="text" name="citta" id="citta" size="15" maxlength="40" value="' . (isset($r) ? $r['citta'] : '') . '" ' . $s . ' />';
