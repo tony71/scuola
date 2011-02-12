@@ -247,7 +247,7 @@ else {
 		</select>
 		<label>Data</label>
 		<!-- <input type="text" name="data" value="<?php require('include/oggi.php'); echo oggi($db); ?>" />-->
-		<input type="text" name="data" value="" />
+		<input type="date" name="data" value="" />
 	</fieldset>
 	
 	<fieldset>
@@ -289,7 +289,7 @@ else {
 		</select>
 		<legend>Amministrazione</legend>
 		<label>Data Arretrati</label>
-		<input type="text" name="data_arretrati" value="" />
+		<input type="date" name="data_arretrati" value="" />
 		<label class="etichetta">Arretrati</label>
 		<input type="radio" name="amministrazione" value="arretrati" />
 		<label class="etichetta">Pagamenti giornalieri</label>
