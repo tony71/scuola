@@ -1,5 +1,5 @@
 <?php
-function select_tipo_addebito($dbtemp, $sql)
+function select_tipo_addebito($dbtemp, $sql, $addebito)
 {
 	try {
 		
@@ -7,7 +7,11 @@ function select_tipo_addebito($dbtemp, $sql)
 		while ($r = $stm->fetch(PDO::FETCH_BOTH)) {
 			$option = '<option value="';
 			$option .= $r['id_tipo_addebito'];
-			$option .= '">';
+			$option .= '"';
+			if ($r['id_tipo_addebito'] == $addebito) {
+				$option .= ' selected="selected"';
+			} 
+			$option .= '>';
 			$option .= $r['descrizione_tipo'];
 			$option .= ' </option>';
 			$options .= $option;

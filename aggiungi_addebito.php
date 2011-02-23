@@ -79,7 +79,7 @@ catch(PDOException $e) {
 		<select name="id_tipo_addebito" id="id_tipo_addebito">
 			<?php
 			include('include/select_tipo_addebito.php');
-			echo select_tipo_addebito($db, 'select id_tipo_addebito, descrizione_tipo from tipo_addebito');
+			echo select_tipo_addebito($db, 'select id_tipo_addebito, descrizione_tipo from tipo_addebito', $trimmed['id_tipo_addebito']);
 			?>
 		</select>
 

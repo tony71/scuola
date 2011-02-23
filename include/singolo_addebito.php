@@ -29,7 +29,7 @@ function singolo_addebito($db, $r, $readonly=true)
 	$result .= '<label for="id_tipo_addebito">Tipo Addebito:</label>';
 	$result .= '<select name="id_tipo_addebito" id="id_tipo_addebito">';
 	require_once('include/select_tipo_addebito.php');
-	$result .= select_tipo_addebito($db, 'select id_tipo_addebito, descrizione_tipo from tipo_addebito');
+	$result .= select_tipo_addebito($db, 'select id_tipo_addebito, descrizione_tipo from tipo_addebito', $r['id_tipo_addebito']);
 	$result .= '</select>';
 
 	$result .= '</fieldset>';
