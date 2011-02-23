@@ -79,6 +79,7 @@ catch(PDOException $e) {
 		<select name="id_tipo_addebito" id="id_tipo_addebito">
 			<?php
 			include('include/select_tipo_addebito.php');
+			echo select_tipo_addebito($db, 'select id_tipo_addebito, descrizione_tipo from tipo_addebito');
 			?>
 		</select>
 
@@ -88,7 +89,8 @@ catch(PDOException $e) {
 		-->
 		<select name="anno_scolastico" id="anno_scolastico">
 			<?php
-			include('include/select_anno.php'); echo select_anno_scolastico($db);
+			include('include/select_anno.php'); 
+			echo select_anno_scolastico($db);
 			?>
 		</select>
 		</p>
