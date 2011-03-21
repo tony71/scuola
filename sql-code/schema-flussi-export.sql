@@ -4,6 +4,12 @@
 --
 -- Comando per creare un file a partire da una tabella/vista
 -- copy (select * from flussi_export.ministero) to '/var/lib/pgsql/report_ministero.txt' with (format csv, delimiter '|');
+
+-- ******************************************************************************
+-- io ho usato il seguente comando in pgadmin:
+-- copy (select * from flussi_export.ministero_primaria) to '/var/lib/postgresql/report_ministero2011.txt' with delimiter '|';
+-- ******************************************************************************
+
 -- Nell'esempio ho fatto un file con tutte e 3 le scuole
 -- Ho anche creato 3 viste per fare un export separato di ciascuna scuola
 --
