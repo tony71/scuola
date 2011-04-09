@@ -22,3 +22,8 @@ Moifiche a Postgresql
 	yum install php-pgsql.x86_64
 - Con SELinux di default httpd non puo' connettersi ad un DB. Per modificare:
 	setsebool -P httpd_can_network_connect_db=1
+- Creazione del DB da un backup:
+        psql -U tony -d postgres -f mrua2011-03-01.sql
+- Aggiunta di uno schema:
+        psql -U tony -d scuola -f stato_studenti.sql
+
