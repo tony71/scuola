@@ -74,7 +74,7 @@ $sql = "select * from vista_ricevute where id_ricevuta=$id_ricevuta";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();
-	if ($num != 1) {
+	if ($num < 1) {
 		echo '<p class="error">Non sono presenti ricevute nel DB.</p>';
 		include('include/footer.html');
 		exit();
