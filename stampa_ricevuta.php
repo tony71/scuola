@@ -147,14 +147,21 @@ try {
 	$txt = "matricola     ".$r['matricola_studente']."      C.F. ".$r['codice_fiscale'];
 	$ricevuta->fit_textline($txt, 50, 560, "position={left bottom}");
 
-	$txt = "frequentante la ".$r['denominazione'];
+	$txt = $r['denominazione'];
 	$ricevuta->fit_textline($txt, 50, 540, "position={left bottom}");
 
 	$txt = "Si dichiara di ricevere la somma di ";
-	//$txt .= "Euro".$r['importo_totale_it'];
-	$txt .= $euro.$r['importo_totale_it'];
-	
 	$ricevuta->fit_textline($txt, 50, 500, "position={left bottom}");
+
+	//$txt .= "Euro".$r['importo_totale_it'];
+	$txt = $euro.$r['importo_totale_it'];
+	
+	$font = $ricevuta->load_font("Helvetica-Bold", "winansi", "");
+	$ricevuta->setfont($font, 13.0);
+	$ricevuta->fit_textline($txt, 260, 500, "position={left bottom}");
+
+	$font = $ricevuta->load_font("Helvetica", "winansi", "");
+	$ricevuta->setfont($font, 13.0);
 
 	$txt = "per il pagamento di quanto sotto meglio descritto:";
 	$ricevuta->fit_textline($txt, 50, 480, "position={left bottom}");
