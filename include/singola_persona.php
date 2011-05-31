@@ -68,7 +68,8 @@ function singola_persona($r, $readonly=true, $db, $tmp_file)
 	$result .= ' onChange="showComuni(this)">';
 	require_once('select_provincia.php');
 	$result .= isset($r['sigla_provincia_nascita']) ? '' : '<option></option>';
-	$result .= select_provincia($db, $r['sigla_provincia_nascita']);
+	$p_n = isset($r['sigla_provincia_nascita']) ? $r['sigla_provincia_nascita'] : 'TO';
+	$result .= select_provincia($db, $p_n);
 	$result .= '</select>';
 
 	$result .= '<br />';
@@ -80,7 +81,10 @@ function singola_persona($r, $readonly=true, $db, $tmp_file)
 	require_once('select_comune.php');
 	$result .= isset($r['sigla_comune_nascita']) ? '' : '<option></option>';
 	if (isset($r['sigla_comune_nascita'])) {
-		$result .= select_comune($db, $r['sigla_comune_nascita'], $r['sigla_provincia_nascita']);
+		$result .= select_comune($db, $r['sigla_comune_nascita'], $p_n);
+	}
+	else {
+		$result .= select_comune($db, 'L219', $p_n);
 	}
 	$result .= '</select>';
 
@@ -155,7 +159,8 @@ function singola_persona($r, $readonly=true, $db, $tmp_file)
 	$result .= ' onChange="showComuni(this)">';
 	require_once('select_provincia.php');
 	$result .= isset($r['sigla_provincia_residenza']) ? '' : '<option></option>';
-	$result .= select_provincia($db, $r['sigla_provincia_residenza']);
+	$p_r = isset($r['sigla_provincia_residenza']) ? $r['sigla_provincia_residenza'] : 'TO';
+	$result .= select_provincia($db, $p_r);
 	$result .= '</select>';
 
 	$result .= '<br />';
@@ -168,6 +173,9 @@ function singola_persona($r, $readonly=true, $db, $tmp_file)
 	$result .= isset($r['sigla_comune_residenza']) ? '' : '<option></option>';
 	if (isset($r['sigla_comune_residenza'])) {
 		$result .= select_comune($db, $r['sigla_comune_residenza'], $r['sigla_provincia_residenza']);
+	}
+	else {
+		$result .= select_comune($db, 'L219', $p_r);
 	}
 	$result .= '</select>';
 
