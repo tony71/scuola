@@ -176,7 +176,7 @@ if (isset($_POST['submitted'])) {
 	}
 	else if ($amministrazione == 'arretrati') {
 		try {
-			$sql = "select * from crea_report_addebiti_scaduti($data_arretrati)  order by cognome, nome";
+			$sql = "select * from crea_report_addebiti_scaduti_as($data_arretrati)  order by cognome, nome";
 			$stm = $db->query($sql);
 			$titolo = 'Report arretrati';
 			$filename = 'Report-arretrati.'.$estensione;
