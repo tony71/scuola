@@ -1,7 +1,7 @@
 <?php
 require_once('include/db_connection.php');
 
-if (isset($_POST['submitted']) && ($_POST['submit'] == 'Registra')) {
+if (isset($_POST['submitted']) && ($_POST['submit'] == 'Salva')) {
 	$trimmed = array_map('trim', $_POST);
 	$sql = 'SELECT * from stato_studente_frequenta (';
 	$sql .= ':matricola, ';
