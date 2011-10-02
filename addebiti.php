@@ -94,7 +94,7 @@ else {
 	$start = 0;
 }
 
-$sql = "select id_addebito, importo, importo_residuo, causale, data_scadenza, anno_scolastico, matricola_studente, saldo, descrizione_tipo from $table where matricola_studente=:matricola order by anno_scolastico,data_scadenza limit $display offset $start";
+$sql = "select id_addebito, importo, importo_residuo, causale, data_scadenza, anno_scolastico, matricola_studente, saldo, descrizione_tipo, sospeso from $table where matricola_studente=:matricola order by anno_scolastico,data_scadenza limit $display offset $start";
 try {
 	// $stm = $db->query($sql);
 	$stm = $db->prepare($sql);

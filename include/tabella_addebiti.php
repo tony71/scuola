@@ -20,6 +20,7 @@ function result_as_table($result, $tableFeatures="")
 	$table .= '<th align="left">Data Scadenza</th>';
 	$table .= '<th align="left">A. S.</th>';
 	$table .= '<th align="left">Elimina</th>';
+	$table .= '<th align="left">Sospendi/Attiva</th>';
 	$bg = '#eeeeee';
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
@@ -39,6 +40,13 @@ function result_as_table($result, $tableFeatures="")
 		$table .= '<td align="left">'.$r['data_scadenza'].'</td>';
 		$table .= '<td align="left">'.$r['anno_scolastico'].'</td>';
 		$table .= '<td align="left"><a href="cancella_addebito.php?id_addebito='.$r['id_addebito'].'">Elimina</a></td>';
+		error_log('Flag Sospeso: '.$r['sospeso']);
+		if ($r['sospeso']) {
+			$table .= '<td align="left"><a href="attiva_addebito.php?id_addebito='.$r['id_addebito'].'">Attiva</a></td>';
+		}
+		else {
+			$table .= '<td align="left"><a href="sospendi_addebito.php?id_addebito='.$r['id_addebito'].'">Sospendi</a></td>';
+		}
 		$table .= "</tr>\n";
 	}
 	$table .= "</table>\n\n";
