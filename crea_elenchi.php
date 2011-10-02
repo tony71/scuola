@@ -194,6 +194,26 @@ if (isset($_POST['submitted'])) {
 			echo $e->getMessage();
 		}
 	}
+	else if ($amministrazione == 'arretrati_esigibili') {
+		try {
+			$sql = "select * from crea_report_addebiti_scaduti_as($data_arretrati) where sospeso=false order by cognome, nome";
+			$stm = $db->query($sql);
+			$titolo = 'Report arretrati esigibili';
+			$filename = 'Report-arretrati-esigibili.'.$estensione;
+			echo '<form action="'.$form_action.'" method="post">';
+			echo '<input type="submit" name="submit" value="Esporta in Excel" />';
+			echo '<input type="hidden" name="sql" value="'.$sql.'" />';
+			echo '<input type="hidden" name="title" value="'.$titolo.'" />';
+			echo '<input type="hidden" name="filename" value="'.$filename.'" />';
+			echo '<input type="hidden" name="submitted" value="TRUE" />';
+			echo '</form>';
+			require_once('include/tabella_arretrati.php');
+			echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"', null);
+		}
+		catch(PDOException $e) {
+			echo $e->getMessage();
+		}
+	}
 	else {
 		$sql = "select * from cerca_studenti('$nominativo','$scuola','$anno',$classe,'$sezione','$indirizzo','$stato',$data)";
 		$sql .= " order by cognome, nome";
@@ -292,6 +312,8 @@ else {
 		<input type="date" name="data_arretrati" value="" />
 		<label class="etichetta">Arretrati</label>
 		<input type="radio" name="amministrazione" value="arretrati" />
+		<label class="etichetta">Arretrati Esigibili</label>
+		<input type="radio" name="amministrazione" value="arretrati_esigibili" />
 		<label class="etichetta">Pagamenti giornalieri</label>
 		<input type="radio" name="amministrazione" value="giornalieri" />
 		<label class="etichetta">Pagamenti mensili</label>

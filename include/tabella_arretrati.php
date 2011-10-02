@@ -15,6 +15,7 @@ function result_as_table($result, $tableFeatures="", $link)
 	$table .= '<th align="left">Cognome</th>';
 	$table .= '<th align="left">Saldo a Oggi</th>';
 	$table .= '<th align="left">Saldo A.S.</th>';
+	$table .= '<th align="left">Sospeso</th>';
 	$bg = '#eeeeee';
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
@@ -24,6 +25,7 @@ function result_as_table($result, $tableFeatures="", $link)
 		$table .= '<td align="left">'.$r['cognome'].'</td>';
 		$table .= '<td align="left">'.$r['saldo_a_oggi'].'</td>';
 		$table .= '<td align="left">'.$r['saldo_as'].'</td>';
+		$table .= '<td align="left">'.$r['sospeso'].'</td>';
 		$table .= "</tr>\n";
 	}
 	$table .= "</table>\n\n";
