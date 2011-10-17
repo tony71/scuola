@@ -24,8 +24,11 @@ function result_as_table($result, $tableFeatures="")
 	$bg = '#eeeeee';
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
+		$bg = ($r['sospeso'] ? $bg . '" class="sospeso"' : $bg);
 		$table .= '<tr bgcolor="' . $bg . '">';
-		$table .= '<td align="center"><input type="checkbox" name="id_addebito[]" value="'.$r['id_addebito'].'" /></td>';
+		$table .= '<td align="center"><input type="checkbox" name="id_addebito[]" value="'.$r['id_addebito'].'"';
+		$table .= ($r['sospeso'] ? ' disabled="disabled" ' : ' '); 
+		$table .= '/></td>';
 		/****
 		// foreach ($r as $column) {
 		for ($i = 1; $i < $noFields; ++$i) {

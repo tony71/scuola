@@ -188,7 +188,7 @@ if (isset($_POST['submitted'])) {
 			echo '<input type="hidden" name="submitted" value="TRUE" />';
 			echo '</form>';
 			require_once('include/tabella_arretrati.php');
-			echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="75%"', null);
+			echo result_as_table($stm, 'align="center" cellspacing="5" cellpadding="5" width="100%"', null);
 		}
 		catch(PDOException $e) {
 			echo $e->getMessage();

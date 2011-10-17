@@ -15,10 +15,11 @@ function result_as_table($result, $tableFeatures="", $link)
 	$table .= '<th align="left">Cognome</th>';
 	$table .= '<th align="left">Saldo a Oggi</th>';
 	$table .= '<th align="left">Saldo A.S.</th>';
-	$table .= '<th align="left">Sospeso</th>';
+	$table .= '<th align="left">Sospesi</th>';
 	$bg = '#eeeeee';
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
+		$bg = ($r['sospeso'] ? $bg . '" class="sospeso"' : $bg);
 		$table .= '<tr bgcolor="' . $bg . '">';
 		$table .= '<td align="left"><a href="addebiti.php?matricola=' . $r['matricola_studente'] . '">'.$r['matricola_studente'].'</a></td>';
 		$table .= '<td align="left">'.$r['nome'].'</td>';
