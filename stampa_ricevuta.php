@@ -111,7 +111,7 @@ try {
 	$font = $ricevuta->load_font("Helvetica", "winansi", "");
 	$ricevuta->setfont($font, 13.0);
 	
-	$sql = "select * from vista_ricevute where id_ricevuta=$id_ricevuta";
+	$sql = "select * from vista_ricevute_new where id_ricevuta=$id_ricevuta";
 	$stm = $db->query($sql);
 	$r = $stm->fetch(PDO::FETCH_BOTH);
 	$txt = "Ricevuta del ";
@@ -132,43 +132,42 @@ try {
 	$font = $ricevuta->load_font("Helvetica", "winansi", "");
 	$ricevuta->setfont($font, 13.0);
 
-	$txt = "Allievo/a     ";
+	$txt = "Genitore      ".$r['cognome_genitore']." ".$r['nome_genitore']." - C.F. ".$r['codice_fiscale_genitore'];
 	$ricevuta->fit_textline($txt, 50, 580, "position={left bottom}");
+
+	$txt = "Allievo/a     ";
+	$ricevuta->fit_textline($txt, 50, 540, "position={left bottom}");
 
 	$font = $ricevuta->load_font("Helvetica-Bold", "winansi", "");
 	$ricevuta->setfont($font, 13.0);
-	$txt = $r['cognome']." ".$r['nome'];
-	$ricevuta->fit_textline($txt, 120, 580, "position={left bottom}");
+	$txt = $r['cognome']." ".$r['nome']." - C.F. ".$r['codice_fiscale'];
+	$ricevuta->fit_textline($txt, 120, 540, "position={left bottom}");
 
 	$font = $ricevuta->load_font("Helvetica", "winansi", "");
 	$ricevuta->setfont($font, 13.0);
 
-	// $txt = "                      ";
-	$txt = "matricola     ".$r['matricola_studente']."      C.F. ".$r['codice_fiscale'];
-	$ricevuta->fit_textline($txt, 50, 560, "position={left bottom}");
-
-	$txt = $r['denominazione'];
-	$ricevuta->fit_textline($txt, 50, 540, "position={left bottom}");
+	$txt = $r['denominazione']." - "."matricola  ".$r['matricola_studente'];
+	$ricevuta->fit_textline($txt, 50, 520, "position={left bottom}");
 
 	$txt = "Si dichiara di ricevere la somma di ";
-	$ricevuta->fit_textline($txt, 50, 500, "position={left bottom}");
+	$ricevuta->fit_textline($txt, 50, 480, "position={left bottom}");
 
 	//$txt .= "Euro".$r['importo_totale_it'];
 	$txt = $euro.$r['importo_totale_it'];
 	
 	$font = $ricevuta->load_font("Helvetica-Bold", "winansi", "");
 	$ricevuta->setfont($font, 13.0);
-	$ricevuta->fit_textline($txt, 260, 500, "position={left bottom}");
+	$ricevuta->fit_textline($txt, 260, 480, "position={left bottom}");
 
 	$font = $ricevuta->load_font("Helvetica", "winansi", "");
 	$ricevuta->setfont($font, 13.0);
 
 	$txt = "per il pagamento di quanto sotto meglio descritto:";
-	$ricevuta->fit_textline($txt, 50, 480, "position={left bottom}");
+	$ricevuta->fit_textline($txt, 50, 460, "position={left bottom}");
 
 	$sql = "select * from vista_ricevute_riga where id_ricevuta=$id_ricevuta";
 	$stm = $db->query($sql);
-	$y = 450;
+	$y = 430;
 	while($r = $stm->fetch(PDO::FETCH_BOTH)) {
 		$txt = $euro.$r['importo_riga_it'];
 		$ricevuta->fit_textline($txt, 50, $y, "position={left bottom}");
