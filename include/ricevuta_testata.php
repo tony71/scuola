@@ -12,7 +12,6 @@ function ricevuta_testata($db, $r)
 			exit();
 		}
 
-		$r2 = $stm2->fetch(PDO::FETCH_BOTH);
 	}
 	catch(PDOException $e) {
 		echo $e->getMessage();
@@ -25,9 +24,9 @@ function ricevuta_testata($db, $r)
 	$result .= '<legend>Ricevuta n&deg; '.$r['codice_scuola'].' - '.$r['numero_ricevuta'].':</legend>';
 
 	$result .= '<label for="clienti">Cliente:</label>';
-	$result .= '<input type="radio" name="cliente1" id="cliente1" value="'. $r2['id_persona'] . '"' .$s . ' />' . $r2['cognome'] . ' ' . $r2['nome'] .' - ' .  $r2['codice_fiscale'];
-	$r2 = $stm2->fetch(PDO::FETCH_BOTH);
-	$result .= '<input type="radio" name="cliente1" id="cliente1" value="'. $r2['id_persona'] . '"' .$s . ' />' . $r2['cognome'] . ' ' . $r2['nome'] .' - ' .  $r2['codice_fiscale'];
+	while ($r2 = $stm2->fetch(PDO::FETCH_BOTH)) {
+		$result .= '<input type="radio" name="cliente" id="cliente" value="'. $r2['id_persona'] . '"' .$s . ' />' . $r2['cognome'] . ' ' . $r2['nome'] .' - ' .  $r2['codice_fiscale'];
+	}
 	$result .= '<br />';
 
 	$result .= '<label for="importo">Importo:</label>';
