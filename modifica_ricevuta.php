@@ -83,7 +83,7 @@ try {
 	include('include/ricevuta_testata.php');
 	echo '<form action="modifica_ricevuta.php" method="post">';
 	$r = $stm->fetch(PDO::FETCH_BOTH);
-	echo ricevuta_testata($r);
+	echo ricevuta_testata($db, $r);
 
 	$sql = "select * from vista_ricevute_riga where id_ricevuta=$id_ricevuta";
 	$stm = $db->query($sql);
