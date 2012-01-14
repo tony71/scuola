@@ -79,13 +79,6 @@ catch(PDOException $e) {
         echo $e->getMessage();
 }
 
-$form .= '<form action="aggiungi_evento.php" method="post">';
-$form .= '<input type="submit" name="nuovo_evento" value="Crea Nuovo Evento" class="brg" />';
-$form .= '<input type="hidden" name="submitted" value="TRUE" />';
-$form .= '<input type="hidden" name="matricola" value="'.$matricola.'" />';
-$form .= '</form>';
-
-
 echo $form;
 
 echo '<a href="dettagli_studente.php?matricola=' . $matricola . '">Torna a Dettagli Studente</a>';
