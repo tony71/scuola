@@ -44,6 +44,11 @@ if (isset($_POST['salva']))
 	}
 	$sql .= "],'" . $matricola . "')";
 	$stm = $db->query($sql);
+
+	$host  = $_SERVER['HTTP_HOST'];
+	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+	$extra = 'dettagli_studente.php?matricola=' . $matricola;
+	header("Location: http://$host$uri/$extra");
 }
 
 $sql = "select nome_breve,cognome_breve from studenti where matricola_studente='$matricola'";
