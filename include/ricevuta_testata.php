@@ -1,8 +1,8 @@
 <?php
 function ricevuta_testata($db, $r)
 {
-	$sql2 = "select id_persona, nome, cognome, codice_fiscale  from persone  where id_famiglia in ( select id_famiglia from persone p, studenti s where p.id_persona=s.id_persona and matricola_studente='".$r['matricola_studente']."'"; 
-	$sql2 .= " ) and tipo_parentela='G';";
+	$id_ric = $r['id_ricevuta'];
+	$sql2 = "select * from mostra_cliente_ricevuta($id_ric)"; 
 	try {
 		$stm2 = $db->query($sql2);
 		$num2 = $stm2->rowCount();
@@ -23,10 +23,11 @@ function ricevuta_testata($db, $r)
 
 	$result .= '<legend>Ricevuta n&deg; '.$r['codice_scuola'].' - '.$r['numero_ricevuta'].':</legend>';
 
-	$result .= '<label for="clienti">Cliente:</label>';
-	while ($r2 = $stm2->fetch(PDO::FETCH_BOTH)) {
-		$result .= '<input type="radio" name="cliente" id="cliente" value="'. $r2['id_persona'] . '"' .$s . ' />' . $r2['cognome'] . ' ' . $r2['nome'] .' - ' .  $r2['codice_fiscale'];
-	}
+	$result .= 'Cliente: ';
+
+        $r2 = $stm2->fetch(PDO::FETCH_BOTH);
+
+	$result .= $r2['cognome'] . ' ' . $r2['nome'] .' - ' .  $r2['codice_fiscale'];
 	$result .= '<br />';
 
 	$result .= '<label for="importo">Importo:</label>';

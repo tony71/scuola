@@ -9,14 +9,16 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Salva')) {
 	$sql .= 'data_scadenza, ';
 	$sql .= 'anno_scolastico, ';
 	$sql .= 'matricola, ';
-	$sql .= 'id_tipo_addebito) ';
+	$sql .= 'id_tipo_addebito, ';
+	$sql .= 'id_cliente) ';
 	$sql .= 'VALUES (';
 	$sql .= "to_number(:importo, '99999D99'), ";
 	$sql .= ':causale, ';
 	$sql .= ':data_scadenza, ';
 	$sql .= ':anno_scolastico, ';
 	$sql .= ':matricola, ';
-	$sql .= ':id_tipo_addebito)';
+	$sql .= ':id_tipo_addebito, ';
+	$sql .= ':id_cliente)';
 
         try {
                 $stm = $db->prepare($sql);
@@ -27,6 +29,13 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Salva')) {
                 $stm->bindParam(":anno_scolastico", $trimmed['anno_scolastico']);
                 $stm->bindParam(":matricola", $trimmed['matricola']);
                 $stm->bindParam(":id_tipo_addebito", $trimmed['id_tipo_addebito']);
+		
+
+	        foreach($_POST['id_persona'] as $key => $value) {
+                	$persona = $value;
+        	}
+
+                $stm->bindParam(":id_cliente", $persona);
 
                 $stm->execute();
         }
@@ -66,6 +75,10 @@ catch(PDOException $e) {
 <form action="aggiungi_addebito.php" method="post">
 	<fieldset>
 		<input type="hidden" name="matricola" id="matricola" value="<?php echo $matricola; ?>" />
+		<?php
+		include('include/select_clienti.php'); 
+		echo select_clienti($db, $matricola);
+		?>
 		<p>
 		<label for="causale">Causale:</label>
 		<input type="text" name="causale" id="causale" size="60" maxlength="100" value="<?php if (isset($trimmed['causale'])) echo $trimmed['causale']; ?>" />
