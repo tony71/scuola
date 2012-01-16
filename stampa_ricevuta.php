@@ -114,6 +114,9 @@ try {
 	$sql = "select * from vista_ricevute_new where id_ricevuta=$id_ricevuta";
 	$stm = $db->query($sql);
 	$r = $stm->fetch(PDO::FETCH_BOTH);
+	$sql = "select * from mostra_cliente_ricevuta($id_ricevuta)";
+	$stm = $db->query($sql);
+	$r2 = $stm->fetch(PDO::FETCH_BOTH);
 	$txt = "Ricevuta del ";
 	$ricevuta->fit_textline($txt, 290, 620, "position={left bottom}");
 	$txt = $r['data_it'];
@@ -132,7 +135,7 @@ try {
 	$font = $ricevuta->load_font("Helvetica", "winansi", "");
 	$ricevuta->setfont($font, 13.0);
 
-	$txt = "Genitore      ".$r['cognome_genitore']." ".$r['nome_genitore']." - C.F. ".$r['codice_fiscale_genitore'];
+	$txt = "Genitore      ".$r2['cognome']." ".$r2['nome']." - C.F. ".$r2['codice_fiscale'];
 	$ricevuta->fit_textline($txt, 50, 580, "position={left bottom}");
 
 	$txt = "Allievo/a     ";
