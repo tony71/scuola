@@ -78,7 +78,7 @@ switch ($sort) {
 		break;
 }
 
-$sql = "select * from vista_ricevute2 where matricola_studente='$matricola' order by $order_by limit $display offset $start";
+$sql = "select * from vista_ricevute_new where matricola_studente='$matricola' order by $order_by limit $display offset $start";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();

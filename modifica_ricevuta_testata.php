@@ -64,7 +64,7 @@ try {
 	include('include/ricevuta_testata.php');
 	echo '<form action="modifica_ricevuta_testata.php" method="post">';
 	$r = $stm->fetch(PDO::FETCH_BOTH);
-	echo ricevuta_testata($r);
+	echo ricevuta_testata($db, $r);
 
 	$matricola = $r['matricola_studente'];
 	$host  = $_SERVER['HTTP_HOST'];

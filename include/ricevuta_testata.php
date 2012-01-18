@@ -25,7 +25,7 @@ function ricevuta_testata($db, $r)
 
 	$result .= 'Cliente: ';
 
-        $r2 = $stm2->fetch(PDO::FETCH_BOTH);
+    $r2 = $stm2->fetch(PDO::FETCH_BOTH);
 
 	$result .= $r2['cognome'] . ' ' . $r2['nome'] .' - ' .  $r2['codice_fiscale'];
 	$result .= '<br />';
