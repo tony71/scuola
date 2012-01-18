@@ -53,9 +53,10 @@ try {
 	include('include/singolo_addebito.php');
 	include('include/select_clienti2.php'); 
 	
-	echo '<form action="modifica_addebito.php" method="post">';
-	echo select_clienti2($db, $matricola, $id_cliente);
 	$r = $stm->fetch(PDO::FETCH_BOTH);
+
+	echo '<form action="modifica_addebito.php" method="post">';
+	echo select_clienti2($db, $matricola, $r['id_cliente']);
 	echo singolo_addebito($db, $r, false);
 	echo '<p><input type="submit" name="submit" value="Salva" />';
 	echo '<input type="hidden" name="submitted" value="TRUE" />';
