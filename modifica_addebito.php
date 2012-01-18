@@ -51,7 +51,6 @@ try {
 	}
 
 	include('include/singolo_addebito.php');
-	
 	include('include/select_clienti2.php'); 
 	
 	echo '<form action="modifica_addebito.php" method="post">';
