@@ -111,7 +111,7 @@ try {
 	$font = $ricevuta->load_font("Helvetica", "winansi", "");
 	$ricevuta->setfont($font, 13.0);
 	
-	$sql = "select * from vista_ricevute_new where id_ricevuta=$id_ricevuta";
+	$sql = "select * from vista_ricevute2 where id_ricevuta=$id_ricevuta";
 	$stm = $db->query($sql);
 	$r = $stm->fetch(PDO::FETCH_BOTH);
 	$sql = "select * from mostra_cliente_ricevuta($id_ricevuta)";
