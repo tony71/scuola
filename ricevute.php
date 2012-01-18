@@ -32,7 +32,7 @@ catch(PDOException $e) {
        	echo $e->getMessage();
 }
 
-$display = 10; // 10 records per page
+$display = 20; // 20 records per page
 
 if (isset($_GET['p']) && is_numeric($_GET['p'])) {
 	$pages = $_GET['p'];
