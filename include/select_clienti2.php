@@ -1,6 +1,6 @@
 <?php
 
-function select_clienti($db, $matricola, $id_cliente)
+function select_clienti2($db, $matricola, $id_cliente)
 {
 	$result = '';
 	try {
