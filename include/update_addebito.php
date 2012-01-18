@@ -13,7 +13,7 @@
         $sql .= ", data_scadenza=:data_scadenza";
         $sql .= ", anno_scolastico=:anno_scolastico";
         $sql .= ", id_tipo_addebito=:id_tipo_addebito";
-        $sql .= ", id_cliente=:id_persona";
+        $sql .= ", id_cliente=:id_cliente";
         $sql .= " WHERE id_addebito=:id_addebito";
 
         try {
@@ -26,7 +26,7 @@
 
                 $stm->bindParam(":id_addebito", $id_addebito);
                 $stm->bindParam(":id_tipo_addebito", $id_tipo_addebito);
-                $stm->bindParam(":id_persona", $id_persona);
+                $stm->bindParam(":id_cliente", $id_persona);
 
                 $stm->execute();
         }

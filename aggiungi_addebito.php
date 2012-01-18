@@ -29,7 +29,6 @@ if (isset($_POST['submitted']) && ($_POST['submit'] == 'Salva')) {
                 $stm->bindParam(":anno_scolastico", $trimmed['anno_scolastico']);
                 $stm->bindParam(":matricola", $trimmed['matricola']);
                 $stm->bindParam(":id_tipo_addebito", $trimmed['id_tipo_addebito']);
-
                 $stm->bindParam(":id_cliente", $trimmed['id_persona']);
 
                 $stm->execute();

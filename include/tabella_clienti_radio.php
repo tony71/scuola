@@ -12,7 +12,8 @@ function result_as_table($result, $tableFeatures="")
 	while ($r = $result->fetch(PDO::FETCH_BOTH)) {
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
 		$table .= '<tr bgcolor="' . $bg . '">';
-		$table .= '<td align="center"><input type="radio" name="id_persona" value="'.$r['id_persona'].'" ' . $r['is_default'] . ' /></td>';
+		$table .= '<td align="center"><input type="radio" name="id_persona" value="'.$r['id_persona'].'" ';
+		$table .= $r['is_default'] . ' /></td>';
 		$table .= '<td align="left">'.$r['cognome'].'</td>';
 		$table .= '<td align="left">'.$r['nome'].'</td>';
 		$table .= '<td align="left">'.$r['codice_fiscale'].'</td>';
