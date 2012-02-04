@@ -10,7 +10,7 @@ if (isset($_GET['id_famiglia'])) {
 else {
 }
 
-	$sql = "select * from persone where id_famiglia = '".$id_fam. "'";
+	$sql = "select * from cerca_famiglia('".$id_fam."')";
 	$sql .= " order by cognome, nome";
 	try {
 		$stm = $db->query($sql);
