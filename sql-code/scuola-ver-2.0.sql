@@ -186,3 +186,12 @@ select * from anagrafica_persone.cerca_studente('accardi');
 ALTER ROLE segreteria IN DATABASE scuola SET search_path=public, anagrafica_persone, anagrafica_indirizzi, anagrafica_scuole, pagamenti;
 ALTER ROLE tony       IN DATABASE scuola SET search_path=public, anagrafica_persone, anagrafica_indirizzi, anagrafica_scuole, pagamenti;
 
+grant all on table pagamenti.clienti to segreteria;
+
+grant all on schema logs to segreteria;
+
+grant all on table logs.logs to segreteria;
+grant all on sequence logs.logs_id_log_seq to segreteria;
+
+
+select * from cerca_famiglia('1');
