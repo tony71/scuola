@@ -309,7 +309,7 @@ else {
 		</select>
 		<legend>Amministrazione</legend>
 		<label>Data Arretrati</label>
-		<input type="date" name="data_arretrati" value="" />
+		<input type="date" name="data_arretrati" value="" /><br />
 		<label class="etichetta">Arretrati</label>
 		<input type="radio" name="amministrazione" value="arretrati" />
 		<label class="etichetta">Arretrati Esigibili</label>

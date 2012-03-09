@@ -70,7 +70,7 @@ include('include/header.html');
 
 echo "<h1>Modifica Ricevuta</h1>";
 
-$sql = "select * from vista_ricevute where id_ricevuta=$id_ricevuta";
+$sql = "select * from vista_ricevute2 where id_ricevuta=$id_ricevuta";
 try {
 	$stm = $db->query($sql);
 	$num = $stm->rowCount();
